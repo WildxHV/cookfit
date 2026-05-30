@@ -21,6 +21,9 @@ import {
 
 export function IngredientLookup() {
   const [slug, setSlug] = useState<string | null>(null);
+  // Slug that was just fetched via the lookup fallback — drives a one-time
+  // "new" badge. Cleared on any normal pick, so repeat searches show no badge.
+  const [aiSlug, setAiSlug] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [unit, setUnit] = useState<string>("");
   const [form, setForm] = useState<string>("");
@@ -69,9 +72,15 @@ export function IngredientLookup() {
             <span className="text-xs text-muted capitalize">{i.category}</span>
           </div>
         )}
-        onSelect={(i) => setSlug(i.slug)}
+        onSelect={(i) => {
+          setAiSlug(null);
+          setSlug(i.slug);
+        }}
         aiSearch={aiLookupIngredient}
-        onAiResult={(s) => setSlug(s)}
+        onAiResult={(s) => {
+          setAiSlug(s);
+          setSlug(s);
+        }}
         aiNoun="ingredient"
       />
 
@@ -95,7 +104,7 @@ export function IngredientLookup() {
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-xl font-semibold">{detail.name}</h2>
-                {detail.source === "ai" && <AiBadge />}
+                {aiSlug === detail.slug && <AiBadge />}
               </div>
               <p className="text-xs text-muted capitalize">{detail.category}</p>
             </div>

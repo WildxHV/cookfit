@@ -36,6 +36,8 @@ function parseSteps(text: string): string[] {
 
 export function RecipeView() {
   const [slug, setSlug] = useState<string | null>(null);
+  // Slug just fetched via the lookup fallback — drives a one-time "new" badge.
+  const [aiSlug, setAiSlug] = useState<string | null>(null);
   const [servings, setServings] = useState(1);
   const [view, setView] = useState<"per person" | "total">("per person");
 
@@ -71,11 +73,13 @@ export function RecipeView() {
           </div>
         )}
         onSelect={(r) => {
+          setAiSlug(null);
           setSlug(r.slug);
           setServings(1);
         }}
         aiSearch={aiLookupRecipe}
         onAiResult={(s) => {
+          setAiSlug(s);
           setSlug(s);
           setServings(1);
         }}
@@ -101,7 +105,7 @@ export function RecipeView() {
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-2">
               <h2 className="text-xl font-semibold">{recipe.name}</h2>
-              {recipe.source === "ai" && <AiBadge />}
+              {aiSlug === recipe.slug && <AiBadge />}
             </div>
             <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
               <span className="capitalize">{recipe.meal_type}</span>

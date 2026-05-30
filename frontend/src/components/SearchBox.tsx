@@ -70,6 +70,39 @@ export function SearchBox<T>({
           {isLoading && (
             <li className="px-4 py-3 text-sm text-muted">Searching…</li>
           )}
+
+          {/* Fallback "find exactly this" action, pinned to the TOP so it's
+              reachable without scrolling past loose matches. Worded neutrally —
+              from the user's view it's just another search of our catalog. */}
+          {showAi && (
+            <li className={data.length > 0 ? "mb-1 border-b border-gray-100 pb-1" : ""}>
+              {aiBusy ? (
+                <div className="flex items-center gap-2 px-4 py-3 text-sm text-muted">
+                  <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-accent-300 border-t-transparent" />
+                  Looking up “{debounced}”…
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    void runAi();
+                  }}
+                  className="flex w-full items-center gap-2 rounded-xl px-4 py-3 text-left text-sm text-accent-700 hover:bg-accent-50"
+                >
+                  <span aria-hidden>🔍</span>
+                  <span>
+                    Look up{" "}
+                    <span className="font-medium">“{debounced}”</span>
+                  </span>
+                </button>
+              )}
+              {aiError && (
+                <p className="px-4 pb-2 text-xs text-red-600">{aiError}</p>
+              )}
+            </li>
+          )}
+
           {settled && data.length === 0 && !aiSearch && (
             <li className="px-4 py-3 text-sm text-muted">No matches.</li>
           )}
@@ -89,35 +122,6 @@ export function SearchBox<T>({
               </button>
             </li>
           ))}
-          {showAi && (
-            <li className={data.length > 0 ? "mt-1 border-t border-gray-100 pt-1" : ""}>
-              {aiBusy ? (
-                <div className="flex items-center gap-2 px-4 py-3 text-sm text-muted">
-                  <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-accent-300 border-t-transparent" />
-                  Searching with AI for “{debounced}”…
-                </div>
-              ) : (
-                <button
-                  type="button"
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                    void runAi();
-                  }}
-                  className="flex w-full items-center gap-2 rounded-xl px-4 py-3 text-left text-sm text-accent-700 hover:bg-accent-50"
-                >
-                  <span aria-hidden>✨</span>
-                  <span>
-                    {data.length > 0 ? "Not it? " : "Not in our list — "}
-                    look up{" "}
-                    <span className="font-medium">“{debounced}”</span> with AI
-                  </span>
-                </button>
-              )}
-              {aiError && (
-                <p className="px-4 pb-2 text-xs text-red-600">{aiError}</p>
-              )}
-            </li>
-          )}
         </ul>
       )}
     </div>
@@ -126,11 +130,10 @@ export function SearchBox<T>({
 
 function aiErrorMessage(err: unknown, noun: string): string {
   const status = (err as { response?: { status?: number } })?.response?.status;
-  if (status === 422)
-    return `Couldn't find reliable data for this ${noun}.`;
-  if (status === 503) return "AI lookup isn't configured on the server.";
-  if (status === 502) return "The AI service is unavailable right now.";
-  return "Something went wrong with the AI lookup. Please try again.";
+  if (status === 422) return `Couldn't find reliable data for that ${noun}.`;
+  if (status === 503) return "Lookup isn't available right now.";
+  if (status === 502) return "Lookup is temporarily unavailable.";
+  return "Something went wrong. Please try again.";
 }
 
 function useQueryCompat<T>(

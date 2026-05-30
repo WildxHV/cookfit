@@ -247,3 +247,12 @@ Format for each entry:
 - **Commands:** one-off Python script over `ingredients.json` (name+alias merge) → `python -m app.seed.seed` (re-validated + reseeded: "Seeded 116 ingredients and 49 recipes.") → restarted uvicorn to pick up the new prompt.
 - **Verification:** `pytest` → 39 passed; live search shows "Banana (kela)", "Almonds (badam)", "Jackfruit (kathal)", etc.
 - **Note:** the AI lookup for "asafoetida" itself was *declined* this run because Gemini's macros failed the Atwater consistency guard (320 vs ~225 kcal) — asafoetida powder is often cut with starch, so values vary. This is the "no false entries" validator working as intended; the naming convention applies whenever the data passes.
+
+### 2026-05-30 — Make AI fallback seamless: transient badge, top-of-list, neutral wording
+
+User asks: (1) the AI tag must NOT persist — once data is in our DB, a later search/user should see it as normal data; the tag should appear only on the search that fetched it; (2) put the lookup option at the TOP of the dropdown so it isn't buried under loose fuzzy matches; (3) make the lookup feel seamless — like it came from our own DB, not "fetched from somewhere".
+
+- **Transient badge (was persistent).** Previously the badge rendered from `detail.source === "ai"`, which is permanent, so every future view showed it. Now each page tracks `aiSlug` (the slug just fetched via the lookup fallback): `onAiResult` sets it, any normal `onSelect` clears it. Badge shows only when `aiSlug === detail.slug`. Verified: looking up "dragonfruit" shows the badge; re-searching and picking it from results shows it with **no** badge.
+- **Top-of-list lookup action** (`SearchBox.tsx`): the fallback row moved from the bottom to the **top** of the dropdown (with a divider below it when matches exist), so it's reachable without scrolling past non-matching fuzzy results.
+- **Neutral / seamless wording:** dropdown row "🔍 Look up "<q>"" (was "✨ … look up "<q>" with AI"); spinner "Looking up "<q>"…" (was "Searching with AI…"); error messages no longer mention "AI"; the badge label changed from "AI" to **"New"** (tooltip "Just added to your catalog") so the result reads as freshly-added catalog data rather than externally sourced. `source` is still stored in the DB for provenance but no longer drives any UI.
+- **Verified:** `npx tsc --noEmit` clean; no console errors; lookup row is dropdown item #1; badge is one-shot.
