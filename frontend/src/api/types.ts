@@ -41,6 +41,7 @@ export interface IngredientDetail {
   units: Unit[];
   facts_per_100g: Record<string, Macros>;
   selected: SelectedNutrition;
+  source: string;
 }
 
 export interface RecipeSummary {
@@ -78,4 +79,5 @@ export interface RecipeDetail {
   items: ScaledIngredient[];
   per_person: Macros;
   total: Macros;
+  source: string;
 }

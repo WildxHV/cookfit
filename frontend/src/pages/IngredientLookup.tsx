@@ -1,9 +1,14 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { getIngredient, searchIngredients } from "../api/client";
+import {
+  aiLookupIngredient,
+  getIngredient,
+  searchIngredients,
+} from "../api/client";
 import type { IngredientSummary } from "../api/types";
 import { SearchBox } from "../components/SearchBox";
 import { ErrorBanner } from "../components/ErrorBanner";
+import { AiBadge } from "../components/AiBadge";
 import { NutritionCards } from "../components/NutritionCards";
 import { QuantityControl } from "../components/QuantityControl";
 import { Segmented } from "../components/Segmented";
@@ -65,6 +70,9 @@ export function IngredientLookup() {
           </div>
         )}
         onSelect={(i) => setSlug(i.slug)}
+        aiSearch={aiLookupIngredient}
+        onAiResult={(s) => setSlug(s)}
+        aiNoun="ingredient"
       />
 
       {!slug && (
@@ -85,7 +93,10 @@ export function IngredientLookup() {
         <section className="flex flex-col gap-5 rounded-3xl border border-gray-100 bg-surface p-6 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <h2 className="text-xl font-semibold">{detail.name}</h2>
+              <div className="flex items-center gap-2">
+                <h2 className="text-xl font-semibold">{detail.name}</h2>
+                {detail.source === "ai" && <AiBadge />}
+              </div>
               <p className="text-xs text-muted capitalize">{detail.category}</p>
             </div>
             {detail.forms.length > 1 && (

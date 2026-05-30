@@ -158,9 +158,11 @@ def ai_lookup_recipe(
 ) -> RecipeDetail:
     """Fallback: ask Gemini for a dish we don't have, validate it (and every
     ingredient it uses), store it (source='ai'), and return it scaled."""
+    # Only short-circuit on a near-certain match, to avoid serving a loosely
+    # similar dish instead of fetching the one actually requested.
     existing = search.rank(
         q, _load_all(db), searchable=lambda r: [r.name, *r.aliases],
-        limit=1, threshold=0.6,
+        limit=1, threshold=0.85,
     )
     if existing:
         return _detail_for(_get_one(db, existing[0].slug), servings)

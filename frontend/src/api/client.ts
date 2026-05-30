@@ -29,6 +29,16 @@ export async function getIngredient(
   return data;
 }
 
+// AI fallback: ask the backend to fetch + store a food we don't have yet.
+export async function aiLookupIngredient(
+  q: string,
+): Promise<IngredientDetail> {
+  const { data } = await api.get<IngredientDetail>("/ingredients/ai", {
+    params: { q },
+  });
+  return data;
+}
+
 export async function searchRecipes(q: string): Promise<RecipeSummary[]> {
   const { data } = await api.get<RecipeSummary[]>("/recipes/search", {
     params: { q },
@@ -42,6 +52,13 @@ export async function getRecipe(
 ): Promise<RecipeDetail> {
   const { data } = await api.get<RecipeDetail>(`/recipes/${idOrSlug}`, {
     params: { servings },
+  });
+  return data;
+}
+
+export async function aiLookupRecipe(q: string): Promise<RecipeDetail> {
+  const { data } = await api.get<RecipeDetail>("/recipes/ai", {
+    params: { q },
   });
   return data;
 }

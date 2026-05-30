@@ -212,3 +212,23 @@ Format for each entry:
   - `powershell Stop-Process -Name python -Force` then `.venv/Scripts/python.exe -m uvicorn app.main:app --port 8000` (background).
   - Live verified: `GET /api/v1/ingredients/ai?q=avocado` → stored id 117, `source=ai`, units normalized to piece/cup/tbsp. `GET /api/v1/recipes/ai?q=hara bhara kabab` → stored recipe + 14 auto-inserted ingredients, per-person 240 kcal. `GET /api/v1/recipes/ai?q=palak paneer` → short-circuited to existing seed recipe (no call).
 - **Next:** frontend auto-fallback (call `/ai` when a DB search returns 0 results, "Searching with AI…" state) + an "AI" source badge on AI-sourced items.
+
+### 2026-05-30 — Phase B (frontend): AI auto-fallback in search + AI badge
+
+- **Goal:** when a user searches a food we don't have, let them fetch it via the Gemini `/ai` endpoints from the UI, then render it like any other result with a visible "AI" provenance badge.
+- **Types** (`frontend/src/api/types.ts`): added `source: string` to `IngredientDetail` and `RecipeDetail` (mirrors the backend schema field).
+- **API client** (`frontend/src/api/client.ts`): added `aiLookupIngredient(q)` → `GET /ingredients/ai?q=` and `aiLookupRecipe(q)` → `GET /recipes/ai?q=`, each returning the full detail object.
+- **SearchBox** (`frontend/src/components/SearchBox.tsx`): added optional `aiSearch(q) => Promise<{slug}>`, `onAiResult(slug)`, and `aiNoun` props. The fuzzy `/search` endpoint uses a low default threshold (0.35) and almost always returns *some* loose match, so a true "no matches" state is rare — instead of gating on emptiness, the dropdown now ALWAYS shows a trailing AI fallback row when `aiSearch` is provided: "Not it? look up '<q>' with AI" (or "Not in our list — …" when there are zero matches, where it's the only row). Clicking it shows an inline spinner "Searching with AI for '<q>'…"; `onMouseDown`+`preventDefault` keeps input focus so the dropdown stays open during the in-flight call. On success it calls `onAiResult(slug)` and clears; on failure it shows a friendly inline message mapped from the HTTP status (422 = no reliable data, 503 = not configured, 502 = AI unavailable).
+- **AiBadge** (`frontend/src/components/AiBadge.tsx`, new): small violet "✨ AI" pill with tooltip "Fetched with AI and added to our database".
+- **Pages**: `IngredientLookup.tsx` and `RecipeView.tsx` wire `aiSearch`/`onAiResult` (→ `setSlug`, recipe also resets servings to 1) into their SearchBox, and render `<AiBadge />` next to the result name when `detail.source === "ai"`. After the AI call stores the item, the existing `useQuery(getIngredient/getRecipe, slug)` refetches it normally.
+- **Verification:** in progress via the running Vite preview (port 5173, proxying to backend on 8000).
+
+### 2026-05-30 — Phase B: AI fallback verified end-to-end + short-circuit threshold fix
+
+- **Bug found during browser verification:** the `/ai` endpoints' "do we already have it?" pre-check used `search.rank(..., threshold=0.6)`, which produced false positives — e.g. searching "starfruit" fuzzily matched the avocado alias "butter fruit" (SequenceMatcher ratio 0.667, both share "fruit"), so the endpoint returned **Avocado** instead of calling Gemini for starfruit.
+- **Fix:** raised the short-circuit threshold from `0.6` → `0.85` in both `app/api/v1/ingredients.py` and `app/api/v1/recipes.py`. At 0.85 only near-exact/prefix/substring name matches skip the AI call (which is the point — avoid redundant calls/duplicates for foods we truly have), while genuinely new queries fall through to Gemini. Confirmed: `/ingredients/ai?q=starfruit` now returns **Starfruit** (source ai).
+- **Live browser verification (Vite preview :5173 → backend :8000):**
+  - Ingredient: searched "rambutan" → trailing "Not it? look up 'rambutan' with AI" row → click → spinner → renders **Rambutan** (Fruit, piece=15g, 9 kcal) with the **✨ AI** badge.
+  - Recipe: searched "veg manchurian" → AI row → "Searching with AI…" spinner → renders **Veg Manchurian** with **✨ AI** badge, 328 kcal/person, 14 ingredients all resolved (cabbage, carrots, green beans, onion, ginger-garlic paste, green chili, soy sauce, vinegar, salt, black pepper, cornflour, all-purpose flour, vegetable oil).
+  - No browser console errors. `npx tsc --noEmit` clean. Backend `pytest` → 39 passed.
+- Phase B (Gemini AI fallback, backend + frontend) is complete and working end-to-end.

@@ -9,6 +9,10 @@ interface SearchBoxProps<T> {
   getKey: (item: T) => string | number;
   renderItem: (item: T) => React.ReactNode;
   onSelect: (item: T) => void;
+  // Optional AI fallback shown when the DB search returns no matches.
+  aiSearch?: (q: string) => Promise<{ slug: string }>;
+  onAiResult?: (slug: string) => void;
+  aiNoun?: string; // e.g. "ingredient" | "dish"
 }
 
 export function SearchBox<T>({
@@ -18,12 +22,35 @@ export function SearchBox<T>({
   getKey,
   renderItem,
   onSelect,
+  aiSearch,
+  onAiResult,
+  aiNoun = "item",
 }: SearchBoxProps<T>) {
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
+  const [aiBusy, setAiBusy] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
   const debounced = useDebounce(text.trim(), 200);
 
   const { data, isLoading } = useQueryCompat(queryKey, debounced, search);
+  const settled = !isLoading && data !== undefined;
+  const showAi = !!aiSearch && settled;
+
+  async function runAi() {
+    if (!aiSearch || !onAiResult) return;
+    setAiBusy(true);
+    setAiError(null);
+    try {
+      const result = await aiSearch(debounced);
+      onAiResult(result.slug);
+      setText("");
+      setOpen(false);
+    } catch (err) {
+      setAiError(aiErrorMessage(err, aiNoun));
+    } finally {
+      setAiBusy(false);
+    }
+  }
 
   return (
     <div className="relative">
@@ -43,7 +70,7 @@ export function SearchBox<T>({
           {isLoading && (
             <li className="px-4 py-3 text-sm text-muted">Searching…</li>
           )}
-          {!isLoading && data && data.length === 0 && (
+          {settled && data.length === 0 && !aiSearch && (
             <li className="px-4 py-3 text-sm text-muted">No matches.</li>
           )}
           {data?.map((item) => (
@@ -62,10 +89,48 @@ export function SearchBox<T>({
               </button>
             </li>
           ))}
+          {showAi && (
+            <li className={data.length > 0 ? "mt-1 border-t border-gray-100 pt-1" : ""}>
+              {aiBusy ? (
+                <div className="flex items-center gap-2 px-4 py-3 text-sm text-muted">
+                  <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-accent-300 border-t-transparent" />
+                  Searching with AI for “{debounced}”…
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                    void runAi();
+                  }}
+                  className="flex w-full items-center gap-2 rounded-xl px-4 py-3 text-left text-sm text-accent-700 hover:bg-accent-50"
+                >
+                  <span aria-hidden>✨</span>
+                  <span>
+                    {data.length > 0 ? "Not it? " : "Not in our list — "}
+                    look up{" "}
+                    <span className="font-medium">“{debounced}”</span> with AI
+                  </span>
+                </button>
+              )}
+              {aiError && (
+                <p className="px-4 pb-2 text-xs text-red-600">{aiError}</p>
+              )}
+            </li>
+          )}
         </ul>
       )}
     </div>
   );
+}
+
+function aiErrorMessage(err: unknown, noun: string): string {
+  const status = (err as { response?: { status?: number } })?.response?.status;
+  if (status === 422)
+    return `Couldn't find reliable data for this ${noun}.`;
+  if (status === 503) return "AI lookup isn't configured on the server.";
+  if (status === 502) return "The AI service is unavailable right now.";
+  return "Something went wrong with the AI lookup. Please try again.";
 }
 
 function useQueryCompat<T>(

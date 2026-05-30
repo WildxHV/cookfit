@@ -138,10 +138,12 @@ def ai_lookup_ingredient(
 ) -> IngredientDetail:
     """Fallback: ask Gemini for an ingredient we don't have, validate it, store
     it (source='ai'), and return it like any other ingredient."""
-    # If we actually have a strong match already, use it — don't spend a call.
+    # Only skip the AI call when we're nearly certain we already have this exact
+    # item. A looser threshold causes false positives (e.g. "starfruit" fuzzily
+    # matching the alias "butter fruit") that return the wrong food.
     existing = search.rank(
         q, _load_all(db), searchable=lambda i: [i.name, *i.aliases],
-        limit=1, threshold=0.6,
+        limit=1, threshold=0.85,
     )
     if existing:
         return _detail_for(existing[0], 1.0, None, None)
