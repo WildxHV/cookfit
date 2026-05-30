@@ -2,429 +2,3718 @@
   {
     "slug": "moong-dal",
     "name": "Moong Dal (split)",
-    "aliases": ["mung dal", "green gram split", "yellow moong"],
+    "aliases": [
+      "mung dal",
+      "green gram split",
+      "yellow moong"
+    ],
     "category": "dal",
     "default_unit": "katori",
     "default_form": "cooked",
-    "units": [{"label": "katori", "grams": 150}, {"label": "cup", "grams": 200}, {"label": "tbsp", "grams": 12}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 348, "protein_g": 24.0, "fiber_g": 16.3, "carbs_g": 59.0, "fat_g": 1.2},
-      {"form": "cooked", "calories": 105, "protein_g": 7.0, "fiber_g": 4.1, "carbs_g": 19.0, "fat_g": 0.4}
+      {
+        "form": "raw",
+        "calories": 348,
+        "protein_g": 24.0,
+        "fiber_g": 16.3,
+        "carbs_g": 59.0,
+        "fat_g": 1.2
+      },
+      {
+        "form": "cooked",
+        "calories": 105,
+        "protein_g": 7.0,
+        "fiber_g": 4.1,
+        "carbs_g": 19.0,
+        "fat_g": 0.4
+      }
     ]
   },
   {
     "slug": "toor-dal",
     "name": "Toor Dal (arhar)",
-    "aliases": ["arhar dal", "pigeon pea", "tur dal"],
+    "aliases": [
+      "arhar dal",
+      "pigeon pea",
+      "tur dal"
+    ],
     "category": "dal",
     "default_unit": "katori",
     "default_form": "cooked",
-    "units": [{"label": "katori", "grams": 150}, {"label": "cup", "grams": 200}, {"label": "tbsp", "grams": 12}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 343, "protein_g": 22.3, "fiber_g": 15.5, "carbs_g": 57.6, "fat_g": 1.7},
-      {"form": "cooked", "calories": 109, "protein_g": 6.8, "fiber_g": 4.9, "carbs_g": 19.5, "fat_g": 0.5}
+      {
+        "form": "raw",
+        "calories": 343,
+        "protein_g": 22.3,
+        "fiber_g": 15.5,
+        "carbs_g": 57.6,
+        "fat_g": 1.7
+      },
+      {
+        "form": "cooked",
+        "calories": 109,
+        "protein_g": 6.8,
+        "fiber_g": 4.9,
+        "carbs_g": 19.5,
+        "fat_g": 0.5
+      }
     ]
   },
   {
     "slug": "chana-dal",
     "name": "Chana Dal",
-    "aliases": ["bengal gram split", "split chickpea"],
+    "aliases": [
+      "bengal gram split",
+      "split chickpea"
+    ],
     "category": "dal",
     "default_unit": "katori",
     "default_form": "cooked",
-    "units": [{"label": "katori", "grams": 150}, {"label": "cup", "grams": 200}, {"label": "tbsp", "grams": 12}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 360, "protein_g": 20.8, "fiber_g": 12.0, "carbs_g": 60.0, "fat_g": 5.3},
-      {"form": "cooked", "calories": 121, "protein_g": 6.8, "fiber_g": 4.0, "carbs_g": 20.0, "fat_g": 1.8}
+      {
+        "form": "raw",
+        "calories": 360,
+        "protein_g": 20.8,
+        "fiber_g": 12.0,
+        "carbs_g": 60.0,
+        "fat_g": 5.3
+      },
+      {
+        "form": "cooked",
+        "calories": 121,
+        "protein_g": 6.8,
+        "fiber_g": 4.0,
+        "carbs_g": 20.0,
+        "fat_g": 1.8
+      }
     ]
   },
   {
     "slug": "masoor-dal",
     "name": "Masoor Dal (red lentil)",
-    "aliases": ["red lentil", "lal masoor"],
+    "aliases": [
+      "red lentil",
+      "lal masoor"
+    ],
     "category": "dal",
     "default_unit": "katori",
     "default_form": "cooked",
-    "units": [{"label": "katori", "grams": 150}, {"label": "cup", "grams": 200}, {"label": "tbsp", "grams": 12}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 352, "protein_g": 25.8, "fiber_g": 11.5, "carbs_g": 60.0, "fat_g": 1.1},
-      {"form": "cooked", "calories": 116, "protein_g": 9.0, "fiber_g": 3.9, "carbs_g": 20.0, "fat_g": 0.4}
+      {
+        "form": "raw",
+        "calories": 352,
+        "protein_g": 25.8,
+        "fiber_g": 11.5,
+        "carbs_g": 60.0,
+        "fat_g": 1.1
+      },
+      {
+        "form": "cooked",
+        "calories": 116,
+        "protein_g": 9.0,
+        "fiber_g": 3.9,
+        "carbs_g": 20.0,
+        "fat_g": 0.4
+      }
     ]
   },
   {
     "slug": "urad-dal",
     "name": "Urad Dal (split black gram)",
-    "aliases": ["black gram split", "white urad"],
+    "aliases": [
+      "black gram split",
+      "white urad"
+    ],
     "category": "dal",
     "default_unit": "katori",
     "default_form": "cooked",
-    "units": [{"label": "katori", "grams": 150}, {"label": "cup", "grams": 200}, {"label": "tbsp", "grams": 12}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 341, "protein_g": 25.0, "fiber_g": 18.3, "carbs_g": 58.0, "fat_g": 1.6},
-      {"form": "cooked", "calories": 105, "protein_g": 7.5, "fiber_g": 5.5, "carbs_g": 18.0, "fat_g": 0.5}
+      {
+        "form": "raw",
+        "calories": 341,
+        "protein_g": 25.0,
+        "fiber_g": 18.3,
+        "carbs_g": 58.0,
+        "fat_g": 1.6
+      },
+      {
+        "form": "cooked",
+        "calories": 105,
+        "protein_g": 7.5,
+        "fiber_g": 5.5,
+        "carbs_g": 18.0,
+        "fat_g": 0.5
+      }
     ]
   },
   {
     "slug": "rajma",
     "name": "Rajma (kidney beans)",
-    "aliases": ["kidney beans", "red beans"],
+    "aliases": [
+      "kidney beans",
+      "red beans"
+    ],
     "category": "legume",
     "default_unit": "katori",
     "default_form": "cooked",
-    "units": [{"label": "katori", "grams": 160}, {"label": "cup", "grams": 210}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 160
+      },
+      {
+        "label": "cup",
+        "grams": 210
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 333, "protein_g": 24.0, "fiber_g": 25.0, "carbs_g": 60.0, "fat_g": 0.8},
-      {"form": "cooked", "calories": 127, "protein_g": 8.7, "fiber_g": 6.4, "carbs_g": 22.8, "fat_g": 0.5}
+      {
+        "form": "raw",
+        "calories": 333,
+        "protein_g": 24.0,
+        "fiber_g": 25.0,
+        "carbs_g": 60.0,
+        "fat_g": 0.8
+      },
+      {
+        "form": "cooked",
+        "calories": 127,
+        "protein_g": 8.7,
+        "fiber_g": 6.4,
+        "carbs_g": 22.8,
+        "fat_g": 0.5
+      }
     ]
   },
   {
     "slug": "chole",
     "name": "Chole (chickpeas)",
-    "aliases": ["chana", "chickpea", "kabuli chana", "garbanzo"],
+    "aliases": [
+      "chana",
+      "chickpea",
+      "kabuli chana",
+      "garbanzo"
+    ],
     "category": "legume",
     "default_unit": "katori",
     "default_form": "cooked",
-    "units": [{"label": "katori", "grams": 160}, {"label": "cup", "grams": 200}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 160
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 364, "protein_g": 19.3, "fiber_g": 17.4, "carbs_g": 61.0, "fat_g": 6.0},
-      {"form": "cooked", "calories": 164, "protein_g": 8.9, "fiber_g": 7.6, "carbs_g": 27.4, "fat_g": 2.6}
+      {
+        "form": "raw",
+        "calories": 364,
+        "protein_g": 19.3,
+        "fiber_g": 17.4,
+        "carbs_g": 61.0,
+        "fat_g": 6.0
+      },
+      {
+        "form": "cooked",
+        "calories": 164,
+        "protein_g": 8.9,
+        "fiber_g": 7.6,
+        "carbs_g": 27.4,
+        "fat_g": 2.6
+      }
     ]
   },
   {
     "slug": "wheat-flour",
     "name": "Wheat Flour (atta)",
-    "aliases": ["atta", "whole wheat flour", "gehu atta"],
+    "aliases": [
+      "atta",
+      "whole wheat flour",
+      "gehu atta"
+    ],
     "category": "grain",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 120}, {"label": "tbsp", "grams": 8}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 120
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 340, "protein_g": 12.1, "fiber_g": 10.7, "carbs_g": 72.0, "fat_g": 1.7}
+      {
+        "form": "raw",
+        "calories": 340,
+        "protein_g": 12.1,
+        "fiber_g": 10.7,
+        "carbs_g": 72.0,
+        "fat_g": 1.7
+      }
     ]
   },
   {
     "slug": "roti",
     "name": "Roti (chapati)",
-    "aliases": ["chapati", "phulka", "wheat roti"],
+    "aliases": [
+      "chapati",
+      "phulka",
+      "wheat roti"
+    ],
     "category": "grain",
     "default_unit": "piece",
     "default_form": "cooked",
-    "units": [{"label": "piece", "grams": 40}],
+    "units": [
+      {
+        "label": "piece",
+        "grams": 40
+      }
+    ],
     "facts": [
-      {"form": "cooked", "calories": 264, "protein_g": 9.0, "fiber_g": 4.9, "carbs_g": 50.0, "fat_g": 3.7}
+      {
+        "form": "cooked",
+        "calories": 264,
+        "protein_g": 9.0,
+        "fiber_g": 4.9,
+        "carbs_g": 50.0,
+        "fat_g": 3.7
+      }
     ]
   },
   {
     "slug": "basmati-rice",
     "name": "Basmati Rice",
-    "aliases": ["rice", "chawal", "white rice"],
+    "aliases": [
+      "rice",
+      "chawal",
+      "white rice"
+    ],
     "category": "grain",
     "default_unit": "katori",
     "default_form": "cooked",
-    "units": [{"label": "katori", "grams": 150}, {"label": "cup", "grams": 195}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 195
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 356, "protein_g": 7.5, "fiber_g": 1.3, "carbs_g": 78.0, "fat_g": 0.9},
-      {"form": "cooked", "calories": 130, "protein_g": 2.7, "fiber_g": 0.4, "carbs_g": 28.0, "fat_g": 0.3}
+      {
+        "form": "raw",
+        "calories": 356,
+        "protein_g": 7.5,
+        "fiber_g": 1.3,
+        "carbs_g": 78.0,
+        "fat_g": 0.9
+      },
+      {
+        "form": "cooked",
+        "calories": 130,
+        "protein_g": 2.7,
+        "fiber_g": 0.4,
+        "carbs_g": 28.0,
+        "fat_g": 0.3
+      }
     ]
   },
   {
     "slug": "poha",
     "name": "Poha (flattened rice)",
-    "aliases": ["flattened rice", "chiwda", "beaten rice"],
+    "aliases": [
+      "flattened rice",
+      "chiwda",
+      "beaten rice"
+    ],
     "category": "grain",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 90}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 90
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 346, "protein_g": 6.6, "fiber_g": 1.4, "carbs_g": 77.3, "fat_g": 1.2}
+      {
+        "form": "raw",
+        "calories": 346,
+        "protein_g": 6.6,
+        "fiber_g": 1.4,
+        "carbs_g": 77.3,
+        "fat_g": 1.2
+      }
     ]
   },
   {
     "slug": "oats",
     "name": "Oats",
-    "aliases": ["rolled oats", "jai"],
+    "aliases": [
+      "rolled oats",
+      "jai"
+    ],
     "category": "grain",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 80}, {"label": "tbsp", "grams": 6}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 80
+      },
+      {
+        "label": "tbsp",
+        "grams": 6
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 389, "protein_g": 16.9, "fiber_g": 10.6, "carbs_g": 66.3, "fat_g": 6.9}
+      {
+        "form": "raw",
+        "calories": 389,
+        "protein_g": 16.9,
+        "fiber_g": 10.6,
+        "carbs_g": 66.3,
+        "fat_g": 6.9
+      }
     ]
   },
   {
     "slug": "besan",
     "name": "Besan (gram flour)",
-    "aliases": ["gram flour", "chickpea flour"],
+    "aliases": [
+      "gram flour",
+      "chickpea flour"
+    ],
     "category": "flour",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 92}, {"label": "tbsp", "grams": 7}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 92
+      },
+      {
+        "label": "tbsp",
+        "grams": 7
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 387, "protein_g": 22.4, "fiber_g": 10.8, "carbs_g": 57.8, "fat_g": 6.7}
+      {
+        "form": "raw",
+        "calories": 387,
+        "protein_g": 22.4,
+        "fiber_g": 10.8,
+        "carbs_g": 57.8,
+        "fat_g": 6.7
+      }
     ]
   },
   {
     "slug": "potato",
     "name": "Potato (aloo)",
-    "aliases": ["aloo", "alu"],
+    "aliases": [
+      "aloo",
+      "alu"
+    ],
     "category": "vegetable",
     "default_unit": "piece",
     "default_form": "raw",
-    "units": [{"label": "piece", "grams": 100}, {"label": "cup", "grams": 150}],
+    "units": [
+      {
+        "label": "piece",
+        "grams": 100
+      },
+      {
+        "label": "cup",
+        "grams": 150
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 77, "protein_g": 2.0, "fiber_g": 2.2, "carbs_g": 17.0, "fat_g": 0.1}
+      {
+        "form": "raw",
+        "calories": 77,
+        "protein_g": 2.0,
+        "fiber_g": 2.2,
+        "carbs_g": 17.0,
+        "fat_g": 0.1
+      }
     ]
   },
   {
     "slug": "onion",
     "name": "Onion (pyaaz)",
-    "aliases": ["pyaaz", "kanda"],
+    "aliases": [
+      "pyaaz",
+      "kanda"
+    ],
     "category": "vegetable",
     "default_unit": "piece",
     "default_form": "raw",
-    "units": [{"label": "piece", "grams": 110}, {"label": "cup", "grams": 160}],
+    "units": [
+      {
+        "label": "piece",
+        "grams": 110
+      },
+      {
+        "label": "cup",
+        "grams": 160
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 40, "protein_g": 1.1, "fiber_g": 1.7, "carbs_g": 9.3, "fat_g": 0.1}
+      {
+        "form": "raw",
+        "calories": 40,
+        "protein_g": 1.1,
+        "fiber_g": 1.7,
+        "carbs_g": 9.3,
+        "fat_g": 0.1
+      }
     ]
   },
   {
     "slug": "tomato",
     "name": "Tomato (tamatar)",
-    "aliases": ["tamatar"],
+    "aliases": [
+      "tamatar"
+    ],
     "category": "vegetable",
     "default_unit": "piece",
     "default_form": "raw",
-    "units": [{"label": "piece", "grams": 100}, {"label": "cup", "grams": 150}],
+    "units": [
+      {
+        "label": "piece",
+        "grams": 100
+      },
+      {
+        "label": "cup",
+        "grams": 150
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 18, "protein_g": 0.9, "fiber_g": 1.2, "carbs_g": 3.9, "fat_g": 0.2}
+      {
+        "form": "raw",
+        "calories": 18,
+        "protein_g": 0.9,
+        "fiber_g": 1.2,
+        "carbs_g": 3.9,
+        "fat_g": 0.2
+      }
     ]
   },
   {
     "slug": "spinach",
     "name": "Spinach (palak)",
-    "aliases": ["palak"],
+    "aliases": [
+      "palak"
+    ],
     "category": "vegetable",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 30}, {"label": "bunch", "grams": 200}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 30
+      },
+      {
+        "label": "bunch",
+        "grams": 200
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 23, "protein_g": 2.9, "fiber_g": 2.2, "carbs_g": 3.6, "fat_g": 0.4}
+      {
+        "form": "raw",
+        "calories": 23,
+        "protein_g": 2.9,
+        "fiber_g": 2.2,
+        "carbs_g": 3.6,
+        "fat_g": 0.4
+      }
     ]
   },
   {
     "slug": "cauliflower",
     "name": "Cauliflower (gobi)",
-    "aliases": ["gobi", "phool gobi"],
+    "aliases": [
+      "gobi",
+      "phool gobi"
+    ],
     "category": "vegetable",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 100}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 100
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 25, "protein_g": 1.9, "fiber_g": 2.0, "carbs_g": 5.0, "fat_g": 0.3}
+      {
+        "form": "raw",
+        "calories": 25,
+        "protein_g": 1.9,
+        "fiber_g": 2.0,
+        "carbs_g": 5.0,
+        "fat_g": 0.3
+      }
     ]
   },
   {
     "slug": "green-peas",
     "name": "Green Peas (matar)",
-    "aliases": ["matar", "peas"],
+    "aliases": [
+      "matar",
+      "peas"
+    ],
     "category": "vegetable",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 145}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 145
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 81, "protein_g": 5.4, "fiber_g": 5.7, "carbs_g": 14.5, "fat_g": 0.4}
+      {
+        "form": "raw",
+        "calories": 81,
+        "protein_g": 5.4,
+        "fiber_g": 5.7,
+        "carbs_g": 14.5,
+        "fat_g": 0.4
+      }
     ]
   },
   {
     "slug": "carrot",
     "name": "Carrot (gajar)",
-    "aliases": ["gajar"],
+    "aliases": [
+      "gajar"
+    ],
     "category": "vegetable",
     "default_unit": "piece",
     "default_form": "raw",
-    "units": [{"label": "piece", "grams": 60}, {"label": "cup", "grams": 120}],
+    "units": [
+      {
+        "label": "piece",
+        "grams": 60
+      },
+      {
+        "label": "cup",
+        "grams": 120
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 41, "protein_g": 0.9, "fiber_g": 2.8, "carbs_g": 9.6, "fat_g": 0.2}
+      {
+        "form": "raw",
+        "calories": 41,
+        "protein_g": 0.9,
+        "fiber_g": 2.8,
+        "carbs_g": 9.6,
+        "fat_g": 0.2
+      }
     ]
   },
   {
     "slug": "capsicum",
     "name": "Capsicum (shimla mirch)",
-    "aliases": ["shimla mirch", "bell pepper"],
+    "aliases": [
+      "shimla mirch",
+      "bell pepper"
+    ],
     "category": "vegetable",
     "default_unit": "piece",
     "default_form": "raw",
-    "units": [{"label": "piece", "grams": 120}, {"label": "cup", "grams": 150}],
+    "units": [
+      {
+        "label": "piece",
+        "grams": 120
+      },
+      {
+        "label": "cup",
+        "grams": 150
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 31, "protein_g": 1.0, "fiber_g": 2.1, "carbs_g": 6.0, "fat_g": 0.3}
+      {
+        "form": "raw",
+        "calories": 31,
+        "protein_g": 1.0,
+        "fiber_g": 2.1,
+        "carbs_g": 6.0,
+        "fat_g": 0.3
+      }
     ]
   },
   {
     "slug": "okra",
     "name": "Okra (bhindi)",
-    "aliases": ["bhindi", "lady finger"],
+    "aliases": [
+      "bhindi",
+      "lady finger"
+    ],
     "category": "vegetable",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 100}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 100
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 33, "protein_g": 1.9, "fiber_g": 3.2, "carbs_g": 7.5, "fat_g": 0.2}
+      {
+        "form": "raw",
+        "calories": 33,
+        "protein_g": 1.9,
+        "fiber_g": 3.2,
+        "carbs_g": 7.5,
+        "fat_g": 0.2
+      }
     ]
   },
   {
     "slug": "brinjal",
     "name": "Brinjal (baingan)",
-    "aliases": ["baingan", "eggplant", "aubergine"],
+    "aliases": [
+      "baingan",
+      "eggplant",
+      "aubergine"
+    ],
     "category": "vegetable",
     "default_unit": "cup",
     "default_form": "raw",
-    "units": [{"label": "cup", "grams": 82}, {"label": "piece", "grams": 250}],
+    "units": [
+      {
+        "label": "cup",
+        "grams": 82
+      },
+      {
+        "label": "piece",
+        "grams": 250
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 25, "protein_g": 1.0, "fiber_g": 3.0, "carbs_g": 5.9, "fat_g": 0.2}
+      {
+        "form": "raw",
+        "calories": 25,
+        "protein_g": 1.0,
+        "fiber_g": 3.0,
+        "carbs_g": 5.9,
+        "fat_g": 0.2
+      }
     ]
   },
   {
     "slug": "paneer",
     "name": "Paneer",
-    "aliases": ["cottage cheese", "indian cheese"],
+    "aliases": [
+      "cottage cheese",
+      "indian cheese"
+    ],
     "category": "dairy",
     "default_unit": "katori",
     "default_form": "raw",
-    "units": [{"label": "katori", "grams": 100}, {"label": "cube", "grams": 15}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 100
+      },
+      {
+        "label": "cube",
+        "grams": 15
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 296, "protein_g": 18.3, "fiber_g": 0.0, "carbs_g": 6.1, "fat_g": 22.1}
+      {
+        "form": "raw",
+        "calories": 296,
+        "protein_g": 18.3,
+        "fiber_g": 0.0,
+        "carbs_g": 6.1,
+        "fat_g": 22.1
+      }
     ]
   },
   {
     "slug": "milk",
     "name": "Milk (full cream)",
-    "aliases": ["doodh", "whole milk"],
+    "aliases": [
+      "doodh",
+      "whole milk"
+    ],
     "category": "dairy",
     "default_unit": "glass",
     "default_form": "raw",
-    "units": [{"label": "glass", "grams": 240}, {"label": "cup", "grams": 200}],
+    "units": [
+      {
+        "label": "glass",
+        "grams": 240
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 62, "protein_g": 3.2, "fiber_g": 0.0, "carbs_g": 4.7, "fat_g": 3.3}
+      {
+        "form": "raw",
+        "calories": 62,
+        "protein_g": 3.2,
+        "fiber_g": 0.0,
+        "carbs_g": 4.7,
+        "fat_g": 3.3
+      }
     ]
   },
   {
     "slug": "curd",
     "name": "Curd (dahi)",
-    "aliases": ["dahi", "yogurt"],
+    "aliases": [
+      "dahi",
+      "yogurt"
+    ],
     "category": "dairy",
     "default_unit": "katori",
     "default_form": "raw",
-    "units": [{"label": "katori", "grams": 150}, {"label": "cup", "grams": 200}],
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 60, "protein_g": 3.5, "fiber_g": 0.0, "carbs_g": 4.7, "fat_g": 3.3}
+      {
+        "form": "raw",
+        "calories": 60,
+        "protein_g": 3.5,
+        "fiber_g": 0.0,
+        "carbs_g": 4.7,
+        "fat_g": 3.3
+      }
     ]
   },
   {
     "slug": "ghee",
     "name": "Ghee",
-    "aliases": ["clarified butter"],
+    "aliases": [
+      "clarified butter"
+    ],
     "category": "fat",
     "default_unit": "tbsp",
     "default_form": "raw",
-    "units": [{"label": "tbsp", "grams": 14}, {"label": "tsp", "grams": 5}],
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 14
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 900, "protein_g": 0.0, "fiber_g": 0.0, "carbs_g": 0.0, "fat_g": 100.0}
+      {
+        "form": "raw",
+        "calories": 900,
+        "protein_g": 0.0,
+        "fiber_g": 0.0,
+        "carbs_g": 0.0,
+        "fat_g": 100.0
+      }
     ]
   },
   {
     "slug": "mustard-oil",
     "name": "Mustard Oil",
-    "aliases": ["sarson ka tel", "cooking oil", "oil"],
+    "aliases": [
+      "sarson ka tel",
+      "cooking oil",
+      "oil"
+    ],
     "category": "fat",
     "default_unit": "tbsp",
     "default_form": "raw",
-    "units": [{"label": "tbsp", "grams": 14}, {"label": "tsp", "grams": 5}],
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 14
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 884, "protein_g": 0.0, "fiber_g": 0.0, "carbs_g": 0.0, "fat_g": 100.0}
+      {
+        "form": "raw",
+        "calories": 884,
+        "protein_g": 0.0,
+        "fiber_g": 0.0,
+        "carbs_g": 0.0,
+        "fat_g": 100.0
+      }
     ]
   },
   {
     "slug": "peanuts",
     "name": "Peanuts (moongphali)",
-    "aliases": ["moongphali", "groundnut"],
+    "aliases": [
+      "moongphali",
+      "groundnut"
+    ],
     "category": "nuts",
     "default_unit": "tbsp",
     "default_form": "raw",
-    "units": [{"label": "tbsp", "grams": 9}, {"label": "katori", "grams": 60}],
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 9
+      },
+      {
+        "label": "katori",
+        "grams": 60
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 567, "protein_g": 25.8, "fiber_g": 8.5, "carbs_g": 16.1, "fat_g": 49.2}
+      {
+        "form": "raw",
+        "calories": 567,
+        "protein_g": 25.8,
+        "fiber_g": 8.5,
+        "carbs_g": 16.1,
+        "fat_g": 49.2
+      }
     ]
   },
   {
     "slug": "cashew",
     "name": "Cashew (kaju)",
-    "aliases": ["kaju", "cashew nut"],
+    "aliases": [
+      "kaju",
+      "cashew nut"
+    ],
     "category": "nuts",
     "default_unit": "tbsp",
     "default_form": "raw",
-    "units": [{"label": "tbsp", "grams": 9}, {"label": "piece", "grams": 1.5}],
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 9
+      },
+      {
+        "label": "piece",
+        "grams": 1.5
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 553, "protein_g": 18.2, "fiber_g": 3.3, "carbs_g": 30.2, "fat_g": 43.8}
+      {
+        "form": "raw",
+        "calories": 553,
+        "protein_g": 18.2,
+        "fiber_g": 3.3,
+        "carbs_g": 30.2,
+        "fat_g": 43.8
+      }
     ]
   },
   {
     "slug": "coconut",
     "name": "Coconut (grated)",
-    "aliases": ["nariyal", "fresh coconut"],
+    "aliases": [
+      "nariyal",
+      "fresh coconut"
+    ],
     "category": "nuts",
     "default_unit": "tbsp",
     "default_form": "raw",
-    "units": [{"label": "tbsp", "grams": 8}, {"label": "cup", "grams": 80}],
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 8
+      },
+      {
+        "label": "cup",
+        "grams": 80
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 354, "protein_g": 3.3, "fiber_g": 9.0, "carbs_g": 15.2, "fat_g": 33.5}
+      {
+        "form": "raw",
+        "calories": 354,
+        "protein_g": 3.3,
+        "fiber_g": 9.0,
+        "carbs_g": 15.2,
+        "fat_g": 33.5
+      }
     ]
   },
   {
     "slug": "ginger",
     "name": "Ginger (adrak)",
-    "aliases": ["adrak"],
+    "aliases": [
+      "adrak"
+    ],
     "category": "aromatic",
     "default_unit": "tsp",
     "default_form": "raw",
-    "units": [{"label": "tsp", "grams": 4}, {"label": "tbsp", "grams": 12}],
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 4
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 80, "protein_g": 1.8, "fiber_g": 2.0, "carbs_g": 18.0, "fat_g": 0.8}
+      {
+        "form": "raw",
+        "calories": 80,
+        "protein_g": 1.8,
+        "fiber_g": 2.0,
+        "carbs_g": 18.0,
+        "fat_g": 0.8
+      }
     ]
   },
   {
     "slug": "garlic",
     "name": "Garlic (lehsun)",
-    "aliases": ["lehsun", "lasun"],
+    "aliases": [
+      "lehsun",
+      "lasun"
+    ],
     "category": "aromatic",
     "default_unit": "clove",
     "default_form": "raw",
-    "units": [{"label": "clove", "grams": 3}, {"label": "tsp", "grams": 5}],
+    "units": [
+      {
+        "label": "clove",
+        "grams": 3
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 149, "protein_g": 6.4, "fiber_g": 2.1, "carbs_g": 33.0, "fat_g": 0.5}
+      {
+        "form": "raw",
+        "calories": 149,
+        "protein_g": 6.4,
+        "fiber_g": 2.1,
+        "carbs_g": 33.0,
+        "fat_g": 0.5
+      }
     ]
   },
   {
     "slug": "green-chili",
     "name": "Green Chili (hari mirch)",
-    "aliases": ["hari mirch", "chilli"],
+    "aliases": [
+      "hari mirch",
+      "chilli"
+    ],
     "category": "aromatic",
     "default_unit": "piece",
     "default_form": "raw",
-    "units": [{"label": "piece", "grams": 5}],
+    "units": [
+      {
+        "label": "piece",
+        "grams": 5
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 40, "protein_g": 1.9, "fiber_g": 1.5, "carbs_g": 9.5, "fat_g": 0.4}
+      {
+        "form": "raw",
+        "calories": 40,
+        "protein_g": 1.9,
+        "fiber_g": 1.5,
+        "carbs_g": 9.5,
+        "fat_g": 0.4
+      }
     ]
   },
   {
     "slug": "sugar",
     "name": "Sugar (cheeni)",
-    "aliases": ["cheeni", "shakkar"],
+    "aliases": [
+      "cheeni",
+      "shakkar"
+    ],
     "category": "sweetener",
     "default_unit": "tsp",
     "default_form": "raw",
-    "units": [{"label": "tsp", "grams": 4}, {"label": "tbsp", "grams": 12}],
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 4
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
     "facts": [
-      {"form": "raw", "calories": 387, "protein_g": 0.0, "fiber_g": 0.0, "carbs_g": 100.0, "fat_g": 0.0}
+      {
+        "form": "raw",
+        "calories": 387,
+        "protein_g": 0.0,
+        "fiber_g": 0.0,
+        "carbs_g": 100.0,
+        "fat_g": 0.0
+      }
+    ]
+  },
+  {
+    "slug": "sabut-moong",
+    "name": "Whole Moong (green gram)",
+    "aliases": [
+      "sabut moong",
+      "green gram whole",
+      "mung bean"
+    ],
+    "category": "legume",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 347,
+        "protein_g": 24.0,
+        "fiber_g": 16.3,
+        "carbs_g": 59.0,
+        "fat_g": 1.2
+      },
+      {
+        "form": "cooked",
+        "calories": 105,
+        "protein_g": 7.0,
+        "fiber_g": 4.1,
+        "carbs_g": 19.0,
+        "fat_g": 0.4
+      }
+    ]
+  },
+  {
+    "slug": "kala-chana",
+    "name": "Kala Chana (black chickpea)",
+    "aliases": [
+      "black chana",
+      "bengal gram whole",
+      "desi chana"
+    ],
+    "category": "legume",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 160
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 364,
+        "protein_g": 19.0,
+        "fiber_g": 18.0,
+        "carbs_g": 61.0,
+        "fat_g": 5.0
+      },
+      {
+        "form": "cooked",
+        "calories": 130,
+        "protein_g": 7.0,
+        "fiber_g": 7.0,
+        "carbs_g": 22.0,
+        "fat_g": 2.0
+      }
+    ]
+  },
+  {
+    "slug": "lobia",
+    "name": "Lobia (black-eyed peas)",
+    "aliases": [
+      "cowpea",
+      "chawli",
+      "black eyed beans"
+    ],
+    "category": "legume",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 160
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 336,
+        "protein_g": 24.0,
+        "fiber_g": 11.0,
+        "carbs_g": 60.0,
+        "fat_g": 1.3
+      },
+      {
+        "form": "cooked",
+        "calories": 116,
+        "protein_g": 8.0,
+        "fiber_g": 6.0,
+        "carbs_g": 21.0,
+        "fat_g": 0.5
+      }
+    ]
+  },
+  {
+    "slug": "soybean",
+    "name": "Soybean",
+    "aliases": [
+      "soya bean",
+      "bhat"
+    ],
+    "category": "legume",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 190
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 446,
+        "protein_g": 36.5,
+        "fiber_g": 9.3,
+        "carbs_g": 30.0,
+        "fat_g": 19.9
+      },
+      {
+        "form": "cooked",
+        "calories": 173,
+        "protein_g": 16.6,
+        "fiber_g": 6.0,
+        "carbs_g": 9.9,
+        "fat_g": 9.0
+      }
+    ]
+  },
+  {
+    "slug": "matki",
+    "name": "Matki (moth beans)",
+    "aliases": [
+      "moth bean",
+      "dew bean",
+      "matki"
+    ],
+    "category": "legume",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 190
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 343,
+        "protein_g": 22.9,
+        "fiber_g": 5.0,
+        "carbs_g": 61.5,
+        "fat_g": 1.6
+      },
+      {
+        "form": "cooked",
+        "calories": 117,
+        "protein_g": 7.5,
+        "fiber_g": 3.5,
+        "carbs_g": 21.0,
+        "fat_g": 0.6
+      }
+    ]
+  },
+  {
+    "slug": "kulthi",
+    "name": "Kulthi (horse gram)",
+    "aliases": [
+      "horse gram",
+      "kollu",
+      "hurali"
+    ],
+    "category": "legume",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 321,
+        "protein_g": 22.0,
+        "fiber_g": 5.3,
+        "carbs_g": 57.0,
+        "fat_g": 0.5
+      },
+      {
+        "form": "cooked",
+        "calories": 117,
+        "protein_g": 7.6,
+        "fiber_g": 2.0,
+        "carbs_g": 21.0,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "sabut-masoor",
+    "name": "Whole Masoor (brown lentil)",
+    "aliases": [
+      "sabut masoor",
+      "brown lentil",
+      "whole red lentil"
+    ],
+    "category": "dal",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      },
+      {
+        "label": "tbsp",
+        "grams": 12
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 343,
+        "protein_g": 25.0,
+        "fiber_g": 11.0,
+        "carbs_g": 60.0,
+        "fat_g": 1.1
+      },
+      {
+        "form": "cooked",
+        "calories": 116,
+        "protein_g": 9.0,
+        "fiber_g": 3.9,
+        "carbs_g": 20.0,
+        "fat_g": 0.4
+      }
+    ]
+  },
+  {
+    "slug": "safed-matar",
+    "name": "Safed Matar (dried white peas)",
+    "aliases": [
+      "white peas",
+      "dried peas",
+      "ragda matar"
+    ],
+    "category": "legume",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 190
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 341,
+        "protein_g": 24.6,
+        "fiber_g": 22.0,
+        "carbs_g": 60.0,
+        "fat_g": 1.2
+      },
+      {
+        "form": "cooked",
+        "calories": 118,
+        "protein_g": 8.3,
+        "fiber_g": 8.3,
+        "carbs_g": 21.0,
+        "fat_g": 0.4
+      }
+    ]
+  },
+  {
+    "slug": "moong-sprouts",
+    "name": "Moong Sprouts",
+    "aliases": [
+      "sprouted moong",
+      "bean sprouts"
+    ],
+    "category": "legume",
+    "default_unit": "katori",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 100
+      },
+      {
+        "label": "cup",
+        "grams": 104
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 30,
+        "protein_g": 3.0,
+        "fiber_g": 1.8,
+        "carbs_g": 5.9,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "brown-rice",
+    "name": "Brown Rice",
+    "aliases": [
+      "brown chawal",
+      "whole rice"
+    ],
+    "category": "grain",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 180
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 362,
+        "protein_g": 7.5,
+        "fiber_g": 3.5,
+        "carbs_g": 76.0,
+        "fat_g": 2.7
+      },
+      {
+        "form": "cooked",
+        "calories": 123,
+        "protein_g": 2.7,
+        "fiber_g": 1.8,
+        "carbs_g": 26.0,
+        "fat_g": 1.0
+      }
+    ]
+  },
+  {
+    "slug": "bajra",
+    "name": "Bajra Flour (pearl millet)",
+    "aliases": [
+      "pearl millet",
+      "bajra atta"
+    ],
+    "category": "flour",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 120
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 348,
+        "protein_g": 11.0,
+        "fiber_g": 11.5,
+        "carbs_g": 67.0,
+        "fat_g": 5.0
+      }
+    ]
+  },
+  {
+    "slug": "jowar",
+    "name": "Jowar Flour (sorghum)",
+    "aliases": [
+      "sorghum",
+      "jowar atta"
+    ],
+    "category": "flour",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 120
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 349,
+        "protein_g": 10.4,
+        "fiber_g": 9.7,
+        "carbs_g": 72.0,
+        "fat_g": 3.4
+      }
+    ]
+  },
+  {
+    "slug": "ragi",
+    "name": "Ragi Flour (finger millet)",
+    "aliases": [
+      "finger millet",
+      "nachni",
+      "ragi atta"
+    ],
+    "category": "flour",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 120
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 328,
+        "protein_g": 7.3,
+        "fiber_g": 11.5,
+        "carbs_g": 72.0,
+        "fat_g": 1.3
+      }
+    ]
+  },
+  {
+    "slug": "makki-atta",
+    "name": "Makki Atta (maize flour)",
+    "aliases": [
+      "corn flour",
+      "maize flour",
+      "makke di atta"
+    ],
+    "category": "flour",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 120
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 361,
+        "protein_g": 7.0,
+        "fiber_g": 7.3,
+        "carbs_g": 76.0,
+        "fat_g": 3.9
+      }
+    ]
+  },
+  {
+    "slug": "quinoa",
+    "name": "Quinoa",
+    "aliases": [
+      "kinwa"
+    ],
+    "category": "grain",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 180
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 368,
+        "protein_g": 14.1,
+        "fiber_g": 7.0,
+        "carbs_g": 64.0,
+        "fat_g": 6.1
+      },
+      {
+        "form": "cooked",
+        "calories": 120,
+        "protein_g": 4.4,
+        "fiber_g": 2.8,
+        "carbs_g": 21.3,
+        "fat_g": 1.9
+      }
+    ]
+  },
+  {
+    "slug": "rava",
+    "name": "Rava / Sooji (semolina)",
+    "aliases": [
+      "sooji",
+      "semolina",
+      "suji"
+    ],
+    "category": "grain",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 167
+      },
+      {
+        "label": "tbsp",
+        "grams": 10
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 360,
+        "protein_g": 12.0,
+        "fiber_g": 3.9,
+        "carbs_g": 73.0,
+        "fat_g": 1.1
+      }
+    ]
+  },
+  {
+    "slug": "vermicelli",
+    "name": "Vermicelli (sevai)",
+    "aliases": [
+      "sevai",
+      "semiya",
+      "seviyan"
+    ],
+    "category": "grain",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 100
+      },
+      {
+        "label": "katori",
+        "grams": 75
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 352,
+        "protein_g": 11.0,
+        "fiber_g": 3.0,
+        "carbs_g": 76.0,
+        "fat_g": 0.9
+      }
+    ]
+  },
+  {
+    "slug": "sabudana",
+    "name": "Sabudana (sago)",
+    "aliases": [
+      "sago",
+      "tapioca pearls",
+      "saboodana"
+    ],
+    "category": "grain",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 152
+      },
+      {
+        "label": "tbsp",
+        "grams": 10
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 351,
+        "protein_g": 0.2,
+        "fiber_g": 0.5,
+        "carbs_g": 87.0,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "idli",
+    "name": "Idli",
+    "aliases": [
+      "steamed rice cake"
+    ],
+    "category": "grain",
+    "default_unit": "piece",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 45
+      }
+    ],
+    "facts": [
+      {
+        "form": "cooked",
+        "calories": 130,
+        "protein_g": 3.5,
+        "fiber_g": 0.9,
+        "carbs_g": 26.0,
+        "fat_g": 0.3
+      }
+    ]
+  },
+  {
+    "slug": "dosa",
+    "name": "Dosa (plain)",
+    "aliases": [
+      "sada dosa",
+      "rice crepe"
+    ],
+    "category": "grain",
+    "default_unit": "piece",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 80
+      }
+    ],
+    "facts": [
+      {
+        "form": "cooked",
+        "calories": 168,
+        "protein_g": 3.9,
+        "fiber_g": 1.0,
+        "carbs_g": 30.0,
+        "fat_g": 4.0
+      }
+    ]
+  },
+  {
+    "slug": "whole-wheat-bread",
+    "name": "Whole Wheat Bread",
+    "aliases": [
+      "brown bread",
+      "atta bread"
+    ],
+    "category": "grain",
+    "default_unit": "slice",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "slice",
+        "grams": 30
+      }
+    ],
+    "facts": [
+      {
+        "form": "cooked",
+        "calories": 247,
+        "protein_g": 13.0,
+        "fiber_g": 7.0,
+        "carbs_g": 41.0,
+        "fat_g": 3.4
+      }
+    ]
+  },
+  {
+    "slug": "daliya",
+    "name": "Daliya (broken wheat)",
+    "aliases": [
+      "broken wheat",
+      "bulgur",
+      "lapsi"
+    ],
+    "category": "grain",
+    "default_unit": "katori",
+    "default_form": "cooked",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 150
+      },
+      {
+        "label": "cup",
+        "grams": 180
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 342,
+        "protein_g": 12.3,
+        "fiber_g": 12.5,
+        "carbs_g": 76.0,
+        "fat_g": 1.3
+      },
+      {
+        "form": "cooked",
+        "calories": 120,
+        "protein_g": 4.3,
+        "fiber_g": 4.5,
+        "carbs_g": 26.0,
+        "fat_g": 0.4
+      }
+    ]
+  },
+  {
+    "slug": "lauki",
+    "name": "Lauki (bottle gourd)",
+    "aliases": [
+      "bottle gourd",
+      "ghiya",
+      "doodhi"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 116
+      },
+      {
+        "label": "piece",
+        "grams": 400
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 14,
+        "protein_g": 0.6,
+        "fiber_g": 0.5,
+        "carbs_g": 3.4,
+        "fat_g": 0.0
+      }
+    ]
+  },
+  {
+    "slug": "karela",
+    "name": "Karela (bitter gourd)",
+    "aliases": [
+      "bitter gourd",
+      "bitter melon"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 94
+      },
+      {
+        "label": "piece",
+        "grams": 60
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 17,
+        "protein_g": 1.0,
+        "fiber_g": 2.8,
+        "carbs_g": 3.7,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "turai",
+    "name": "Turai (ridge gourd)",
+    "aliases": [
+      "ridge gourd",
+      "tori",
+      "luffa"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 100
+      },
+      {
+        "label": "piece",
+        "grams": 150
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 20,
+        "protein_g": 1.2,
+        "fiber_g": 3.0,
+        "carbs_g": 4.0,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "kaddu",
+    "name": "Kaddu (pumpkin)",
+    "aliases": [
+      "pumpkin",
+      "kashiphal",
+      "sitaphal pumpkin"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 116
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 26,
+        "protein_g": 1.0,
+        "fiber_g": 0.5,
+        "carbs_g": 6.5,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "cabbage",
+    "name": "Cabbage",
+    "aliases": [
+      "patta gobi",
+      "band gobi"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 89
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 25,
+        "protein_g": 1.3,
+        "fiber_g": 2.5,
+        "carbs_g": 5.8,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "french-beans",
+    "name": "French Beans",
+    "aliases": [
+      "green beans",
+      "fansi",
+      "string beans"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 110
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 31,
+        "protein_g": 1.8,
+        "fiber_g": 3.4,
+        "carbs_g": 7.0,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "beetroot",
+    "name": "Beetroot",
+    "aliases": [
+      "chukandar",
+      "beet"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 136
+      },
+      {
+        "label": "piece",
+        "grams": 80
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 43,
+        "protein_g": 1.6,
+        "fiber_g": 2.8,
+        "carbs_g": 10.0,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "mooli",
+    "name": "Mooli (radish)",
+    "aliases": [
+      "radish",
+      "daikon",
+      "white radish"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 116
+      },
+      {
+        "label": "piece",
+        "grams": 120
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 16,
+        "protein_g": 0.7,
+        "fiber_g": 1.6,
+        "carbs_g": 3.4,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "cucumber",
+    "name": "Cucumber",
+    "aliases": [
+      "kheera",
+      "kakdi"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 119
+      },
+      {
+        "label": "piece",
+        "grams": 200
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 15,
+        "protein_g": 0.7,
+        "fiber_g": 0.5,
+        "carbs_g": 3.6,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "mushroom",
+    "name": "Mushroom (button)",
+    "aliases": [
+      "khumb",
+      "button mushroom"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 70
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 22,
+        "protein_g": 3.1,
+        "fiber_g": 1.0,
+        "carbs_g": 3.3,
+        "fat_g": 0.3
+      }
+    ]
+  },
+  {
+    "slug": "sweet-potato",
+    "name": "Sweet Potato",
+    "aliases": [
+      "shakarkandi",
+      "ratalu"
+    ],
+    "category": "vegetable",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 130
+      },
+      {
+        "label": "cup",
+        "grams": 133
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 86,
+        "protein_g": 1.6,
+        "fiber_g": 3.0,
+        "carbs_g": 20.0,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "arbi",
+    "name": "Arbi (colocasia)",
+    "aliases": [
+      "colocasia",
+      "taro root",
+      "ghuiya"
+    ],
+    "category": "vegetable",
+    "default_unit": "katori",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 130
+      },
+      {
+        "label": "piece",
+        "grams": 60
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 112,
+        "protein_g": 1.5,
+        "fiber_g": 4.1,
+        "carbs_g": 26.0,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "methi-leaves",
+    "name": "Methi Leaves (fenugreek)",
+    "aliases": [
+      "fenugreek leaves",
+      "methi saag"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 40
+      },
+      {
+        "label": "bunch",
+        "grams": 100
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 49,
+        "protein_g": 4.4,
+        "fiber_g": 1.1,
+        "carbs_g": 6.0,
+        "fat_g": 0.9
+      }
+    ]
+  },
+  {
+    "slug": "coriander-leaves",
+    "name": "Coriander Leaves",
+    "aliases": [
+      "dhania patta",
+      "cilantro",
+      "hara dhania"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 16
+      },
+      {
+        "label": "tbsp",
+        "grams": 4
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 23,
+        "protein_g": 2.1,
+        "fiber_g": 2.8,
+        "carbs_g": 3.7,
+        "fat_g": 0.5
+      }
+    ]
+  },
+  {
+    "slug": "mint-leaves",
+    "name": "Mint Leaves (pudina)",
+    "aliases": [
+      "pudina",
+      "mint"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 30
+      },
+      {
+        "label": "tbsp",
+        "grams": 6
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 70,
+        "protein_g": 3.8,
+        "fiber_g": 8.0,
+        "carbs_g": 15.0,
+        "fat_g": 0.9
+      }
+    ]
+  },
+  {
+    "slug": "broccoli",
+    "name": "Broccoli",
+    "aliases": [
+      "hari gobi"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 91
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 34,
+        "protein_g": 2.8,
+        "fiber_g": 2.6,
+        "carbs_g": 7.0,
+        "fat_g": 0.4
+      }
+    ]
+  },
+  {
+    "slug": "beans-cluster",
+    "name": "Gavar (cluster beans)",
+    "aliases": [
+      "cluster beans",
+      "guar phali"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 100
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 32,
+        "protein_g": 3.2,
+        "fiber_g": 3.3,
+        "carbs_g": 6.3,
+        "fat_g": 0.4
+      }
+    ]
+  },
+  {
+    "slug": "raw-banana",
+    "name": "Raw Banana (plantain)",
+    "aliases": [
+      "plantain",
+      "kacha kela"
+    ],
+    "category": "vegetable",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 120
+      },
+      {
+        "label": "cup",
+        "grams": 150
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 122,
+        "protein_g": 1.3,
+        "fiber_g": 2.3,
+        "carbs_g": 32.0,
+        "fat_g": 0.4
+      }
+    ]
+  },
+  {
+    "slug": "drumstick",
+    "name": "Drumstick (moringa)",
+    "aliases": [
+      "moringa",
+      "sahjan",
+      "munaga"
+    ],
+    "category": "vegetable",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 25
+      },
+      {
+        "label": "cup",
+        "grams": 100
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 37,
+        "protein_g": 2.1,
+        "fiber_g": 3.2,
+        "carbs_g": 8.5,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "sweet-corn",
+    "name": "Sweet Corn",
+    "aliases": [
+      "bhutta kernels",
+      "makai",
+      "corn kernels"
+    ],
+    "category": "vegetable",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 145
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 86,
+        "protein_g": 3.2,
+        "fiber_g": 2.0,
+        "carbs_g": 19.0,
+        "fat_g": 1.2
+      }
+    ]
+  },
+  {
+    "slug": "butter",
+    "name": "Butter",
+    "aliases": [
+      "makkhan",
+      "white butter"
+    ],
+    "category": "dairy",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 14
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 717,
+        "protein_g": 0.9,
+        "fiber_g": 0.0,
+        "carbs_g": 0.1,
+        "fat_g": 81.0
+      }
+    ]
+  },
+  {
+    "slug": "buttermilk",
+    "name": "Buttermilk (chaas)",
+    "aliases": [
+      "chaas",
+      "mattha",
+      "chach"
+    ],
+    "category": "dairy",
+    "default_unit": "glass",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "glass",
+        "grams": 240
+      },
+      {
+        "label": "cup",
+        "grams": 200
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 35,
+        "protein_g": 3.1,
+        "fiber_g": 0.0,
+        "carbs_g": 4.5,
+        "fat_g": 0.9
+      }
+    ]
+  },
+  {
+    "slug": "tofu",
+    "name": "Tofu (soy paneer)",
+    "aliases": [
+      "soy paneer",
+      "bean curd"
+    ],
+    "category": "dairy",
+    "default_unit": "katori",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 100
+      },
+      {
+        "label": "cube",
+        "grams": 15
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 76,
+        "protein_g": 8.0,
+        "fiber_g": 0.3,
+        "carbs_g": 1.9,
+        "fat_g": 4.8
+      }
+    ]
+  },
+  {
+    "slug": "khoya",
+    "name": "Khoya (mawa)",
+    "aliases": [
+      "mawa",
+      "khoa"
+    ],
+    "category": "dairy",
+    "default_unit": "katori",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 100
+      },
+      {
+        "label": "tbsp",
+        "grams": 15
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 421,
+        "protein_g": 14.5,
+        "fiber_g": 0.0,
+        "carbs_g": 25.0,
+        "fat_g": 26.0
+      }
+    ]
+  },
+  {
+    "slug": "cream",
+    "name": "Fresh Cream",
+    "aliases": [
+      "malai",
+      "dairy cream"
+    ],
+    "category": "dairy",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 15
+      },
+      {
+        "label": "cup",
+        "grams": 240
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 292,
+        "protein_g": 2.1,
+        "fiber_g": 0.0,
+        "carbs_g": 2.8,
+        "fat_g": 30.0
+      }
+    ]
+  },
+  {
+    "slug": "cheese",
+    "name": "Cheese (processed)",
+    "aliases": [
+      "amul cheese",
+      "processed cheese"
+    ],
+    "category": "dairy",
+    "default_unit": "cube",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cube",
+        "grams": 20
+      },
+      {
+        "label": "slice",
+        "grams": 20
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 350,
+        "protein_g": 22.0,
+        "fiber_g": 0.0,
+        "carbs_g": 2.0,
+        "fat_g": 27.0
+      }
+    ]
+  },
+  {
+    "slug": "almonds",
+    "name": "Almonds",
+    "aliases": [
+      "badam"
+    ],
+    "category": "nuts",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 1.2
+      },
+      {
+        "label": "tbsp",
+        "grams": 9
+      },
+      {
+        "label": "katori",
+        "grams": 60
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 579,
+        "protein_g": 21.2,
+        "fiber_g": 12.5,
+        "carbs_g": 21.7,
+        "fat_g": 49.9
+      }
+    ]
+  },
+  {
+    "slug": "walnuts",
+    "name": "Walnuts",
+    "aliases": [
+      "akhrot"
+    ],
+    "category": "nuts",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 4
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      },
+      {
+        "label": "katori",
+        "grams": 50
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 654,
+        "protein_g": 15.2,
+        "fiber_g": 6.7,
+        "carbs_g": 14.0,
+        "fat_g": 65.2
+      }
+    ]
+  },
+  {
+    "slug": "pistachios",
+    "name": "Pistachios",
+    "aliases": [
+      "pista"
+    ],
+    "category": "nuts",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 8
+      },
+      {
+        "label": "katori",
+        "grams": 50
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 562,
+        "protein_g": 20.2,
+        "fiber_g": 10.6,
+        "carbs_g": 28.0,
+        "fat_g": 45.3
+      }
+    ]
+  },
+  {
+    "slug": "raisins",
+    "name": "Raisins (kishmish)",
+    "aliases": [
+      "kishmish",
+      "sultanas"
+    ],
+    "category": "nuts",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 10
+      },
+      {
+        "label": "katori",
+        "grams": 60
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 299,
+        "protein_g": 3.1,
+        "fiber_g": 3.7,
+        "carbs_g": 79.0,
+        "fat_g": 0.5
+      }
+    ]
+  },
+  {
+    "slug": "dates",
+    "name": "Dates (khajur)",
+    "aliases": [
+      "khajur",
+      "khajoor"
+    ],
+    "category": "fruit",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 8
+      },
+      {
+        "label": "katori",
+        "grams": 60
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 277,
+        "protein_g": 1.8,
+        "fiber_g": 6.7,
+        "carbs_g": 75.0,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "til",
+    "name": "Sesame Seeds (til)",
+    "aliases": [
+      "sesame",
+      "til seeds"
+    ],
+    "category": "nuts",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 9
+      },
+      {
+        "label": "tsp",
+        "grams": 3
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 573,
+        "protein_g": 17.7,
+        "fiber_g": 11.8,
+        "carbs_g": 23.4,
+        "fat_g": 49.7
+      }
+    ]
+  },
+  {
+    "slug": "flax-seeds",
+    "name": "Flax Seeds (alsi)",
+    "aliases": [
+      "alsi",
+      "linseed"
+    ],
+    "category": "nuts",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 10
+      },
+      {
+        "label": "tsp",
+        "grams": 3
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 534,
+        "protein_g": 18.3,
+        "fiber_g": 27.3,
+        "carbs_g": 28.9,
+        "fat_g": 42.2
+      }
+    ]
+  },
+  {
+    "slug": "sunflower-seeds",
+    "name": "Sunflower Seeds",
+    "aliases": [
+      "surajmukhi beej"
+    ],
+    "category": "nuts",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 9
+      },
+      {
+        "label": "tsp",
+        "grams": 3
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 584,
+        "protein_g": 20.8,
+        "fiber_g": 8.6,
+        "carbs_g": 20.0,
+        "fat_g": 51.5
+      }
+    ]
+  },
+  {
+    "slug": "chia-seeds",
+    "name": "Chia Seeds",
+    "aliases": [
+      "chia"
+    ],
+    "category": "nuts",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 12
+      },
+      {
+        "label": "tsp",
+        "grams": 4
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 486,
+        "protein_g": 16.5,
+        "fiber_g": 34.4,
+        "carbs_g": 42.1,
+        "fat_g": 30.7
+      }
+    ]
+  },
+  {
+    "slug": "makhana",
+    "name": "Makhana (fox nuts)",
+    "aliases": [
+      "fox nuts",
+      "lotus seeds",
+      "phool makhana"
+    ],
+    "category": "nuts",
+    "default_unit": "katori",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "katori",
+        "grams": 25
+      },
+      {
+        "label": "cup",
+        "grams": 32
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 347,
+        "protein_g": 9.7,
+        "fiber_g": 14.5,
+        "carbs_g": 77.0,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "sunflower-oil",
+    "name": "Sunflower Oil",
+    "aliases": [
+      "refined oil",
+      "cooking oil"
+    ],
+    "category": "fat",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 14
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 884,
+        "protein_g": 0.0,
+        "fiber_g": 0.0,
+        "carbs_g": 0.0,
+        "fat_g": 100.0
+      }
+    ]
+  },
+  {
+    "slug": "groundnut-oil",
+    "name": "Groundnut Oil",
+    "aliases": [
+      "peanut oil",
+      "moongphali oil"
+    ],
+    "category": "fat",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 14
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 884,
+        "protein_g": 0.0,
+        "fiber_g": 0.0,
+        "carbs_g": 0.0,
+        "fat_g": 100.0
+      }
+    ]
+  },
+  {
+    "slug": "coconut-oil",
+    "name": "Coconut Oil",
+    "aliases": [
+      "nariyal tel"
+    ],
+    "category": "fat",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 14
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 862,
+        "protein_g": 0.0,
+        "fiber_g": 0.0,
+        "carbs_g": 0.0,
+        "fat_g": 100.0
+      }
+    ]
+  },
+  {
+    "slug": "olive-oil",
+    "name": "Olive Oil",
+    "aliases": [
+      "jaitun tel"
+    ],
+    "category": "fat",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 14
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 884,
+        "protein_g": 0.0,
+        "fiber_g": 0.0,
+        "carbs_g": 0.0,
+        "fat_g": 100.0
+      }
+    ]
+  },
+  {
+    "slug": "jaggery",
+    "name": "Jaggery (gur)",
+    "aliases": [
+      "gur",
+      "gud"
+    ],
+    "category": "sweetener",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 15
+      },
+      {
+        "label": "tsp",
+        "grams": 5
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 383,
+        "protein_g": 0.4,
+        "fiber_g": 0.0,
+        "carbs_g": 98.0,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "honey",
+    "name": "Honey",
+    "aliases": [
+      "shahad",
+      "madhu"
+    ],
+    "category": "sweetener",
+    "default_unit": "tbsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tbsp",
+        "grams": 21
+      },
+      {
+        "label": "tsp",
+        "grams": 7
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 304,
+        "protein_g": 0.3,
+        "fiber_g": 0.2,
+        "carbs_g": 82.0,
+        "fat_g": 0.0
+      }
+    ]
+  },
+  {
+    "slug": "jeera",
+    "name": "Cumin Seeds (jeera)",
+    "aliases": [
+      "cumin",
+      "zeera"
+    ],
+    "category": "spice",
+    "default_unit": "tsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 3
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 375,
+        "protein_g": 17.8,
+        "fiber_g": 10.5,
+        "carbs_g": 44.2,
+        "fat_g": 22.3
+      }
+    ]
+  },
+  {
+    "slug": "haldi",
+    "name": "Turmeric Powder (haldi)",
+    "aliases": [
+      "turmeric",
+      "haldi powder"
+    ],
+    "category": "spice",
+    "default_unit": "tsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 3
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 312,
+        "protein_g": 9.7,
+        "fiber_g": 22.7,
+        "carbs_g": 67.1,
+        "fat_g": 3.2
+      }
+    ]
+  },
+  {
+    "slug": "dhania-powder",
+    "name": "Coriander Powder (dhania)",
+    "aliases": [
+      "coriander powder",
+      "dhania"
+    ],
+    "category": "spice",
+    "default_unit": "tsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 3
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 298,
+        "protein_g": 12.4,
+        "fiber_g": 41.9,
+        "carbs_g": 55.0,
+        "fat_g": 17.8
+      }
+    ]
+  },
+  {
+    "slug": "red-chili-powder",
+    "name": "Red Chili Powder",
+    "aliases": [
+      "lal mirch",
+      "mirchi powder"
+    ],
+    "category": "spice",
+    "default_unit": "tsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 3
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 282,
+        "protein_g": 13.5,
+        "fiber_g": 34.8,
+        "carbs_g": 49.7,
+        "fat_g": 14.3
+      }
+    ]
+  },
+  {
+    "slug": "garam-masala",
+    "name": "Garam Masala",
+    "aliases": [
+      "mixed spice"
+    ],
+    "category": "spice",
+    "default_unit": "tsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 3
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 379,
+        "protein_g": 14.3,
+        "fiber_g": 25.0,
+        "carbs_g": 45.0,
+        "fat_g": 15.1
+      }
+    ]
+  },
+  {
+    "slug": "rai",
+    "name": "Mustard Seeds (rai)",
+    "aliases": [
+      "mustard seeds",
+      "sarson"
+    ],
+    "category": "spice",
+    "default_unit": "tsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 3
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 508,
+        "protein_g": 26.1,
+        "fiber_g": 12.2,
+        "carbs_g": 28.1,
+        "fat_g": 36.2
+      }
+    ]
+  },
+  {
+    "slug": "black-pepper",
+    "name": "Black Pepper (kali mirch)",
+    "aliases": [
+      "kali mirch",
+      "pepper"
+    ],
+    "category": "spice",
+    "default_unit": "tsp",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "tsp",
+        "grams": 3
+      },
+      {
+        "label": "tbsp",
+        "grams": 8
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 251,
+        "protein_g": 10.4,
+        "fiber_g": 25.3,
+        "carbs_g": 64.0,
+        "fat_g": 3.3
+      }
+    ]
+  },
+  {
+    "slug": "banana",
+    "name": "Banana",
+    "aliases": [
+      "kela"
+    ],
+    "category": "fruit",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 120
+      },
+      {
+        "label": "cup",
+        "grams": 150
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 89,
+        "protein_g": 1.1,
+        "fiber_g": 2.6,
+        "carbs_g": 22.8,
+        "fat_g": 0.3
+      }
+    ]
+  },
+  {
+    "slug": "apple",
+    "name": "Apple",
+    "aliases": [
+      "seb"
+    ],
+    "category": "fruit",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 180
+      },
+      {
+        "label": "cup",
+        "grams": 125
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 52,
+        "protein_g": 0.3,
+        "fiber_g": 2.4,
+        "carbs_g": 13.8,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "mango",
+    "name": "Mango",
+    "aliases": [
+      "aam"
+    ],
+    "category": "fruit",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 200
+      },
+      {
+        "label": "cup",
+        "grams": 165
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 60,
+        "protein_g": 0.8,
+        "fiber_g": 1.6,
+        "carbs_g": 15.0,
+        "fat_g": 0.4
+      }
+    ]
+  },
+  {
+    "slug": "papaya",
+    "name": "Papaya",
+    "aliases": [
+      "papita"
+    ],
+    "category": "fruit",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 145
+      },
+      {
+        "label": "piece",
+        "grams": 500
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 43,
+        "protein_g": 0.5,
+        "fiber_g": 1.7,
+        "carbs_g": 11.0,
+        "fat_g": 0.3
+      }
+    ]
+  },
+  {
+    "slug": "guava",
+    "name": "Guava",
+    "aliases": [
+      "amrood"
+    ],
+    "category": "fruit",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 100
+      },
+      {
+        "label": "cup",
+        "grams": 165
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 68,
+        "protein_g": 2.6,
+        "fiber_g": 5.4,
+        "carbs_g": 14.0,
+        "fat_g": 1.0
+      }
+    ]
+  },
+  {
+    "slug": "orange",
+    "name": "Orange",
+    "aliases": [
+      "santra"
+    ],
+    "category": "fruit",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 130
+      },
+      {
+        "label": "cup",
+        "grams": 180
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 47,
+        "protein_g": 0.9,
+        "fiber_g": 2.4,
+        "carbs_g": 12.0,
+        "fat_g": 0.1
+      }
+    ]
+  },
+  {
+    "slug": "pomegranate",
+    "name": "Pomegranate",
+    "aliases": [
+      "anar"
+    ],
+    "category": "fruit",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 174
+      },
+      {
+        "label": "piece",
+        "grams": 280
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 83,
+        "protein_g": 1.7,
+        "fiber_g": 4.0,
+        "carbs_g": 19.0,
+        "fat_g": 1.2
+      }
+    ]
+  },
+  {
+    "slug": "grapes",
+    "name": "Grapes",
+    "aliases": [
+      "angoor"
+    ],
+    "category": "fruit",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 150
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 69,
+        "protein_g": 0.7,
+        "fiber_g": 0.9,
+        "carbs_g": 18.0,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "watermelon",
+    "name": "Watermelon",
+    "aliases": [
+      "tarbooz"
+    ],
+    "category": "fruit",
+    "default_unit": "cup",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "cup",
+        "grams": 152
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 30,
+        "protein_g": 0.6,
+        "fiber_g": 0.4,
+        "carbs_g": 7.6,
+        "fat_g": 0.2
+      }
+    ]
+  },
+  {
+    "slug": "lemon",
+    "name": "Lemon",
+    "aliases": [
+      "nimbu",
+      "lime"
+    ],
+    "category": "fruit",
+    "default_unit": "piece",
+    "default_form": "raw",
+    "units": [
+      {
+        "label": "piece",
+        "grams": 60
+      },
+      {
+        "label": "tbsp",
+        "grams": 15
+      }
+    ],
+    "facts": [
+      {
+        "form": "raw",
+        "calories": 29,
+        "protein_g": 1.1,
+        "fiber_g": 2.8,
+        "carbs_g": 9.3,
+        "fat_g": 0.3
+      }
     ]
   }
 ]
