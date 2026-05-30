@@ -232,3 +232,9 @@ Format for each entry:
   - Recipe: searched "veg manchurian" → AI row → "Searching with AI…" spinner → renders **Veg Manchurian** with **✨ AI** badge, 328 kcal/person, 14 ingredients all resolved (cabbage, carrots, green beans, onion, ginger-garlic paste, green chili, soy sauce, vinegar, salt, black pepper, cornflour, all-purpose flour, vegetable oil).
   - No browser console errors. `npx tsc --noEmit` clean. Backend `pytest` → 39 passed.
 - Phase B (Gemini AI fallback, backend + frontend) is complete and working end-to-end.
+
+### 2026-05-30 — Recipe Method: render step-by-step instead of one paragraph
+
+- **Why:** recipe instructions arrive as a single string with inline numbering ("1. … 2. … 3. …") and were dumped into one cramped `<p>`. Hard to follow while cooking.
+- **`frontend/src/pages/RecipeView.tsx`:** added `parseSteps(text)` — splits on `\d+\.\s+` numbering (inline or per-line), falls back to newline-split, else a single block. The Method section now renders an `<ol>` where each step has a small circular accent number badge + the step text; a one-step instruction still renders as a plain paragraph.
+- **Verified:** Veg Manchurian (12 steps) now shows a clean numbered list with green number chips; `npx tsc --noEmit` clean; no console errors.

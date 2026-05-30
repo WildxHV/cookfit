@@ -17,6 +17,23 @@ function Tag({ label }: { label: string }) {
   );
 }
 
+// Split instructions into discrete steps. Handles "1. … 2. …" numbering
+// (whether inline or on separate lines) and newline-separated steps.
+function parseSteps(text: string): string[] {
+  const trimmed = text.trim();
+  if (/\d+\.\s/.test(trimmed)) {
+    return trimmed
+      .split(/\s*\d+\.\s+/)
+      .map((s) => s.trim())
+      .filter(Boolean);
+  }
+  const lines = trimmed
+    .split(/\r?\n+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+  return lines.length > 1 ? lines : [trimmed];
+}
+
 export function RecipeView() {
   const [slug, setSlug] = useState<string | null>(null);
   const [servings, setServings] = useState(1);
@@ -136,14 +153,35 @@ export function RecipeView() {
             </ul>
           </div>
 
-          {recipe.instructions && (
-            <div>
-              <h3 className="mb-1 text-sm font-semibold text-muted">Method</h3>
-              <p className="text-sm leading-relaxed text-ink">
-                {recipe.instructions}
-              </p>
-            </div>
-          )}
+          {recipe.instructions &&
+            (() => {
+              const steps = parseSteps(recipe.instructions);
+              return (
+                <div>
+                  <h3 className="mb-3 text-sm font-semibold text-muted">
+                    Method
+                  </h3>
+                  {steps.length > 1 ? (
+                    <ol className="flex flex-col gap-3">
+                      {steps.map((step, i) => (
+                        <li key={i} className="flex gap-3">
+                          <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-100 text-xs font-semibold text-accent-700">
+                            {i + 1}
+                          </span>
+                          <span className="pt-0.5 text-sm leading-relaxed text-ink">
+                            {step}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  ) : (
+                    <p className="text-sm leading-relaxed text-ink">
+                      {steps[0]}
+                    </p>
+                  )}
+                </div>
+              );
+            })()}
         </section>
       )}
     </div>
