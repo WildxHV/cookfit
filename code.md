@@ -37,7 +37,7 @@ cookfit/
 - [x] 4. Ingredient API + fuzzy search — DONE
 - [x] 5. Recipe API (scaled endpoint) — DONE  ← BACKEND MVP COMPLETE
 - [x] 6. Frontend scaffold + theme (Vite, Tailwind, routing, API client) — DONE
-- [ ] 7. Ingredient Lookup screen
+- [x] 7. Ingredient Lookup screen — DONE (verified live in browser)
 - [ ] 8. Recipe View screen
 - [ ] 9. Polish pass (responsive, loading/error states)
 - [ ] 10. README with run instructions
@@ -143,6 +143,15 @@ cookfit/
   - `src/pages/Home.tsx` — two mode cards (Ingredient / Recipe). IngredientLookup & RecipeView are stubs (filled in components 7–8).
 - Removed Vite boilerplate (App.css, demo assets); set `index.html` title to CookFit.
 - **Run frontend:** from `frontend/`: `npm run dev` (http://localhost:5173). Build verified: `npm run build` (tsc + vite) OK.
+
+### 2026-05-30 — Component 7: Ingredient Lookup screen
+
+- `src/components/QuantityControl.tsx` — stepper (−/+ by 0.5) + number input + unit `<select>`.
+- `src/components/Segmented.tsx` — pill toggle (used for raw/cooked).
+- `src/pages/IngredientLookup.tsx` — search → select → card. Fetches detail via React Query; recalcs **client-side** (lib/nutrition) on quantity/unit/form change. Raw/cooked toggle only shows when >1 form. Shows grams equivalent + NutritionCards.
+- **Servers for verifying:** backend `uvicorn app.main:app --port 8000` (from backend/, venv); frontend `npm run dev` (5173). Vite proxies `/api`→8000.
+- Browser-verified: "paner"→Paneer (fuzzy), 1 katori=100g→296 kcal; +0.5 → 1.5 katori=150g→444 kcal, 27.5 g protein (live recalc correct).
+- Added `C:\Users\Harshvardhan\.claude\launch.json` (preview tool config; cwd `cookfit/frontend`, port 5173) — note: lives in user home, not repo.
 
 <!--
 APPEND NEW ENTRIES BELOW THIS LINE.
