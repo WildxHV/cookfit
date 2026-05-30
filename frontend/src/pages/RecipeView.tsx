@@ -4,7 +4,6 @@ import { aiLookupRecipe, getRecipe, searchRecipes } from "../api/client";
 import type { RecipeSummary } from "../api/types";
 import { SearchBox } from "../components/SearchBox";
 import { ErrorBanner } from "../components/ErrorBanner";
-import { AiBadge } from "../components/AiBadge";
 import { NutritionCards } from "../components/NutritionCards";
 import { ServingScaler } from "../components/ServingScaler";
 import { Segmented } from "../components/Segmented";
@@ -36,8 +35,6 @@ function parseSteps(text: string): string[] {
 
 export function RecipeView() {
   const [slug, setSlug] = useState<string | null>(null);
-  // Slug just fetched via the lookup fallback — drives a one-time "new" badge.
-  const [aiSlug, setAiSlug] = useState<string | null>(null);
   const [servings, setServings] = useState(1);
   const [view, setView] = useState<"per person" | "total">("per person");
 
@@ -73,13 +70,11 @@ export function RecipeView() {
           </div>
         )}
         onSelect={(r) => {
-          setAiSlug(null);
           setSlug(r.slug);
           setServings(1);
         }}
         aiSearch={aiLookupRecipe}
         onAiResult={(s) => {
-          setAiSlug(s);
           setSlug(s);
           setServings(1);
         }}
@@ -103,10 +98,7 @@ export function RecipeView() {
       {recipe && macros && (
         <section className="flex flex-col gap-5 rounded-3xl border border-gray-100 bg-surface p-6 shadow-sm">
           <div className="flex flex-col gap-2">
-            <div className="flex items-center gap-2">
-              <h2 className="text-xl font-semibold">{recipe.name}</h2>
-              {aiSlug === recipe.slug && <AiBadge />}
-            </div>
+            <h2 className="text-xl font-semibold">{recipe.name}</h2>
             <div className="flex flex-wrap items-center gap-2 text-xs text-muted">
               <span className="capitalize">{recipe.meal_type}</span>
               {recipe.prep_time_min && <span>· {recipe.prep_time_min} min</span>}

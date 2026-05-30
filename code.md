@@ -256,3 +256,10 @@ User asks: (1) the AI tag must NOT persist — once data is in our DB, a later s
 - **Top-of-list lookup action** (`SearchBox.tsx`): the fallback row moved from the bottom to the **top** of the dropdown (with a divider below it when matches exist), so it's reachable without scrolling past non-matching fuzzy results.
 - **Neutral / seamless wording:** dropdown row "🔍 Look up "<q>"" (was "✨ … look up "<q>" with AI"); spinner "Looking up "<q>"…" (was "Searching with AI…"); error messages no longer mention "AI"; the badge label changed from "AI" to **"New"** (tooltip "Just added to your catalog") so the result reads as freshly-added catalog data rather than externally sourced. `source` is still stored in the DB for provenance but no longer drives any UI.
 - **Verified:** `npx tsc --noEmit` clean; no console errors; lookup row is dropdown item #1; badge is one-shot.
+
+### 2026-05-30 — Remove the badge entirely (looked-up items look native)
+
+- User: "no need for ai" — drop the badge altogether so a looked-up item is indistinguishable from our own catalog data.
+- Removed the `<AiBadge>` from both pages, deleted `frontend/src/components/AiBadge.tsx`, and removed the now-unused `aiSlug` state (kept `onAiResult → setSlug` so the lookup still loads the result). The lookup flow is unchanged otherwise; it just shows the result with no badge.
+- `source` column still recorded in the DB for provenance; nothing in the UI reflects it.
+- Verified: looked up "lychee" → renders as a normal ingredient (name + category), no badge; `npx tsc --noEmit` clean.
