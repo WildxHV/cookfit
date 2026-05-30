@@ -133,8 +133,12 @@ slice, bowl, bunch (no extra words like "cup, sliced" or "piece (medium)"). \
 default_unit must be exactly one of these labels, or "g".
 - category: one short word like dal, legume, grain, flour, vegetable, fruit, \
 dairy, nuts, fat, spice, sweetener, beverage.
-- Prefer the common Indian name. Keep numbers plausible (calories 0-900; each \
-macro 0-100 g per 100 g)."""
+- name: use the form "English Name (common Indian name)" whenever the food has \
+a well-known Hindi/Indian name that differs, e.g. "Asafoetida (hing)", \
+"Fenugreek Seeds (methi dana)", "Clarified Butter (ghee)". If the common name \
+is already the English name (e.g. Paneer, Quinoa, Oats), just use it plainly. \
+Also list the common Indian name(s) in aliases.
+- Keep numbers plausible (calories 0-900; each macro 0-100 g per 100 g)."""
 
 
 _RECIPE_PROMPT = """You are a recipe + nutrition database for an Indian \
@@ -154,6 +158,10 @@ full ingredient entry (per-100g nutrition + household units). Unit labels MUST \
 be single plain words (katori, cup, tbsp, tsp, piece, clove, glass, slice, \
 bowl, bunch) or "g". The unit_label used in items MUST be "g" or appear in that \
 ingredient's units list.
+- ingredient names: use the form "English Name (common Indian name)" when a \
+well-known Hindi name differs (e.g. "Asafoetida (hing)", "Coriander Leaves \
+(hara dhania)"); otherwise the plain name. Use the same ingredient_name in \
+items and in the ingredients entry.
 - All nutrition PER 100 GRAMS, realistic (calories ~ 4*protein + 4*carbs + \
 9*fat).
 - meal_type one of breakfast/lunch/dinner/snack/dessert/drink. tags like \
