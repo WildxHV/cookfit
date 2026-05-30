@@ -35,7 +35,7 @@ cookfit/
 - [x] 2. Nutrition engine + schema (models, Alembic migration, nutrition service + unit tests) — DONE
 - [x] 3. Seed data v1 (curated ingredients + recipes JSON, load script) — DONE
 - [x] 4. Ingredient API + fuzzy search — DONE
-- [ ] 5. Recipe API (scaled endpoint)
+- [x] 5. Recipe API (scaled endpoint) — DONE  ← BACKEND MVP COMPLETE
 - [ ] 6. Frontend scaffold + theme (Vite, Tailwind, routing, API client)
 - [ ] 7. Ingredient Lookup screen
 - [ ] 8. Recipe View screen
@@ -111,6 +111,17 @@ cookfit/
 - `backend/app/main.py` — mounted routers under `/api/v1`.
 - Tests `backend/tests/test_ingredients_api.py` (7): alias search, fuzzy typo ("paner"→paneer), default unit calc, quantity+unit calc, forms available, 400/404. **Full suite: 20 passed.**
 - API docs at http://localhost:8000/docs once running.
+
+### 2026-05-30 — Component 5: Recipe API (scaled) — backend MVP done
+
+- `backend/app/schemas/recipe.py` — `RecipeSummary`, `ScaledIngredient`, `RecipeDetail` (items scaled to servings + `per_person` + `total`).
+- `backend/app/api/v1/recipes.py`:
+  - `GET /api/v1/recipes/search?q=&limit=` → ranked summaries.
+  - `GET /api/v1/recipes/{id_or_slug}?servings=N` → scaled ingredient list + per-person + total nutrition. Per-ingredient nutrition computed from its per-100g facts (form-matched, with fallback) via the engine; quantities and grams scale by N.
+- Mounted recipes router under `/api/v1` in `main.py`.
+- Tests `backend/tests/test_recipes_api.py` (5): alias search, default 1 serving, linear scaling (per_person invariant, total = per_person×N), total == sum of item nutrition, 404. **Full suite: 25 passed.**
+- Sanity: Moong Dal Tadka ≈ 235 kcal / 12g protein per serving; ×4 = 940 kcal total.
+- **Backend MVP endpoints:** `/health`, `/api/v1/ingredients/search`, `/api/v1/ingredients/{id|slug}`, `/api/v1/recipes/search`, `/api/v1/recipes/{id|slug}`.
 
 <!--
 APPEND NEW ENTRIES BELOW THIS LINE.
