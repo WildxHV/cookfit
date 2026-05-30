@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getIngredient, searchIngredients } from "../api/client";
 import type { IngredientSummary } from "../api/types";
 import { SearchBox } from "../components/SearchBox";
+import { ErrorBanner } from "../components/ErrorBanner";
 import { NutritionCards } from "../components/NutritionCards";
 import { QuantityControl } from "../components/QuantityControl";
 import { Segmented } from "../components/Segmented";
@@ -19,7 +20,7 @@ export function IngredientLookup() {
   const [unit, setUnit] = useState<string>("");
   const [form, setForm] = useState<string>("");
 
-  const { data: detail, isLoading } = useQuery({
+  const { data: detail, isLoading, isError } = useQuery({
     queryKey: ["ingredient", slug],
     queryFn: () => getIngredient(slug!),
     enabled: !!slug,
@@ -77,6 +78,8 @@ export function IngredientLookup() {
           Loading…
         </div>
       )}
+
+      {slug && isError && <ErrorBanner />}
 
       {detail && macros && (
         <section className="flex flex-col gap-5 rounded-3xl border border-gray-100 bg-surface p-6 shadow-sm">

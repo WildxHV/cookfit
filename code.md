@@ -39,8 +39,8 @@ cookfit/
 - [x] 6. Frontend scaffold + theme (Vite, Tailwind, routing, API client) — DONE
 - [x] 7. Ingredient Lookup screen — DONE (verified live in browser)
 - [x] 8. Recipe View screen — DONE (verified live in browser)  ← FULL MVP FLOW WORKS
-- [ ] 9. Polish pass (responsive, loading/error states)
-- [ ] 10. README with run instructions
+- [x] 9. Polish pass (responsive, loading/error states) — DONE
+- [x] 10. README with run instructions — DONE  ← PHASE 1 MVP COMPLETE
 
 ---
 
@@ -168,3 +168,14 @@ Format for each entry:
 - Commands run (exact)
 - Files created/edited (paths)
 -->
+
+### 2026-05-30 — Component 9: Polish pass + README (Phase 1 MVP complete)
+
+- Polish: error states wired into both screens.
+  - `src/components/ErrorBanner.tsx` — new; red banner, optional `message` prop, default "Something went wrong. Is the backend running on port 8000?".
+  - `src/pages/IngredientLookup.tsx` — added `isError` from useQuery + `{slug && isError && <ErrorBanner />}` + import.
+  - `src/pages/RecipeView.tsx` — same `isError` + `<ErrorBanner />` wiring + import.
+  - `src/App.tsx` — added catch-all route `<Route path="*" element={<Navigate to="/" replace />} />` so unknown URLs redirect home.
+- Responsive: verified mobile preset (375x812) layout renders cleanly; no console warnings/errors (preview console clean).
+- `README.md` — new; full run instructions (backend venv + alembic upgrade + seed + uvicorn; frontend npm install + dev), config (.env, DATABASE_URL/CORS), API table, project layout.
+- Build sequence checklist items 9 & 10 marked DONE. Phase 1 MVP is complete.

@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getRecipe, searchRecipes } from "../api/client";
 import type { RecipeSummary } from "../api/types";
 import { SearchBox } from "../components/SearchBox";
+import { ErrorBanner } from "../components/ErrorBanner";
 import { NutritionCards } from "../components/NutritionCards";
 import { ServingScaler } from "../components/ServingScaler";
 import { Segmented } from "../components/Segmented";
@@ -20,7 +21,7 @@ export function RecipeView() {
   const [servings, setServings] = useState(1);
   const [view, setView] = useState<"per person" | "total">("per person");
 
-  const { data: recipe, isLoading } = useQuery({
+  const { data: recipe, isLoading, isError } = useQuery({
     queryKey: ["recipe", slug, servings],
     queryFn: () => getRecipe(slug!, servings),
     enabled: !!slug,
@@ -68,6 +69,8 @@ export function RecipeView() {
           Loading…
         </div>
       )}
+
+      {slug && isError && <ErrorBanner />}
 
       {recipe && macros && (
         <section className="flex flex-col gap-5 rounded-3xl border border-gray-100 bg-surface p-6 shadow-sm">
