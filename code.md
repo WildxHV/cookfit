@@ -34,7 +34,7 @@ cookfit/
 - [x] 1. Repo scaffold (backend/ folders, SQLite dev / Postgres-ready config, env) — DONE
 - [x] 2. Nutrition engine + schema (models, Alembic migration, nutrition service + unit tests) — DONE
 - [x] 3. Seed data v1 (curated ingredients + recipes JSON, load script) — DONE
-- [ ] 4. Ingredient API + fuzzy search
+- [x] 4. Ingredient API + fuzzy search — DONE
 - [ ] 5. Recipe API (scaled endpoint)
 - [ ] 6. Frontend scaffold + theme (Vite, Tailwind, routing, API client)
 - [ ] 7. Ingredient Lookup screen
@@ -100,6 +100,17 @@ cookfit/
 - `backend/app/seed/seed.py` — idempotent loader: wipes catalog tables (FK-safe order) then reloads; builds slug→id map; validates recipe ingredient refs.
 - **Run seed:** from `backend/`: `.venv/Scripts/python.exe -m app.seed.seed`
 - Verified counts: 35 ingredients / 43 facts / 69 units / 10 recipes / 55 recipe items.
+
+### 2026-05-30 — Component 4: Ingredient API + fuzzy search
+
+- `backend/app/services/search.py` — portable fuzzy search (no pg_trgm): `score_query()` (exact > startswith > substring > difflib ratio) and `rank()` over name+aliases, threshold 0.35. Reused by recipes later.
+- `backend/app/schemas/ingredient.py` — Pydantic: `MacrosOut`, `UnitOut`, `IngredientSummary`, `SelectedNutrition`, `IngredientDetail` (returns per-100g facts + unit weights so the client can recalc live without round-trips).
+- `backend/app/api/v1/ingredients.py`:
+  - `GET /api/v1/ingredients/search?q=&limit=` → ranked summaries.
+  - `GET /api/v1/ingredients/{id_or_slug}?quantity=&unit=&form=` → full detail + nutrition for the selected quantity/unit/form. Resolves by numeric id or slug. 404 unknown ingredient, 400 unknown unit.
+- `backend/app/main.py` — mounted routers under `/api/v1`.
+- Tests `backend/tests/test_ingredients_api.py` (7): alias search, fuzzy typo ("paner"→paneer), default unit calc, quantity+unit calc, forms available, 400/404. **Full suite: 20 passed.**
+- API docs at http://localhost:8000/docs once running.
 
 <!--
 APPEND NEW ENTRIES BELOW THIS LINE.

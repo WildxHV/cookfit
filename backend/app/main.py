@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import APIRouter, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.v1 import ingredients
 from app.core.config import get_settings
 
 settings = get_settings()
@@ -21,4 +22,6 @@ def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
-# API routers are mounted here as they are built (ingredients, recipes).
+api_v1 = APIRouter(prefix="/api/v1")
+api_v1.include_router(ingredients.router)
+app.include_router(api_v1)
