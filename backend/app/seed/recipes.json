@@ -1,0 +1,167 @@
+[
+  {
+    "slug": "moong-dal-tadka",
+    "name": "Moong Dal Tadka",
+    "aliases": ["yellow dal", "dal fry", "tadka dal"],
+    "meal_type": "lunch",
+    "prep_time_min": 30,
+    "tags": ["high_protein", "vegetarian"],
+    "instructions": "Pressure-cook moong dal till soft. Prepare a tempering (tadka) of ghee, cumin, garlic, ginger, green chili, onion and tomato. Mix into the dal, simmer, finish with coriander.",
+    "items": [
+      {"ingredient": "moong-dal", "quantity": 45, "unit_label": "g", "form": "raw", "note": "rinsed"},
+      {"ingredient": "onion", "quantity": 30, "unit_label": "g", "form": "raw", "note": "chopped"},
+      {"ingredient": "tomato", "quantity": 40, "unit_label": "g", "form": "raw", "note": "chopped"},
+      {"ingredient": "ghee", "quantity": 1, "unit_label": "tsp", "form": "raw"},
+      {"ingredient": "garlic", "quantity": 2, "unit_label": "clove", "form": "raw"},
+      {"ingredient": "ginger", "quantity": 1, "unit_label": "tsp", "form": "raw"},
+      {"ingredient": "green-chili", "quantity": 1, "unit_label": "piece", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "rajma-masala",
+    "name": "Rajma Masala",
+    "aliases": ["rajma", "kidney bean curry"],
+    "meal_type": "lunch",
+    "prep_time_min": 45,
+    "tags": ["high_protein", "high_fiber", "vegetarian"],
+    "instructions": "Soak and pressure-cook rajma. Cook an onion-tomato-ginger-garlic masala in oil, add spices, then the rajma with its water and simmer till thick.",
+    "items": [
+      {"ingredient": "rajma", "quantity": 55, "unit_label": "g", "form": "raw", "note": "soaked overnight"},
+      {"ingredient": "onion", "quantity": 50, "unit_label": "g", "form": "raw"},
+      {"ingredient": "tomato", "quantity": 60, "unit_label": "g", "form": "raw"},
+      {"ingredient": "mustard-oil", "quantity": 1, "unit_label": "tsp", "form": "raw"},
+      {"ingredient": "garlic", "quantity": 2, "unit_label": "clove", "form": "raw"},
+      {"ingredient": "ginger", "quantity": 1, "unit_label": "tsp", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "chole-masala",
+    "name": "Chole Masala",
+    "aliases": ["chana masala", "chickpea curry"],
+    "meal_type": "lunch",
+    "prep_time_min": 40,
+    "tags": ["high_protein", "high_fiber", "vegetarian"],
+    "instructions": "Cook soaked chickpeas till tender. Saute onion, tomato, ginger and garlic in oil with chole masala spices, add the chickpeas and simmer.",
+    "items": [
+      {"ingredient": "chole", "quantity": 55, "unit_label": "g", "form": "raw", "note": "soaked overnight"},
+      {"ingredient": "onion", "quantity": 50, "unit_label": "g", "form": "raw"},
+      {"ingredient": "tomato", "quantity": 50, "unit_label": "g", "form": "raw"},
+      {"ingredient": "mustard-oil", "quantity": 1, "unit_label": "tsp", "form": "raw"},
+      {"ingredient": "garlic", "quantity": 2, "unit_label": "clove", "form": "raw"},
+      {"ingredient": "ginger", "quantity": 1, "unit_label": "tsp", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "palak-paneer",
+    "name": "Palak Paneer",
+    "aliases": ["spinach paneer", "saag paneer"],
+    "meal_type": "dinner",
+    "prep_time_min": 35,
+    "tags": ["high_protein", "vegetarian"],
+    "instructions": "Blanch and puree spinach. Saute onion, tomato, garlic in ghee, add the puree and spices, then fold in paneer cubes and simmer briefly.",
+    "items": [
+      {"ingredient": "spinach", "quantity": 120, "unit_label": "g", "form": "raw"},
+      {"ingredient": "paneer", "quantity": 50, "unit_label": "g", "form": "raw", "note": "cubed"},
+      {"ingredient": "onion", "quantity": 30, "unit_label": "g", "form": "raw"},
+      {"ingredient": "tomato", "quantity": 30, "unit_label": "g", "form": "raw"},
+      {"ingredient": "ghee", "quantity": 1, "unit_label": "tsp", "form": "raw"},
+      {"ingredient": "garlic", "quantity": 2, "unit_label": "clove", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "aloo-gobi",
+    "name": "Aloo Gobi",
+    "aliases": ["potato cauliflower", "aloo gobhi"],
+    "meal_type": "lunch",
+    "prep_time_min": 30,
+    "tags": ["vegetarian", "vegan"],
+    "instructions": "Saute cumin in oil, add potato and cauliflower with turmeric and spices, cover and cook till tender, finish with tomato and coriander.",
+    "items": [
+      {"ingredient": "potato", "quantity": 80, "unit_label": "g", "form": "raw", "note": "cubed"},
+      {"ingredient": "cauliflower", "quantity": 100, "unit_label": "g", "form": "raw", "note": "florets"},
+      {"ingredient": "onion", "quantity": 30, "unit_label": "g", "form": "raw"},
+      {"ingredient": "tomato", "quantity": 30, "unit_label": "g", "form": "raw"},
+      {"ingredient": "mustard-oil", "quantity": 1, "unit_label": "tsp", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "veg-poha",
+    "name": "Vegetable Poha",
+    "aliases": ["poha", "kanda poha"],
+    "meal_type": "breakfast",
+    "prep_time_min": 15,
+    "tags": ["vegetarian", "quick"],
+    "instructions": "Rinse poha till soft. Temper mustard seeds, curry leaves, onion, green chili and peanuts in oil, add potato, then fold in poha with turmeric and lemon.",
+    "items": [
+      {"ingredient": "poha", "quantity": 50, "unit_label": "g", "form": "raw"},
+      {"ingredient": "potato", "quantity": 30, "unit_label": "g", "form": "raw", "note": "diced"},
+      {"ingredient": "onion", "quantity": 30, "unit_label": "g", "form": "raw"},
+      {"ingredient": "peanuts", "quantity": 1, "unit_label": "tbsp", "form": "raw"},
+      {"ingredient": "mustard-oil", "quantity": 1, "unit_label": "tsp", "form": "raw"},
+      {"ingredient": "green-chili", "quantity": 1, "unit_label": "piece", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "paneer-bhurji",
+    "name": "Paneer Bhurji",
+    "aliases": ["scrambled paneer"],
+    "meal_type": "dinner",
+    "prep_time_min": 20,
+    "tags": ["high_protein", "vegetarian", "low_cal"],
+    "instructions": "Crumble paneer. Saute onion, capsicum and tomato in oil with spices, add the crumbled paneer and toss for a few minutes.",
+    "items": [
+      {"ingredient": "paneer", "quantity": 60, "unit_label": "g", "form": "raw", "note": "crumbled"},
+      {"ingredient": "onion", "quantity": 40, "unit_label": "g", "form": "raw"},
+      {"ingredient": "tomato", "quantity": 40, "unit_label": "g", "form": "raw"},
+      {"ingredient": "capsicum", "quantity": 30, "unit_label": "g", "form": "raw"},
+      {"ingredient": "mustard-oil", "quantity": 1, "unit_label": "tsp", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "masala-oats",
+    "name": "Masala Oats",
+    "aliases": ["vegetable oats", "savory oats"],
+    "meal_type": "breakfast",
+    "prep_time_min": 15,
+    "tags": ["high_fiber", "vegetarian", "quick", "low_cal"],
+    "instructions": "Saute onion, tomato and peas in oil, add water and oats with spices, and cook to a soft savory porridge.",
+    "items": [
+      {"ingredient": "oats", "quantity": 40, "unit_label": "g", "form": "raw"},
+      {"ingredient": "onion", "quantity": 20, "unit_label": "g", "form": "raw"},
+      {"ingredient": "tomato", "quantity": 20, "unit_label": "g", "form": "raw"},
+      {"ingredient": "green-peas", "quantity": 20, "unit_label": "g", "form": "raw"},
+      {"ingredient": "mustard-oil", "quantity": 1, "unit_label": "tsp", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "besan-chilla",
+    "name": "Besan Chilla",
+    "aliases": ["besan cheela", "gram flour pancake"],
+    "meal_type": "breakfast",
+    "prep_time_min": 15,
+    "tags": ["high_protein", "vegetarian", "quick"],
+    "instructions": "Whisk besan with water, chopped onion, tomato, green chili and spices into a batter. Pour onto a hot oiled tawa and cook both sides till golden.",
+    "items": [
+      {"ingredient": "besan", "quantity": 45, "unit_label": "g", "form": "raw"},
+      {"ingredient": "onion", "quantity": 20, "unit_label": "g", "form": "raw"},
+      {"ingredient": "tomato", "quantity": 20, "unit_label": "g", "form": "raw"},
+      {"ingredient": "green-chili", "quantity": 1, "unit_label": "piece", "form": "raw"},
+      {"ingredient": "mustard-oil", "quantity": 1, "unit_label": "tsp", "form": "raw"}
+    ]
+  },
+  {
+    "slug": "dal-khichdi",
+    "name": "Dal Khichdi",
+    "aliases": ["khichdi", "moong khichdi"],
+    "meal_type": "dinner",
+    "prep_time_min": 30,
+    "tags": ["high_protein", "vegetarian", "light"],
+    "instructions": "Pressure-cook rice and moong dal together with turmeric and salt to a soft consistency. Finish with a ghee-cumin tempering.",
+    "items": [
+      {"ingredient": "basmati-rice", "quantity": 35, "unit_label": "g", "form": "raw"},
+      {"ingredient": "moong-dal", "quantity": 30, "unit_label": "g", "form": "raw"},
+      {"ingredient": "ghee", "quantity": 1, "unit_label": "tsp", "form": "raw"},
+      {"ingredient": "onion", "quantity": 20, "unit_label": "g", "form": "raw"}
+    ]
+  }
+]

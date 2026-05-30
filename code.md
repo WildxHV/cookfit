@@ -33,7 +33,7 @@ cookfit/
 
 - [x] 1. Repo scaffold (backend/ folders, SQLite dev / Postgres-ready config, env) — DONE
 - [x] 2. Nutrition engine + schema (models, Alembic migration, nutrition service + unit tests) — DONE
-- [ ] 3. Seed data v1 (curated ingredients + recipes JSON, load script)
+- [x] 3. Seed data v1 (curated ingredients + recipes JSON, load script) — DONE
 - [ ] 4. Ingredient API + fuzzy search
 - [ ] 5. Recipe API (scaled endpoint)
 - [ ] 6. Frontend scaffold + theme (Vite, Tailwind, routing, API client)
@@ -92,6 +92,14 @@ cookfit/
   - Commands: `alembic revision --autogenerate -m "initial schema"` then `alembic upgrade head`.
   - Result: tables `ingredients, nutrition_facts, ingredient_units, recipes, recipe_ingredients` (+ `alembic_version`) created in dev SQLite `cookfit.db`.
 - **Migration commands (remember):** from `backend/`: `.venv/Scripts/python.exe -m alembic upgrade head` to apply; `... revision --autogenerate -m "msg"` to create new after model changes.
+
+### 2026-05-30 — Component 3: Seed data v1
+
+- `backend/app/seed/ingredients.json` — 35 curated Indian ingredients (dals, legumes, grains/flours, vegetables, dairy, fats, nuts, aromatics, sweetener). Each has: slug, name, aliases, category, default_unit/form, household `units` (gram weights), and `facts` per-100g (raw and, where it differs, cooked). Values approximate IFCT/USDA — refine later.
+- `backend/app/seed/recipes.json` — 10 healthy recipes (moong dal tadka, rajma, chole, palak paneer, aloo gobi, veg poha, paneer bhurji, masala oats, besan chilla, dal khichdi). Quantities are **per single serving** and reference ingredients by slug, using **raw** inputs (calories conserved from raw → cooked).
+- `backend/app/seed/seed.py` — idempotent loader: wipes catalog tables (FK-safe order) then reloads; builds slug→id map; validates recipe ingredient refs.
+- **Run seed:** from `backend/`: `.venv/Scripts/python.exe -m app.seed.seed`
+- Verified counts: 35 ingredients / 43 facts / 69 units / 10 recipes / 55 recipe items.
 
 <!--
 APPEND NEW ENTRIES BELOW THIS LINE.
