@@ -32,7 +32,7 @@ cookfit/
 ## Build sequence (checklist)
 
 - [x] 1. Repo scaffold (backend/ folders, SQLite dev / Postgres-ready config, env) — DONE
-- [ ] 2. Nutrition engine + schema (models, Alembic migration, nutrition service + unit tests)
+- [x] 2. Nutrition engine + schema (models, Alembic migration, nutrition service + unit tests) — DONE
 - [ ] 3. Seed data v1 (curated ingredients + recipes JSON, load script)
 - [ ] 4. Ingredient API + fuzzy search
 - [ ] 5. Recipe API (scaled endpoint)
@@ -69,6 +69,29 @@ cookfit/
   - `.venv/Scripts/python.exe -m pip install -r requirements.txt`
   - Verified: `TestClient(app).get('/health')` -> `200 {'status':'ok'}`.
 - **To run backend:** from `backend/`: `.venv/Scripts/python.exe -m uvicorn app.main:app --reload` (docs at http://localhost:8000/docs).
+
+### 2026-05-30 — Component 2: Nutrition engine + DB schema
+
+- **Schema design (single source of truth):** nutrition stored canonically **per 100g**; household units stored separately as gram-weights. Any quantity → grams → scale per-100g facts.
+- Models (`backend/app/models/`):
+  - `ingredient.py`:
+    - `Ingredient` (id, slug[unique], name, aliases[JSON], category, default_unit, default_form)
+    - `NutritionFacts` (ingredient_id, form raw|cooked, calories/protein_g/fiber_g/carbs_g/fat_g — all **per 100g**; unique(ingredient_id, form))
+    - `IngredientUnit` (ingredient_id, label, grams; unique(ingredient_id, label))
+  - `recipe.py`:
+    - `Recipe` (id, slug, name, aliases[JSON], meal_type, base_servings=1, prep_time_min, instructions, tags[JSON])
+    - `RecipeIngredient` (recipe_id, ingredient_id, quantity, unit_label, form, note) — quantities are **per 1 serving**
+  - `__init__.py` re-exports all models.
+- **Nutrition engine** `backend/app/services/nutrition.py` — pure, no DB/framework:
+  - `Macros` dataclass (calories, protein_g, fiber_g, carbs_g, fat_g) with `__add__`, `scaled()`, `rounded()`.
+  - `sum_macros()`, `macros_for_grams()`, `grams_for_quantity()` (implicit units g/kg/100g + per-ingredient household units, case-insensitive), `macros_for_quantity()`.
+- **Tests** `backend/tests/test_nutrition.py` — 13 tests, all passing (`pytest -q`).
+- **Alembic** set up (`backend/alembic/`, `backend/alembic.ini`):
+  - `env.py` edited: pulls `DATABASE_URL` from app settings, `target_metadata = Base.metadata`, imports `app.models`, `render_as_batch=True` (SQLite-safe ALTERs).
+  - Generated initial migration `alembic/versions/0573499e6866_initial_schema.py`.
+  - Commands: `alembic revision --autogenerate -m "initial schema"` then `alembic upgrade head`.
+  - Result: tables `ingredients, nutrition_facts, ingredient_units, recipes, recipe_ingredients` (+ `alembic_version`) created in dev SQLite `cookfit.db`.
+- **Migration commands (remember):** from `backend/`: `.venv/Scripts/python.exe -m alembic upgrade head` to apply; `... revision --autogenerate -m "msg"` to create new after model changes.
 
 <!--
 APPEND NEW ENTRIES BELOW THIS LINE.
