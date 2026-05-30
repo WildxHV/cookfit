@@ -36,7 +36,7 @@ cookfit/
 - [x] 3. Seed data v1 (curated ingredients + recipes JSON, load script) — DONE
 - [x] 4. Ingredient API + fuzzy search — DONE
 - [x] 5. Recipe API (scaled endpoint) — DONE  ← BACKEND MVP COMPLETE
-- [ ] 6. Frontend scaffold + theme (Vite, Tailwind, routing, API client)
+- [x] 6. Frontend scaffold + theme (Vite, Tailwind, routing, API client) — DONE
 - [ ] 7. Ingredient Lookup screen
 - [ ] 8. Recipe View screen
 - [ ] 9. Polish pass (responsive, loading/error states)
@@ -122,6 +122,27 @@ cookfit/
 - Tests `backend/tests/test_recipes_api.py` (5): alias search, default 1 serving, linear scaling (per_person invariant, total = per_person×N), total == sum of item nutrition, 404. **Full suite: 25 passed.**
 - Sanity: Moong Dal Tadka ≈ 235 kcal / 12g protein per serving; ×4 = 940 kcal total.
 - **Backend MVP endpoints:** `/health`, `/api/v1/ingredients/search`, `/api/v1/ingredients/{id|slug}`, `/api/v1/recipes/search`, `/api/v1/recipes/{id|slug}`.
+
+### 2026-05-30 — Component 6: Frontend scaffold + theme
+
+- Scaffolded with `npm create vite@latest frontend -- --template react-ts` (in `cookfit/`).
+- Installed: `react-router-dom`, `@tanstack/react-query`, `axios`; dev: `tailwindcss`, `@tailwindcss/vite` (Tailwind v4 Vite-plugin setup).
+- `frontend/vite.config.ts` — added `@tailwindcss/vite` plugin + dev **proxy `/api` → http://localhost:8000** (so frontend calls the backend without CORS pain).
+- `frontend/src/index.css` — replaced boilerplate; `@import "tailwindcss"` + `@theme` tokens: single **accent = emerald/green** palette (accent-50..900), ink/muted/surface/canvas colors, Inter font.
+- API layer:
+  - `src/api/types.ts` — TS mirrors of backend schemas.
+  - `src/api/client.ts` — axios (`baseURL: /api/v1`): `searchIngredients`, `getIngredient`, `searchRecipes`, `getRecipe`.
+  - `src/lib/nutrition.ts` — client-side recalc mirroring backend engine (live updates, no round-trip).
+  - `src/lib/useDebounce.ts` — debounce hook.
+- App shell:
+  - `src/main.tsx` — QueryClientProvider + BrowserRouter.
+  - `src/App.tsx` — routes: `/` Home, `/ingredient`, `/recipe`.
+  - `src/components/Layout.tsx` — sticky header, logo, nav pills (accent active state).
+  - `src/components/NutritionCards.tsx` — 5 macro cards (calories highlighted in accent).
+  - `src/components/SearchBox.tsx` — generic debounced search dropdown (React Query).
+  - `src/pages/Home.tsx` — two mode cards (Ingredient / Recipe). IngredientLookup & RecipeView are stubs (filled in components 7–8).
+- Removed Vite boilerplate (App.css, demo assets); set `index.html` title to CookFit.
+- **Run frontend:** from `frontend/`: `npm run dev` (http://localhost:5173). Build verified: `npm run build` (tsc + vite) OK.
 
 <!--
 APPEND NEW ENTRIES BELOW THIS LINE.
