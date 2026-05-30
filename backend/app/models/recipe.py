@@ -23,6 +23,8 @@ class Recipe(Base):
     instructions: Mapped[str | None] = mapped_column(Text, nullable=True)
     # Tags like "high_protein", "low_cal", "vegan".
     tags: Mapped[list[str]] = mapped_column(JSON, default=list)
+    # Provenance: "seed" (curated) or "ai" (Gemini lookup, validated).
+    source: Mapped[str] = mapped_column(String(20), default="seed", index=True)
 
     items: Mapped[list["RecipeIngredient"]] = relationship(
         back_populates="recipe",

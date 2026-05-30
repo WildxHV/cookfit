@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
+from app.core.config import get_settings
 from app.db.session import get_db
 from app.models import Ingredient
 from app.schemas.ingredient import (
@@ -11,7 +12,10 @@ from app.schemas.ingredient import (
     SelectedNutrition,
     UnitOut,
 )
-from app.services import search
+from app.services import ai_lookup, search
+from app.services.ai_lookup import GeminiError
+from app.services.ai_persist import upsert_ai_ingredient
+from app.services.ai_validation import ValidationError, validate_ingredient
 from app.services.nutrition import Macros, grams_for_quantity, macros_for_grams
 
 router = APIRouter(prefix="/ingredients", tags=["ingredients"])
@@ -77,16 +81,12 @@ def search_ingredients(
     ]
 
 
-@router.get("/{id_or_slug}", response_model=IngredientDetail)
-def get_ingredient(
-    id_or_slug: str,
-    quantity: float = Query(1.0, ge=0, description="Amount in the chosen unit"),
-    unit: str | None = Query(None, description="Unit label; defaults to ingredient default"),
-    form: str | None = Query(None, description="raw | cooked; defaults to ingredient default"),
-    db: Session = Depends(get_db),
+def _detail_for(
+    ing: Ingredient,
+    quantity: float,
+    unit: str | None,
+    form: str | None,
 ) -> IngredientDetail:
-    ing = _get_one(db, id_or_slug)
-
     facts_by_form = {f.form: f for f in ing.facts}
     forms = sorted(facts_by_form.keys())
     if not forms:
@@ -127,4 +127,53 @@ def get_ingredient(
             grams=round(grams, 1),
             nutrition=_macros_out(selected_macros),
         ),
+        source=ing.source,
     )
+
+
+@router.get("/ai", response_model=IngredientDetail)
+def ai_lookup_ingredient(
+    q: str = Query(..., min_length=1, description="Ingredient name not found in the DB"),
+    db: Session = Depends(get_db),
+) -> IngredientDetail:
+    """Fallback: ask Gemini for an ingredient we don't have, validate it, store
+    it (source='ai'), and return it like any other ingredient."""
+    # If we actually have a strong match already, use it — don't spend a call.
+    existing = search.rank(
+        q, _load_all(db), searchable=lambda i: [i.name, *i.aliases],
+        limit=1, threshold=0.6,
+    )
+    if existing:
+        return _detail_for(existing[0], 1.0, None, None)
+
+    if not get_settings().ai_enabled:
+        raise HTTPException(status_code=503, detail="AI lookup is not configured.")
+
+    try:
+        raw = ai_lookup.lookup_ingredient(q)
+    except GeminiError as exc:
+        raise HTTPException(status_code=502, detail=str(exc)) from exc
+
+    try:
+        clean = validate_ingredient(raw)
+    except ValidationError as exc:
+        raise HTTPException(
+            status_code=422,
+            detail=f"Couldn't find reliable data for '{q}': {exc}",
+        ) from exc
+
+    ing = upsert_ai_ingredient(db, clean)
+    db.commit()
+    db.refresh(ing)
+    return _detail_for(ing, 1.0, None, None)
+
+
+@router.get("/{id_or_slug}", response_model=IngredientDetail)
+def get_ingredient(
+    id_or_slug: str,
+    quantity: float = Query(1.0, ge=0, description="Amount in the chosen unit"),
+    unit: str | None = Query(None, description="Unit label; defaults to ingredient default"),
+    form: str | None = Query(None, description="raw | cooked; defaults to ingredient default"),
+    db: Session = Depends(get_db),
+) -> IngredientDetail:
+    return _detail_for(_get_one(db, id_or_slug), quantity, unit, form)

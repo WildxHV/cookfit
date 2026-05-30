@@ -40,3 +40,4 @@ class RecipeDetail(BaseModel):
     items: list[ScaledIngredient]
     per_person: MacrosOut
     total: MacrosOut
+    source: str = "seed"  # "seed" (curated) or "ai" (Gemini, validated)

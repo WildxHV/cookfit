@@ -24,6 +24,8 @@ class Ingredient(Base):
     # Sensible defaults for the UI.
     default_unit: Mapped[str] = mapped_column(String(40), default="100g")
     default_form: Mapped[str] = mapped_column(String(20), default="raw")
+    # Provenance: "seed" (curated) or "ai" (Gemini lookup, validated).
+    source: Mapped[str] = mapped_column(String(20), default="seed", index=True)
 
     facts: Mapped[list["NutritionFacts"]] = relationship(
         back_populates="ingredient",
