@@ -38,7 +38,7 @@ cookfit/
 - [x] 5. Recipe API (scaled endpoint) — DONE  ← BACKEND MVP COMPLETE
 - [x] 6. Frontend scaffold + theme (Vite, Tailwind, routing, API client) — DONE
 - [x] 7. Ingredient Lookup screen — DONE (verified live in browser)
-- [ ] 8. Recipe View screen
+- [x] 8. Recipe View screen — DONE (verified live in browser)  ← FULL MVP FLOW WORKS
 - [ ] 9. Polish pass (responsive, loading/error states)
 - [ ] 10. README with run instructions
 
@@ -152,6 +152,13 @@ cookfit/
 - **Servers for verifying:** backend `uvicorn app.main:app --port 8000` (from backend/, venv); frontend `npm run dev` (5173). Vite proxies `/api`→8000.
 - Browser-verified: "paner"→Paneer (fuzzy), 1 katori=100g→296 kcal; +0.5 → 1.5 katori=150g→444 kcal, 27.5 g protein (live recalc correct).
 - Added `C:\Users\Harshvardhan\.claude\launch.json` (preview tool config; cwd `cookfit/frontend`, port 5173) — note: lives in user home, not repo.
+
+### 2026-05-30 — Component 8: Recipe View screen (heart of product)
+
+- `src/components/ServingScaler.tsx` — "Number of people" stepper (1–100), accent-styled.
+- `src/pages/RecipeView.tsx` — search → select → result card. Refetches `getRecipe(slug, servings)` via React Query (key includes servings; `placeholderData` keeps old data during refetch to avoid flicker). Serving scaler + Per-person/Total toggle pinned (sticky) at top of result. Shows NutritionCards for the chosen view, scaled ingredient list (qty + unit + per-item kcal + notes), tags, and method.
+- Browser-verified: Moong Dal Tadka 235 kcal/person (1 person); set to 4 + Total → 940 kcal, 48.2 g protein; ingredients scaled (dal 45→180 g). Matches backend exactly.
+- **Full MVP user flow works end-to-end** (both input modes).
 
 <!--
 APPEND NEW ENTRIES BELOW THIS LINE.
