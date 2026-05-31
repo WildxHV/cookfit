@@ -1,18 +1,24 @@
-"""Google Gemini lookup for foods missing from our DB.
+"""AI lookup for foods/recipes missing from our DB.
 
-Asks Gemini (free tier) for structured nutrition data, using a strict JSON
-response schema. This module ONLY fetches + parses — every value is re-checked
-by `ai_validation` before anything touches the database. Nothing here is
-trusted on faith.
+Asks an LLM for structured JSON using a strict response schema. To keep calls
+from failing on a single provider's rate limit, this tries a pool of backends
+(multiple Gemini models, plus optional OpenAI / Grok / Groq — all configured by
+env keys) in round-robin with fallback. This module ONLY fetches + parses —
+every value is re-checked by `ai_validation` before anything touches the DB.
 """
 
 from __future__ import annotations
 
+import itertools
 import json
+import logging
+from dataclasses import dataclass
 
 import httpx
 
 from app.core.config import get_settings
+
+logger = logging.getLogger(__name__)
 
 GEMINI_URL = (
     "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
@@ -20,7 +26,11 @@ GEMINI_URL = (
 
 
 class GeminiError(RuntimeError):
-    """Raised when the Gemini call fails or returns unusable output."""
+    """Raised when ALL configured AI backends fail. (Name kept for callers.)"""
+
+
+# Public alias so call sites read naturally regardless of provider.
+AIError = GeminiError
 
 
 # ---- Response schemas (OpenAPI subset accepted by Gemini) -------------------
@@ -173,14 +183,52 @@ items and in the ingredients entry.
 high_protein, high_fiber, vegetarian, low_fat. Keep it healthy and authentic."""
 
 
-def _call_gemini(
-    prompt: str, schema: dict, *, max_output_tokens: int | None = None
-) -> dict:
-    settings = get_settings()
-    if not settings.ai_enabled:
-        raise GeminiError("AI lookup is disabled (no GEMINI_API_KEY configured).")
+class _BackendError(RuntimeError):
+    """One backend failed; the orchestrator should try the next."""
 
-    url = GEMINI_URL.format(model=settings.gemini_model)
+
+@dataclass(frozen=True)
+class _Backend:
+    label: str          # for logs/errors, e.g. "gemini:gemini-2.5-flash"
+    kind: str           # "gemini" | "openai"
+    model: str
+    api_key: str
+    base_url: str | None = None  # OpenAI-compatible base URL
+
+
+# Round-robin cursor so we don't always start at the same backend.
+_rr = itertools.count()
+
+
+def _build_backends(settings) -> list[_Backend]:
+    """Every configured backend, Gemini models first, then OpenAI-compatibles."""
+    backends: list[_Backend] = []
+    if settings.gemini_api_key.strip():
+        for model in settings.gemini_model_list:
+            backends.append(
+                _Backend(f"gemini:{model}", "gemini", model, settings.gemini_api_key)
+            )
+    if settings.openai_api_key.strip():
+        backends.append(
+            _Backend("openai", "openai", settings.openai_model,
+                     settings.openai_api_key, settings.openai_base_url)
+        )
+    if settings.xai_api_key.strip():
+        backends.append(
+            _Backend("grok", "openai", settings.xai_model,
+                     settings.xai_api_key, settings.xai_base_url)
+        )
+    if settings.groq_api_key.strip():
+        backends.append(
+            _Backend("groq", "openai", settings.groq_model,
+                     settings.groq_api_key, settings.groq_base_url)
+        )
+    return backends
+
+
+def _gemini_generate(
+    b: _Backend, prompt: str, schema: dict, max_output_tokens: int | None, timeout: float
+) -> dict:
     gen_config: dict = {
         "responseMimeType": "application/json",
         "responseSchema": schema,
@@ -188,36 +236,94 @@ def _call_gemini(
     }
     if max_output_tokens is not None:
         gen_config["maxOutputTokens"] = max_output_tokens
-        # Batch calls produce a lot of JSON; spend the token budget on output,
-        # not on the model's internal "thinking" (so large arrays aren't cut off).
+        # Spend the token budget on output, not internal "thinking", so large
+        # arrays in batch responses aren't cut off.
         gen_config["thinkingConfig"] = {"thinkingBudget": 0}
-    body = {
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": gen_config,
-    }
+    body = {"contents": [{"parts": [{"text": prompt}]}], "generationConfig": gen_config}
     try:
         resp = httpx.post(
-            url,
-            params={"key": settings.gemini_api_key},
-            json=body,
-            # Batch calls can be large/slow; give them extra headroom.
-            timeout=settings.gemini_timeout_s
-            + (60.0 if max_output_tokens else 0.0),
+            GEMINI_URL.format(model=b.model),
+            params={"key": b.api_key}, json=body, timeout=timeout,
         )
     except httpx.HTTPError as exc:
-        raise GeminiError(f"Gemini request failed: {exc}") from exc
-
+        raise _BackendError(f"{b.label} request failed: {exc}") from exc
     if resp.status_code != 200:
-        raise GeminiError(
-            f"Gemini returned {resp.status_code}: {resp.text[:300]}"
-        )
-
+        raise _BackendError(f"{b.label} -> {resp.status_code}: {resp.text[:160]}")
     try:
-        payload = resp.json()
-        text = payload["candidates"][0]["content"]["parts"][0]["text"]
+        text = resp.json()["candidates"][0]["content"]["parts"][0]["text"]
         return json.loads(text)
     except (KeyError, IndexError, json.JSONDecodeError, TypeError) as exc:
-        raise GeminiError(f"Could not parse Gemini response: {exc}") from exc
+        raise _BackendError(f"{b.label} unparseable: {exc}") from exc
+
+
+def _openai_generate(
+    b: _Backend, prompt: str, schema: dict, max_output_tokens: int | None, timeout: float
+) -> dict:
+    """OpenAI-compatible chat completion in JSON mode (OpenAI / Grok / Groq)."""
+    messages = [
+        {"role": "system", "content":
+            "You are a precise JSON API. Reply with ONLY a single JSON object "
+            "that conforms to the schema the user gives. No prose, no markdown."},
+        {"role": "user", "content":
+            prompt + "\n\nReturn ONLY a JSON object matching this JSON schema:\n"
+            + json.dumps(schema)},
+    ]
+    body: dict = {
+        "model": b.model,
+        "messages": messages,
+        "temperature": 0.2,
+        "response_format": {"type": "json_object"},
+    }
+    if max_output_tokens is not None:
+        body["max_tokens"] = max_output_tokens
+    try:
+        resp = httpx.post(
+            f"{b.base_url.rstrip('/')}/chat/completions",
+            headers={"Authorization": f"Bearer {b.api_key}"},
+            json=body, timeout=timeout,
+        )
+    except httpx.HTTPError as exc:
+        raise _BackendError(f"{b.label} request failed: {exc}") from exc
+    if resp.status_code != 200:
+        raise _BackendError(f"{b.label} -> {resp.status_code}: {resp.text[:160]}")
+    try:
+        content = resp.json()["choices"][0]["message"]["content"]
+        return json.loads(content)
+    except (KeyError, IndexError, json.JSONDecodeError, TypeError) as exc:
+        raise _BackendError(f"{b.label} unparseable: {exc}") from exc
+
+
+def _generate_json(
+    prompt: str, schema: dict, *, max_output_tokens: int | None = None
+) -> dict:
+    """Try every configured backend (round-robin start, then fallback) until one
+    returns valid JSON. Raises GeminiError only if they all fail."""
+    settings = get_settings()
+    backends = _build_backends(settings)
+    if not backends:
+        raise GeminiError("AI is not configured (no provider API key set).")
+
+    timeout = settings.gemini_timeout_s + (60.0 if max_output_tokens else 0.0)
+    n = len(backends)
+    start = next(_rr) % n
+    order = [backends[(start + i) % n] for i in range(n)]
+
+    errors: list[str] = []
+    for b in order:
+        try:
+            if b.kind == "gemini":
+                return _gemini_generate(b, prompt, schema, max_output_tokens, timeout)
+            return _openai_generate(b, prompt, schema, max_output_tokens, timeout)
+        except _BackendError as exc:
+            errors.append(str(exc))
+            logger.info("AI backend failed, trying next: %s", exc)
+            continue
+
+    raise GeminiError("All AI backends failed: " + " | ".join(errors))
+
+
+# Backward-compatible name used elsewhere (e.g. ai_suggest).
+_call_gemini = _generate_json
 
 
 def lookup_ingredient(query: str) -> dict:

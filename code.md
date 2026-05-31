@@ -319,3 +319,16 @@ User: don't make ~8 background Gemini calls — club the unknown-ingredient look
 - `api/v1/cook.py`: background work is now exactly **two batched tasks** — `_persist_ingredients_bg(terms)` (dedup-filter, one `lookup_ingredients` call, validate+upsert each) and `_persist_recipes_bg(names)` (dedup-filter, one `lookup_recipes` call, validate+upsert each; a single bad recipe is skipped without dropping the batch). So a suggest now costs at most 3 Gemini calls total (1 ideas + 1 ingredients + 1 recipes) instead of ~9.
 - **Verified** (via `gemini-flash-latest`, since today's testing exhausted `gemini-2.5-flash`'s free quota): a 4-dish batch [`Spicy Corn Capsicum Toast`, `Bhuni Makai aur Shimla Mirch`, `Spicy Bread Upma`, `Crispy Corn Capsicum Bread Fritters`] returned all 4 recipes WITH full ingredient nutrition (6/5/6/6 items) and all validated + stored. Batch ingredients call returned 3/3. `pytest` 39 passed.
 - **Note:** default model stays `gemini-2.5-flash` (best quality, explicit, quota resets daily). Heavy same-day testing can 429 it; the code degrades silently and works once quota resets.
+
+### 2026-05-31 — AI resilience: multi-model + multi-provider fallback (round-robin)
+
+User: calls keep hitting Gemini rate limits — add fallbacks (other Gemini models, and other providers like OpenAI/Grok) used in round-robin so a single failure never breaks a call.
+
+- `core/config.py`: `gemini_fallback_models` (comma list, default `gemini-2.5-flash-lite,gemini-flash-latest,gemini-2.0-flash`) + `gemini_model_list` property (primary first, deduped). Optional OpenAI-compatible providers, each gated on a key: `openai_*` (gpt-4o-mini), `xai_*` (Grok, grok-2-1212), `groq_*` (llama-3.3-70b-versatile). `ai_enabled` now true if ANY provider key is set.
+- `services/ai_lookup.py`: replaced the single `_call_gemini` with a backend pool:
+  - `_Backend` dataclass + `_build_backends()` (all Gemini models first, then any configured OpenAI/Grok/Groq).
+  - `_gemini_generate` (native `responseSchema`) and `_openai_generate` (OpenAI-compatible `/chat/completions` in `json_object` mode, schema embedded in the prompt — works for OpenAI, x.ai, Groq).
+  - `_generate_json(prompt, schema, max_output_tokens)` — round-robin start (module `itertools.count`) then **fallback through every backend**; raises `GeminiError` only if ALL fail. `_call_gemini = _generate_json` kept as a backward-compatible alias (used by `ai_suggest` and the `lookup_*` helpers, so nothing else changed).
+- `.env.example`: documents `GEMINI_FALLBACK_MODELS` + the optional `OPENAI_*`, `XAI_*`, `GROQ_*` keys.
+- **Verified live:** primary `gemini-2.5-flash` is 429 (quota spent today) → orchestrator logs "trying next" → `gemini-2.5-flash-lite` returns 200. `GET /ingredients/ai?q=blackberry` succeeded end-to-end (stored, source=ai, tagged) despite the primary being rate-limited. `pytest` 39 passed (endpoint tests monkeypatch `lookup_*`, unaffected).
+- Effect: with just the one Gemini key we now have a 4-model fallback chain; adding any OpenAI/Grok/Groq key extends the pool further. Calls only fail if every backend is simultaneously down.
