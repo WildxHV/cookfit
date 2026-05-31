@@ -34,6 +34,7 @@ export function Layout({ children }: { children: ReactNode }) {
           <nav className="flex items-center gap-1">
             <NavLink to="/ingredient" label="Ingredient" />
             <NavLink to="/recipe" label="Recipe" />
+            <NavLink to="/cook" label="Cook" />
           </nav>
         </div>
       </header>

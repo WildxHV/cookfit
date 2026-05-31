@@ -4,6 +4,7 @@ import type {
   IngredientSummary,
   RecipeDetail,
   RecipeSummary,
+  SuggestResponse,
 } from "./types";
 
 // Vite proxies /api -> http://localhost:8000 in dev (see vite.config.ts).
@@ -68,6 +69,15 @@ export async function getRecipe(
 export async function aiLookupRecipe(q: string): Promise<RecipeDetail> {
   const { data } = await api.get<RecipeDetail>("/recipes/ai", {
     params: { q },
+  });
+  return data;
+}
+
+export async function suggestDishes(
+  ingredients: string[],
+): Promise<SuggestResponse> {
+  const { data } = await api.post<SuggestResponse>("/cook/suggest", {
+    ingredients,
   });
   return data;
 }

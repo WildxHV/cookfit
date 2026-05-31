@@ -82,3 +82,27 @@ export interface RecipeDetail {
   total: Macros;
   source: string;
 }
+
+export interface DishSuggestion {
+  name: string;
+  kind: string; // "authentic" | "fusion"
+  description: string;
+  uses: string[];
+  pantry: string[];
+  steps: string[];
+  tags: string[];
+}
+
+export interface CatalogMatch {
+  slug: string;
+  name: string;
+  meal_type: string;
+  have: string[];
+  missing: string[];
+}
+
+export interface SuggestResponse {
+  ideas: DishSuggestion[];
+  from_catalog: CatalogMatch[];
+  ai_error: string | null;
+}

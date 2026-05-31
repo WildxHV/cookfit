@@ -281,3 +281,18 @@ Two features requested: (1) show health/nutrition tags on ingredients (gluten-fr
 - `IngredientLookup`: renders tag chips under the name; a "Used in recipes" section listing the top 5 (each a link to `/recipe/:slug`) with a "View all N recipes →" link when >5.
 - **New page** `pages/IngredientRecipes.tsx` (`/ingredient/:slug/recipes`): header with back link + count, responsive grid of recipe cards (name, meal type, tag chips) each linking to the recipe.
 - **Verified live:** paneer shows the 4 tags + 3 recipe links; clicking "Matar Paneer" → `/recipe/matar-paneer` loads; onion shows top 5 + "View all 30 recipes →" → grid page of 30 cards + back link. `npx tsc --noEmit` clean; no console errors; `pytest` 39 passed.
+
+### 2026-05-31 — "What can I make?" — personalized dish suggestions from on-hand ingredients
+
+User wants to list the ingredients they have and get dish ideas — authentic AND creative/fusion (e.g. palak + capsicum + paneer + cheese + pasta → a high-protein palak-paneer pasta) — assuming everyday staples (salt, oil, cumin, chili, ginger, garlic, onion) are on hand.
+
+**Backend**
+- `schemas/cook.py`: `SuggestRequest{ingredients}`, `DishSuggestion{name,kind,description,uses,pantry,steps,tags}`, `CatalogMatch{slug,name,meal_type,have,missing}`, `SuggestResponse{ideas,from_catalog,ai_error}`.
+- `services/ai_suggest.py`: `suggest_dishes(ingredients)` — reuses the Gemini caller with a structured-output schema + a prompt that defines `PANTRY_STAPLES`, asks for 4-6 vegetarian dishes (mix of authentic + fusion) genuinely makeable from the listed items + staples, each with steps. Lightly normalized (drops entries without name/steps).
+- `api/v1/cook.py`: `POST /api/v1/cook/suggest`. Computes **catalog matches** locally (no API cost): treats categories spice/fat/sweetener/aromatic + onion/salt/sugar as pantry; maps the user's free-text terms to catalog ingredient slugs via `search.score_query` at threshold **0.8** (high, so "pasta" doesn't fuzzily hit "atta"/"matar"); a recipe matches if the user has ≥1 of its non-pantry ingredients and is missing ≤1, sorted by fewest missing. Then calls `suggest_dishes` for AI ideas; degrades gracefully (sets `ai_error`, still returns catalog matches) if AI is off or errors. Registered in `main.py`.
+- **Model bump:** `gemini-2.5-flash-lite`'s free daily quota was exhausted from testing; switched default to `gemini-2.5-flash` (still has quota, and better for creative generation) in `.env`, `.env.example`, `config.py`.
+
+**Frontend**
+- `api/types.ts` + `api/client.ts`: suggestion types + `suggestDishes(ingredients)` (POST).
+- `pages/CookPage.tsx` (`/cook`, nav label **Cook**): a chip input (type + Enter or comma to add, Backspace to remove, x on each chip), a note about assumed staples, and a "Suggest dishes" button (useMutation). Renders **"From our recipes"** (catalog match cards linking to `/recipe/:slug`, showing "Just need: X" or "You have everything!") and **"Ideas to try"** (idea cards with a classic/fusion badge, description, used-ingredient chips, and numbered steps). Route + nav added.
+- **Verified live with the user's exact example** (palak, capsicum, paneer, cheese, pasta): catalog → Palak Paneer, Paneer Bhurji ("Just need: Tomato"); ideas → Classic Palak Paneer, Paneer Capsicum Bhurji, **Creamy Palak Paneer Pasta (fusion)**, Cheesy Capsicum Pasta (fusion), Palak Capsicum Stir-fry. `tsc` clean, no console errors, `pytest` 39 passed.

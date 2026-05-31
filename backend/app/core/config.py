@@ -16,7 +16,7 @@ class Settings(BaseSettings):
     # Google Gemini (free tier via AI Studio) — used to look up foods missing
     # from our DB. Leave blank to disable the AI fallback.
     gemini_api_key: str = ""
-    gemini_model: str = "gemini-2.5-flash-lite"
+    gemini_model: str = "gemini-2.5-flash"
     gemini_timeout_s: float = 30.0
 
     @property
