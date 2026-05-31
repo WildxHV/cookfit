@@ -75,9 +75,11 @@ export async function aiLookupRecipe(q: string): Promise<RecipeDetail> {
 
 export async function suggestDishes(
   ingredients: string[],
+  avoid: string[] = [],
 ): Promise<SuggestResponse> {
   const { data } = await api.post<SuggestResponse>("/cook/suggest", {
     ingredients,
+    avoid,
   });
   return data;
 }

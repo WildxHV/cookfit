@@ -19,6 +19,7 @@ import {
   roundMacros,
   unitOptions,
 } from "../lib/nutrition";
+import { usePreferences, isAvoided } from "../lib/usePreferences";
 
 function Chip({ label }: { label: string }) {
   return (
@@ -38,6 +39,7 @@ export function IngredientLookup() {
   const [quantity, setQuantity] = useState(1);
   const [unit, setUnit] = useState<string>("");
   const [form, setForm] = useState<string>("");
+  const { avoid } = usePreferences();
 
   const { data: detail, isLoading, isError } = useQuery({
     queryKey: ["ingredient", slug],
@@ -120,6 +122,12 @@ export function IngredientLookup() {
               <Segmented options={detail.forms} value={form} onChange={setForm} />
             )}
           </div>
+
+          {isAvoided(detail.name, avoid) && (
+            <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm text-red-700">
+              ⚠ You've marked this as something you avoid.
+            </div>
+          )}
 
           {detail.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">

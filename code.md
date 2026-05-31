@@ -348,3 +348,21 @@ User: OpenAI's key had no credit (insufficient_quota). Remove OpenAI, use Groq a
 - `services/ai_lookup.py` `_build_backends`: priority order is now **Groq first**, then any other OpenAI-compatible providers, then Gemini models. (Groq uses the same OpenAI-compatible `_openai_generate` path against `https://api.groq.com/openai/v1`.)
 - `.env`: removed the OpenAI key/model; added `GROQ_API_KEY` (+ `GROQ_MODEL=llama-3.3-70b-versatile`). (`.env` is gitignored.)
 - **Verified live:** order `['groq', 'gemini:gemini-2.5-flash', ...]`; an ingredient lookup hit `api.groq.com` directly (HTTP 200, no fallback) and `GET /ingredients/ai?q=gooseberry` returned "Gooseberry (Amla)" stored with tags. Groq is fast and has a generous free tier, so this also sidesteps the Gemini daily-quota issue. `pytest` 39 passed.
+
+### 2026-05-31 — Personalization: allergens / "don't eat" list (remembered, applied everywhere)
+
+User: let people add allergens / things they don't eat, remember it ("cache") and apply to every search. No accounts → stored in the browser (localStorage).
+
+**Backend** (`/cook/suggest` honors avoid):
+- `schemas/cook.py`: `SuggestRequest.avoid: list[str]`.
+- `services/ai_suggest.py`: `suggest_dishes(ingredients, avoid)` injects an "ALLERGENS/AVOID: must NOT eat … in any form" rule into the prompt.
+- `api/v1/cook.py`: `_avoided(text, terms)` (case-insensitive substring or fuzzy ≥0.8, intentionally aggressive). `_catalog_matches` now takes `avoid` and drops any recipe containing an avoided ingredient; the endpoint passes `avoid` to the model and also post-filters AI ideas whose name/uses hit the avoid list (so the background recipe-persist, which uses the filtered ideas, won't store them either). **Allergen overrides "I have it"** — verified: with avoid=[paneer] and paneer in the ingredient list, zero suggestions used paneer.
+- 39 tests still pass.
+
+**Frontend** (browser-remembered, applied app-wide):
+- `lib/usePreferences.ts`: localStorage-backed hook (`cookfit:avoid`), synced across components/tabs via a custom event + `storage` event; plus `isAvoided(text, avoid)` helper.
+- `pages/Preferences.tsx` (`/preferences`, new ⚙ nav tab): chip editor to add/remove allergens (Enter/comma to add, × / Backspace to remove), red chips.
+- `CookPage`: sends `avoid` to the API and shows an "Avoiding: …  Edit" note.
+- `RecipeView`: red "⚠ Heads up — this recipe contains <X>, which you've chosen to avoid" banner when any item matches.
+- `IngredientLookup`: red "⚠ You've marked this as something you avoid" note when the looked-up item matches.
+- **Verified live:** added "paneer" in Preferences → persisted to localStorage; Palak Paneer showed the contains-avoided warning; Cook showed "Avoiding: paneer" and returned only paneer-free ideas + catalog (Spinach Tofu Curry, etc.). `npx tsc --noEmit` clean; no console errors.

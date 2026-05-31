@@ -57,18 +57,29 @@ Rules:
 - Only suggest dishes that are genuinely makeable from the listed ingredients \
 plus the pantry staples. Do not require major ingredients they don't have.
 - Every dish MUST be vegetarian (no meat, fish, poultry, egg).
-- For each dish: a short appetizing name; kind = "authentic" or "fusion"; a \
-one-line description; uses = the subset of THEIR listed ingredients it uses; \
-pantry = the staples it relies on; steps = 4-7 short cooking steps; tags like \
-high_protein, quick, fusion, comfort_food.
+{avoid_rule}- For each dish: a short appetizing name; kind = "authentic" or \
+"fusion"; a one-line description; uses = the subset of THEIR listed ingredients \
+it uses; pantry = the staples it relies on; steps = 4-7 short cooking steps; \
+tags like high_protein, quick, fusion, comfort_food.
 - Prefer dishes that use several of their ingredients together. Make at least \
 one a fun fusion idea when the ingredients allow it."""
 
 
-def suggest_dishes(ingredients: list[str]) -> list[dict]:
-    """Ask Gemini for dishes makeable from `ingredients` (+ pantry staples)."""
+def suggest_dishes(ingredients: list[str], avoid: list[str] | None = None) -> list[dict]:
+    """Ask Gemini for dishes makeable from `ingredients` (+ pantry staples),
+    never using anything in `avoid` (allergens / dislikes)."""
     have = ", ".join(i.strip() for i in ingredients if i.strip()) or "basic staples"
-    prompt = _PROMPT.format(have=have, pantry=", ".join(PANTRY_STAPLES))
+    avoid_terms = [a.strip() for a in (avoid or []) if a.strip()]
+    avoid_rule = ""
+    if avoid_terms:
+        avoid_rule = (
+            f"- ALLERGENS/AVOID: the user must NOT eat {', '.join(avoid_terms)}. "
+            "Do NOT suggest any dish that contains these or close relatives of "
+            "them, in any form.\n"
+        )
+    prompt = _PROMPT.format(
+        have=have, pantry=", ".join(PANTRY_STAPLES), avoid_rule=avoid_rule
+    )
     data = _call_gemini(prompt, _SUGGEST_SCHEMA)
 
     out: list[dict] = []

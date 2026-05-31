@@ -35,6 +35,7 @@ export function Layout({ children }: { children: ReactNode }) {
             <NavLink to="/ingredient" label="Ingredient" />
             <NavLink to="/recipe" label="Recipe" />
             <NavLink to="/cook" label="Cook" />
+            <NavLink to="/preferences" label="⚙" />
           </nav>
         </div>
       </header>

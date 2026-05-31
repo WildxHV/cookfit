@@ -2,9 +2,11 @@ from pydantic import BaseModel, Field
 
 
 class SuggestRequest(BaseModel):
-    """Ingredients the user has on hand."""
+    """Ingredients the user has on hand, plus things they avoid (allergens /
+    dislikes) that must never appear in suggestions."""
 
     ingredients: list[str] = Field(default_factory=list)
+    avoid: list[str] = Field(default_factory=list)
 
 
 class DishSuggestion(BaseModel):

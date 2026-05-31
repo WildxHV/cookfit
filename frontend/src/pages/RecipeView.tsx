@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { aiLookupRecipe, getRecipe, searchRecipes } from "../api/client";
+import { usePreferences, isAvoided } from "../lib/usePreferences";
 import type { RecipeSummary } from "../api/types";
 import { SearchBox } from "../components/SearchBox";
 import { ErrorBanner } from "../components/ErrorBanner";
@@ -47,6 +48,13 @@ export function RecipeView() {
     enabled: !!slug,
     placeholderData: (prev) => prev, // keep showing old data while refetching
   });
+
+  const { avoid } = usePreferences();
+  const flagged = recipe
+    ? recipe.items
+        .map((it) => it.name)
+        .filter((n) => isAvoided(n, avoid))
+    : [];
 
   const macros =
     recipe && (view === "per person" ? recipe.per_person : recipe.total);
@@ -100,6 +108,13 @@ export function RecipeView() {
 
       {recipe && macros && (
         <section className="flex flex-col gap-5 rounded-3xl border border-gray-100 bg-surface p-6 shadow-sm">
+          {flagged.length > 0 && (
+            <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              ⚠ Heads up — this recipe contains{" "}
+              <span className="font-semibold">{flagged.join(", ")}</span>, which
+              you've chosen to avoid.
+            </div>
+          )}
           <div className="flex flex-col gap-2">
             <h2 className="text-xl font-semibold">{recipe.name}</h2>
             <div className="flex flex-wrap items-center gap-2 text-xs text-muted">

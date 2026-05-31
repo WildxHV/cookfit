@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { suggestDishes } from "../api/client";
 import type { DishSuggestion } from "../api/types";
 import { ErrorBanner } from "../components/ErrorBanner";
+import { usePreferences } from "../lib/usePreferences";
 
 function Chip({
   label,
@@ -82,9 +83,10 @@ function IdeaCard({ idea }: { idea: DishSuggestion }) {
 export function CookPage() {
   const [items, setItems] = useState<string[]>([]);
   const [text, setText] = useState("");
+  const { avoid } = usePreferences();
 
   const mutation = useMutation({
-    mutationFn: (ingredients: string[]) => suggestDishes(ingredients),
+    mutationFn: (ingredients: string[]) => suggestDishes(ingredients, avoid),
   });
 
   function addItem(raw: string) {
@@ -145,6 +147,14 @@ export function CookPage() {
           We'll assume you also have everyday staples — salt, oil, cumin, chili,
           turmeric, ginger, garlic and onion.
         </p>
+        {avoid.length > 0 && (
+          <p className="text-xs text-red-600">
+            Avoiding: {avoid.join(", ")}.{" "}
+            <Link to="/preferences" className="underline">
+              Edit
+            </Link>
+          </p>
+        )}
         <div>
           <button
             type="button"

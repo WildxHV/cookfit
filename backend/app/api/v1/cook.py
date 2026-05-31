@@ -56,6 +56,22 @@ def _have_slugs(user_terms: list[str], ingredients: list[Ingredient]) -> set[str
     return have
 
 
+def _avoided(text: str, avoid_terms: list[str]) -> bool:
+    """True if `text` (an ingredient/dish name) matches anything to avoid.
+
+    Aggressive on purpose — better to drop a borderline match than serve an
+    allergen: matches on case-insensitive substring or a strong fuzzy score.
+    """
+    low = text.lower()
+    for a in avoid_terms:
+        al = a.lower().strip()
+        if not al:
+            continue
+        if al in low or low in al or search.score_query(a, [text]) >= 0.8:
+            return True
+    return False
+
+
 def _unmatched_terms(user_terms: list[str], ingredients: list[Ingredient]) -> list[str]:
     """User terms that don't match any catalog ingredient (candidates to fetch)."""
     unmatched: list[str] = []
@@ -140,9 +156,10 @@ def _persist_recipes_bg(names: list[str]) -> None:
 
 
 def _catalog_matches(
-    db: Session, user_terms: list[str], limit: int = 8
+    db: Session, user_terms: list[str], avoid: list[str], limit: int = 8
 ) -> list[CatalogMatch]:
-    """Catalog recipes makeable (or nearly) from the user's ingredients + pantry."""
+    """Catalog recipes makeable (or nearly) from the user's ingredients + pantry,
+    excluding any recipe that contains an avoided ingredient."""
     ingredients = list(
         db.scalars(select(Ingredient).options(selectinload(Ingredient.units))).all()
     )
@@ -165,6 +182,11 @@ def _catalog_matches(
             for it in r.items
             if it.ingredient_id in id_to_slug
         }
+        # Drop recipes containing anything the user avoids.
+        if avoid and any(
+            _avoided(name_by_slug.get(s, s), avoid) for s in req_slugs
+        ):
+            continue
         non_pantry = req_slugs - pantry
         if not non_pantry:
             continue
@@ -205,7 +227,8 @@ def suggest(
     stored in the background (validated the same way as the lookup endpoints).
     """
     terms = [t.strip() for t in body.ingredients if t.strip()]
-    from_catalog = _catalog_matches(db, terms)
+    avoid = [a.strip() for a in body.avoid if a.strip()]
+    from_catalog = _catalog_matches(db, terms, avoid)
 
     ideas: list[DishSuggestion] = []
     ai_error: str | None = None
@@ -215,8 +238,15 @@ def suggest(
         ai_error = "Idea generation isn't configured on the server."
     else:
         try:
-            raw = ai_suggest.suggest_dishes(terms)
+            raw = ai_suggest.suggest_dishes(terms, avoid)
             ideas = [DishSuggestion(**s) for s in raw]
+            # Defensive: drop any idea that slipped an avoided item into name/uses.
+            if avoid:
+                ideas = [
+                    d for d in ideas
+                    if not _avoided(d.name, avoid)
+                    and not any(_avoided(u, avoid) for u in d.uses)
+                ]
         except GeminiError:
             ai_error = "Couldn't generate ideas right now. Please try again."
 
