@@ -9,7 +9,6 @@ every value is re-checked by `ai_validation` before anything touches the DB.
 
 from __future__ import annotations
 
-import itertools
 import json
 import logging
 from dataclasses import dataclass
@@ -196,18 +195,11 @@ class _Backend:
     base_url: str | None = None  # OpenAI-compatible base URL
 
 
-# Round-robin cursor so we don't always start at the same backend.
-_rr = itertools.count()
-
-
 def _build_backends(settings) -> list[_Backend]:
-    """Every configured backend, Gemini models first, then OpenAI-compatibles."""
+    """Configured backends in PRIORITY order: OpenAI-compatible providers first
+    (OpenAI is the primary), then Gemini models as fallback. No round-robin —
+    we always try the primary first and only move down the list on failure."""
     backends: list[_Backend] = []
-    if settings.gemini_api_key.strip():
-        for model in settings.gemini_model_list:
-            backends.append(
-                _Backend(f"gemini:{model}", "gemini", model, settings.gemini_api_key)
-            )
     if settings.openai_api_key.strip():
         backends.append(
             _Backend("openai", "openai", settings.openai_model,
@@ -223,6 +215,11 @@ def _build_backends(settings) -> list[_Backend]:
             _Backend("groq", "openai", settings.groq_model,
                      settings.groq_api_key, settings.groq_base_url)
         )
+    if settings.gemini_api_key.strip():
+        for model in settings.gemini_model_list:
+            backends.append(
+                _Backend(f"gemini:{model}", "gemini", model, settings.gemini_api_key)
+            )
     return backends
 
 
@@ -296,7 +293,7 @@ def _openai_generate(
 def _generate_json(
     prompt: str, schema: dict, *, max_output_tokens: int | None = None
 ) -> dict:
-    """Try every configured backend (round-robin start, then fallback) until one
+    """Try backends in priority order (primary first, then fallbacks) until one
     returns valid JSON. Raises GeminiError only if they all fail."""
     settings = get_settings()
     backends = _build_backends(settings)
@@ -304,12 +301,9 @@ def _generate_json(
         raise GeminiError("AI is not configured (no provider API key set).")
 
     timeout = settings.gemini_timeout_s + (60.0 if max_output_tokens else 0.0)
-    n = len(backends)
-    start = next(_rr) % n
-    order = [backends[(start + i) % n] for i in range(n)]
 
     errors: list[str] = []
-    for b in order:
+    for b in backends:
         try:
             if b.kind == "gemini":
                 return _gemini_generate(b, prompt, schema, max_output_tokens, timeout)

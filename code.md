@@ -332,3 +332,11 @@ User: calls keep hitting Gemini rate limits — add fallbacks (other Gemini mode
 - `.env.example`: documents `GEMINI_FALLBACK_MODELS` + the optional `OPENAI_*`, `XAI_*`, `GROQ_*` keys.
 - **Verified live:** primary `gemini-2.5-flash` is 429 (quota spent today) → orchestrator logs "trying next" → `gemini-2.5-flash-lite` returns 200. `GET /ingredients/ai?q=blackberry` succeeded end-to-end (stored, source=ai, tagged) despite the primary being rate-limited. `pytest` 39 passed (endpoint tests monkeypatch `lookup_*`, unaffected).
 - Effect: with just the one Gemini key we now have a 4-model fallback chain; adding any OpenAI/Grok/Groq key extends the pool further. Calls only fail if every backend is simultaneously down.
+
+### 2026-05-31 — Make OpenAI the primary backend, Gemini the fallback (no round-robin)
+
+User added an OpenAI key and wants OpenAI primary, Gemini fallback, deterministic (no switching/round-robin).
+
+- `services/ai_lookup.py`: `_build_backends` now emits backends in PRIORITY order — OpenAI-compatible providers first (OpenAI, then Grok, then Groq), then the Gemini models. Removed the round-robin cursor (`itertools` import dropped); `_generate_json` iterates the fixed priority list, only moving to the next backend when one fails.
+- **Verified live:** order is `['openai', 'gemini:gemini-2.5-flash', 'gemini:gemini-2.5-flash-lite', ...]`. A lookup tried OpenAI first; it returned **429 insufficient_quota** (the OpenAI account has no billed credit), so it fell through to Gemini and succeeded — confirming primary→fallback works exactly as intended. `pytest` 39 passed.
+- **Heads-up:** OpenAI's free key isn't truly free — without a paid balance it returns 429 "exceeded your current quota". Until billing is added to the OpenAI account, OpenAI will be skipped and Gemini will keep serving. The ordering is correct and will use OpenAI automatically once it has quota.
