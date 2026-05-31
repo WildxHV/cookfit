@@ -340,3 +340,11 @@ User added an OpenAI key and wants OpenAI primary, Gemini fallback, deterministi
 - `services/ai_lookup.py`: `_build_backends` now emits backends in PRIORITY order — OpenAI-compatible providers first (OpenAI, then Grok, then Groq), then the Gemini models. Removed the round-robin cursor (`itertools` import dropped); `_generate_json` iterates the fixed priority list, only moving to the next backend when one fails.
 - **Verified live:** order is `['openai', 'gemini:gemini-2.5-flash', 'gemini:gemini-2.5-flash-lite', ...]`. A lookup tried OpenAI first; it returned **429 insufficient_quota** (the OpenAI account has no billed credit), so it fell through to Gemini and succeeded — confirming primary→fallback works exactly as intended. `pytest` 39 passed.
 - **Heads-up:** OpenAI's free key isn't truly free — without a paid balance it returns 429 "exceeded your current quota". Until billing is added to the OpenAI account, OpenAI will be skipped and Gemini will keep serving. The ordering is correct and will use OpenAI automatically once it has quota.
+
+### 2026-05-31 — Switch primary backend to Groq (Gemini secondary), drop OpenAI
+
+User: OpenAI's key had no credit (insufficient_quota). Remove OpenAI, use Groq as primary with Gemini as fallback.
+
+- `services/ai_lookup.py` `_build_backends`: priority order is now **Groq first**, then any other OpenAI-compatible providers, then Gemini models. (Groq uses the same OpenAI-compatible `_openai_generate` path against `https://api.groq.com/openai/v1`.)
+- `.env`: removed the OpenAI key/model; added `GROQ_API_KEY` (+ `GROQ_MODEL=llama-3.3-70b-versatile`). (`.env` is gitignored.)
+- **Verified live:** order `['groq', 'gemini:gemini-2.5-flash', ...]`; an ingredient lookup hit `api.groq.com` directly (HTTP 200, no fallback) and `GET /ingredients/ai?q=gooseberry` returned "Gooseberry (Amla)" stored with tags. Groq is fast and has a generous free tier, so this also sidesteps the Gemini daily-quota issue. `pytest` 39 passed.

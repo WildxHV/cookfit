@@ -196,10 +196,15 @@ class _Backend:
 
 
 def _build_backends(settings) -> list[_Backend]:
-    """Configured backends in PRIORITY order: OpenAI-compatible providers first
-    (OpenAI is the primary), then Gemini models as fallback. No round-robin —
-    we always try the primary first and only move down the list on failure."""
+    """Configured backends in PRIORITY order: Groq is the primary, then any
+    other OpenAI-compatible providers, then Gemini models as fallback. No
+    round-robin — we always try the primary first and only move down on failure."""
     backends: list[_Backend] = []
+    if settings.groq_api_key.strip():
+        backends.append(
+            _Backend("groq", "openai", settings.groq_model,
+                     settings.groq_api_key, settings.groq_base_url)
+        )
     if settings.openai_api_key.strip():
         backends.append(
             _Backend("openai", "openai", settings.openai_model,
@@ -209,11 +214,6 @@ def _build_backends(settings) -> list[_Backend]:
         backends.append(
             _Backend("grok", "openai", settings.xai_model,
                      settings.xai_api_key, settings.xai_base_url)
-        )
-    if settings.groq_api_key.strip():
-        backends.append(
-            _Backend("groq", "openai", settings.groq_model,
-                     settings.groq_api_key, settings.groq_base_url)
         )
     if settings.gemini_api_key.strip():
         for model in settings.gemini_model_list:
