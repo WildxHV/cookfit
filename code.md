@@ -366,3 +366,12 @@ User: let people add allergens / things they don't eat, remember it ("cache") an
 - `RecipeView`: red "⚠ Heads up — this recipe contains <X>, which you've chosen to avoid" banner when any item matches.
 - `IngredientLookup`: red "⚠ You've marked this as something you avoid" note when the looked-up item matches.
 - **Verified live:** added "paneer" in Preferences → persisted to localStorage; Palak Paneer showed the contains-avoided warning; Cook showed "Avoiding: paneer" and returned only paneer-free ideas + catalog (Spinach Tofu Curry, etc.). `npx tsc --noEmit` clean; no console errors.
+
+### 2026-05-31 — Home redesign (Cook hero) + overall UI theme refresh
+
+- **Home** (`pages/Home.tsx`): the Cook / "what can I make?" flow is now the **hero** — a gradient card with a heading, an ingredient text box and a "Find dishes →" CTA. Submitting navigates to `/cook?have=<comma list>`. The Ingredient lookup and Recipe & servings tools sit below as cards ("Or look something up").
+- **CookPage** reads `?have=` (via `useSearchParams`), prefills the chips and auto-runs the suggestion. The auto-run `mutate` is deferred with `setTimeout` + effect cleanup so React's dev StrictMode double-mount cancels the throwaway call and only the live mount fires (fixed an earlier "stuck on Cooking up ideas…" in dev).
+- **Theme refresh** (`index.css`): added Google Fonts **Inter** (body) + **Sora** (display, via `.font-display`); softened, subtly tinted canvas with corner radial gradients (green + warm); added a warm **spice** accent palette for the hero CTA / highlights. Page container widened to `max-w-4xl`.
+- **Header** (`Layout.tsx`): gradient logo badge, display-font wordmark, gradient pill for the active nav item, blur bar.
+- Headings across pages use `font-display`; Home cards got gradient icon tiles + hover lift; Cook's Suggest button is now a gradient with active-press.
+- **Verified live:** hero → "Find dishes" → `/cook?have=tomato,onion,rice` prefilled + auto-suggested (4 ideas + 8 catalog matches); manual suggest works; `tsc` clean; no console errors.

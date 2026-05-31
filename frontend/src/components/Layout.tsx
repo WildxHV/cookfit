@@ -7,9 +7,9 @@ function NavLink({ to, label }: { to: string; label: string }) {
   return (
     <Link
       to={to}
-      className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+      className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition ${
         active
-          ? "bg-accent-600 text-white"
+          ? "bg-gradient-to-br from-accent-500 to-accent-700 text-white shadow-sm shadow-accent-600/30"
           : "text-muted hover:bg-accent-50 hover:text-accent-700"
       }`}
     >
@@ -21,13 +21,13 @@ function NavLink({ to, label }: { to: string; label: string }) {
 export function Layout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-full">
-      <header className="sticky top-0 z-20 border-b border-gray-100 bg-surface/80 backdrop-blur">
-        <div className="mx-auto flex max-w-3xl items-center justify-between px-5 py-3">
-          <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-xl bg-accent-600 text-lg">
+      <header className="sticky top-0 z-20 border-b border-black/5 bg-canvas/70 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-3">
+          <Link to="/" className="flex items-center gap-2.5">
+            <span className="grid h-9 w-9 place-items-center rounded-2xl bg-gradient-to-br from-accent-400 to-accent-700 text-lg shadow-sm shadow-accent-700/30">
               🥗
             </span>
-            <span className="text-lg font-semibold tracking-tight">
+            <span className="font-display text-lg font-bold tracking-tight">
               Cook<span className="text-accent-600">Fit</span>
             </span>
           </Link>
@@ -39,7 +39,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </nav>
         </div>
       </header>
-      <main className="mx-auto max-w-3xl px-5 py-8">{children}</main>
+      <main className="mx-auto max-w-4xl px-5 py-8 sm:py-10">{children}</main>
     </div>
   );
 }

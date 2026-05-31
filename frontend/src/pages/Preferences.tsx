@@ -17,7 +17,9 @@ export function Preferences() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Your preferences</h1>
+        <h1 className="font-display text-2xl font-bold tracking-tight">
+          Your preferences
+        </h1>
         <p className="mt-1 text-sm text-muted">
           List anything you're allergic to or simply don't eat. We'll remember it
           on this device and keep it out of your suggestions — and flag any recipe

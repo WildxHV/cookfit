@@ -62,7 +62,9 @@ export function RecipeView() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">Recipe & servings</h1>
+        <h1 className="font-display text-2xl font-bold tracking-tight">
+          Recipe &amp; servings
+        </h1>
         <p className="mt-1 text-sm text-muted">
           Search a dish, set the number of people, and get scaled quantities with
           per-person and total nutrition.

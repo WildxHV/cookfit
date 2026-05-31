@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { suggestDishes } from "../api/client";
 import type { DishSuggestion } from "../api/types";
 import { ErrorBanner } from "../components/ErrorBanner";
@@ -84,10 +84,29 @@ export function CookPage() {
   const [items, setItems] = useState<string[]>([]);
   const [text, setText] = useState("");
   const { avoid } = usePreferences();
+  const [searchParams] = useSearchParams();
 
   const mutation = useMutation({
     mutationFn: (ingredients: string[]) => suggestDishes(ingredients, avoid),
   });
+  const mutateRef = useRef(mutation.mutate);
+  mutateRef.current = mutation.mutate;
+
+  // Prefill + auto-suggest when arriving from the home hero (?have=a,b,c). The
+  // mutate is deferred a tick with cleanup so React's dev double-mount cancels
+  // the throwaway call and only the live mount fires.
+  useEffect(() => {
+    const have = searchParams.get("have");
+    if (!have) return;
+    const initial = have
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (!initial.length) return;
+    setItems(initial);
+    const id = setTimeout(() => mutateRef.current(initial), 0);
+    return () => clearTimeout(id);
+  }, [searchParams]);
 
   function addItem(raw: string) {
     const v = raw.trim().replace(/,$/, "").trim();
@@ -107,7 +126,9 @@ export function CookPage() {
   return (
     <div className="flex flex-col gap-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">What can I make?</h1>
+        <h1 className="font-display text-2xl font-bold tracking-tight">
+          What can I make?
+        </h1>
         <p className="mt-1 text-sm text-muted">
           List the ingredients you have and we'll suggest dishes — classic and
           fusion — you can cook right now.
@@ -160,7 +181,7 @@ export function CookPage() {
             type="button"
             disabled={items.length === 0 || mutation.isPending}
             onClick={() => mutation.mutate(items)}
-            className="rounded-2xl bg-accent-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-accent-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-2xl bg-gradient-to-br from-accent-500 to-accent-700 px-6 py-2.5 text-sm font-semibold text-white shadow-sm shadow-accent-700/30 transition hover:brightness-105 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
           >
             {mutation.isPending ? "Cooking up ideas…" : "Suggest dishes"}
           </button>
