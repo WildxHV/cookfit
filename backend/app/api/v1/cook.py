@@ -1,21 +1,33 @@
-from fastapi import APIRouter, Depends
+import logging
+
+from fastapi import APIRouter, BackgroundTasks, Depends
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from app.core.config import get_settings
-from app.db.session import get_db
+from app.db.session import SessionLocal, get_db
 from app.models import Ingredient, Recipe
-from app.models.recipe import RecipeIngredient
 from app.schemas.cook import (
     CatalogMatch,
     DishSuggestion,
     SuggestRequest,
     SuggestResponse,
 )
-from app.services import ai_suggest, search
+from app.services import ai_lookup, ai_suggest, search
 from app.services.ai_lookup import GeminiError
+from app.services.ai_persist import upsert_ai_ingredient, upsert_ai_recipe
+from app.services.ai_validation import (
+    ValidationError,
+    validate_ingredient,
+    validate_recipe,
+)
+
+logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/cook", tags=["cook"])
+
+# Skip an AI fetch when we already have a near-certain match for the name.
+_DEDUPE_THRESHOLD = 0.85
 
 # Catalog categories treated as everyday staples the user is assumed to have.
 _PANTRY_CATEGORIES = {"spice", "fat", "sweetener", "aromatic"}
@@ -42,6 +54,77 @@ def _have_slugs(user_terms: list[str], ingredients: list[Ingredient]) -> set[str
         if any(search.score_query(t, candidates) >= _HAVE_THRESHOLD for t in terms):
             have.add(ing.slug)
     return have
+
+
+def _unmatched_terms(user_terms: list[str], ingredients: list[Ingredient]) -> list[str]:
+    """User terms that don't match any catalog ingredient (candidates to fetch)."""
+    unmatched: list[str] = []
+    for t in (t.strip() for t in user_terms if t.strip()):
+        cands_hit = any(
+            search.score_query(t, [i.name, *i.aliases]) >= _HAVE_THRESHOLD
+            for i in ingredients
+        )
+        if not cands_hit:
+            unmatched.append(t)
+    return unmatched
+
+
+# --- Background catalog-building -------------------------------------------
+# When a user mentions an ingredient we don't have, or we suggest a dish, we
+# fetch the full validated data from Gemini and store it — so the catalog grows
+# from real usage. These run AFTER the response is sent and never raise; the
+# same strict validators as the lookup endpoints gate every write.
+
+def _persist_ingredient_bg(term: str) -> None:
+    db = SessionLocal()
+    try:
+        existing = search.rank(
+            term,
+            list(db.scalars(select(Ingredient)).all()),
+            searchable=lambda i: [i.name, *i.aliases],
+            limit=1,
+            threshold=_DEDUPE_THRESHOLD,
+        )
+        if existing:
+            return
+        clean = validate_ingredient(ai_lookup.lookup_ingredient(term))
+        upsert_ai_ingredient(db, clean)
+        db.commit()
+        logger.info("cook: stored AI ingredient %r", clean["slug"])
+    except (GeminiError, ValidationError) as exc:
+        db.rollback()
+        logger.info("cook: skipped ingredient %r: %s", term, exc)
+    except Exception:  # never let a background task crash the worker
+        db.rollback()
+        logger.exception("cook: ingredient persist failed for %r", term)
+    finally:
+        db.close()
+
+
+def _persist_recipe_bg(name: str) -> None:
+    db = SessionLocal()
+    try:
+        existing = search.rank(
+            name,
+            list(db.scalars(select(Recipe)).all()),
+            searchable=lambda r: [r.name, *r.aliases],
+            limit=1,
+            threshold=_DEDUPE_THRESHOLD,
+        )
+        if existing:
+            return
+        validated = validate_recipe(ai_lookup.lookup_recipe(name))
+        upsert_ai_recipe(db, validated)
+        db.commit()
+        logger.info("cook: stored AI recipe %r", validated["recipe"]["slug"])
+    except (GeminiError, ValidationError) as exc:
+        db.rollback()
+        logger.info("cook: skipped recipe %r: %s", name, exc)
+    except Exception:
+        db.rollback()
+        logger.exception("cook: recipe persist failed for %r", name)
+    finally:
+        db.close()
 
 
 def _catalog_matches(
@@ -98,12 +181,16 @@ def _catalog_matches(
 @router.post("/suggest", response_model=SuggestResponse)
 def suggest(
     body: SuggestRequest,
+    background_tasks: BackgroundTasks,
     db: Session = Depends(get_db),
 ) -> SuggestResponse:
     """Given the ingredients a user has, suggest dishes to make.
 
     Combines creative AI ideas (authentic + fusion) with catalog recipes that
     are already (nearly) makeable from those ingredients plus pantry staples.
+    As a side effect, the catalog grows from usage: ingredients the user
+    mentioned but we don't have, and the dishes we suggest, are fetched and
+    stored in the background (validated the same way as the lookup endpoints).
     """
     terms = [t.strip() for t in body.ingredients if t.strip()]
     from_catalog = _catalog_matches(db, terms)
@@ -120,5 +207,13 @@ def suggest(
             ideas = [DishSuggestion(**s) for s in raw]
         except GeminiError:
             ai_error = "Couldn't generate ideas right now. Please try again."
+
+    # Grow the catalog in the background (no effect on this response).
+    if get_settings().ai_enabled and terms:
+        ingredients = list(db.scalars(select(Ingredient)).all())
+        for term in _unmatched_terms(terms, ingredients):
+            background_tasks.add_task(_persist_ingredient_bg, term)
+        for idea in ideas[:6]:
+            background_tasks.add_task(_persist_recipe_bg, idea.name)
 
     return SuggestResponse(ideas=ideas, from_catalog=from_catalog, ai_error=ai_error)
