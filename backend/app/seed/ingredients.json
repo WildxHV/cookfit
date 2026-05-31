@@ -41,6 +41,13 @@
         "carbs_g": 19.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -85,6 +92,13 @@
         "carbs_g": 19.5,
         "fat_g": 0.5
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -128,6 +142,13 @@
         "carbs_g": 20.0,
         "fat_g": 1.8
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -171,6 +192,13 @@
         "carbs_g": 20.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -214,6 +242,14 @@
         "carbs_g": 18.0,
         "fat_g": 0.5
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate",
+      "Calcium"
     ]
   },
   {
@@ -253,6 +289,13 @@
         "carbs_g": 22.8,
         "fat_g": 0.5
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -294,6 +337,13 @@
         "carbs_g": 27.4,
         "fat_g": 2.6
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -326,6 +376,12 @@
         "carbs_g": 72.0,
         "fat_g": 1.7
       }
+    ],
+    "tags": [
+      "high protein",
+      "high fiber",
+      "Iron",
+      "B Vitamins"
     ]
   },
   {
@@ -354,7 +410,8 @@
         "carbs_g": 50.0,
         "fat_g": 3.7
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "basmati-rice",
@@ -394,6 +451,9 @@
         "carbs_g": 28.0,
         "fat_g": 0.3
       }
+    ],
+    "tags": [
+      "gluten-free"
     ]
   },
   {
@@ -422,6 +482,9 @@
         "carbs_g": 77.3,
         "fat_g": 1.2
       }
+    ],
+    "tags": [
+      "gluten-free"
     ]
   },
   {
@@ -453,6 +516,13 @@
         "carbs_g": 66.3,
         "fat_g": 6.9
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Magnesium",
+      "Iron"
     ]
   },
   {
@@ -484,6 +554,13 @@
         "carbs_g": 57.8,
         "fat_g": 6.7
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -515,6 +592,11 @@
         "carbs_g": 17.0,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Potassium"
     ]
   },
   {
@@ -546,6 +628,10 @@
         "carbs_g": 9.3,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   },
   {
@@ -576,6 +662,11 @@
         "carbs_g": 3.9,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Potassium"
     ]
   },
   {
@@ -606,6 +697,13 @@
         "carbs_g": 3.6,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Iron",
+      "Vitamin K",
+      "Vitamin A",
+      "Folate"
     ]
   },
   {
@@ -633,6 +731,10 @@
         "carbs_g": 5.0,
         "fat_g": 0.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   },
   {
@@ -660,6 +762,11 @@
         "carbs_g": 14.5,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin K",
+      "Vitamin C"
     ]
   },
   {
@@ -690,6 +797,11 @@
         "carbs_g": 9.6,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin A",
+      "Beta-carotene"
     ]
   },
   {
@@ -721,6 +833,11 @@
         "carbs_g": 6.0,
         "fat_g": 0.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Vitamin A"
     ]
   },
   {
@@ -748,6 +865,11 @@
         "carbs_g": 7.5,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Folate"
     ]
   },
   {
@@ -780,6 +902,10 @@
         "carbs_g": 5.9,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Antioxidants"
     ]
   },
   {
@@ -811,6 +937,12 @@
         "carbs_g": 6.1,
         "fat_g": 22.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "Calcium",
+      "Vitamin B12"
     ]
   },
   {
@@ -842,6 +974,12 @@
         "carbs_g": 4.7,
         "fat_g": 3.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Calcium",
+      "Vitamin B12",
+      "Vitamin D"
     ]
   },
   {
@@ -873,6 +1011,12 @@
         "carbs_g": 4.7,
         "fat_g": 3.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Calcium",
+      "Probiotics",
+      "Vitamin B12"
     ]
   },
   {
@@ -903,7 +1047,8 @@
         "carbs_g": 0.0,
         "fat_g": 100.0
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "mustard-oil",
@@ -935,7 +1080,8 @@
         "carbs_g": 0.0,
         "fat_g": 100.0
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "peanuts",
@@ -966,6 +1112,14 @@
         "carbs_g": 16.1,
         "fat_g": 49.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Magnesium",
+      "Folate",
+      "Vitamin E"
     ]
   },
   {
@@ -997,6 +1151,13 @@
         "carbs_g": 30.2,
         "fat_g": 43.8
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "Magnesium",
+      "Copper",
+      "Iron"
     ]
   },
   {
@@ -1028,6 +1189,11 @@
         "carbs_g": 15.2,
         "fat_g": 33.5
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high fiber",
+      "Manganese"
     ]
   },
   {
@@ -1058,6 +1224,9 @@
         "carbs_g": 18.0,
         "fat_g": 0.8
       }
+    ],
+    "tags": [
+      "Antioxidants"
     ]
   },
   {
@@ -1089,6 +1258,10 @@
         "carbs_g": 33.0,
         "fat_g": 0.5
       }
+    ],
+    "tags": [
+      "Allicin",
+      "Antioxidants"
     ]
   },
   {
@@ -1116,6 +1289,9 @@
         "carbs_g": 9.5,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "Vitamin C"
     ]
   },
   {
@@ -1147,7 +1323,8 @@
         "carbs_g": 100.0,
         "fat_g": 0.0
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "sabut-moong",
@@ -1191,6 +1368,13 @@
         "carbs_g": 19.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -1231,6 +1415,13 @@
         "carbs_g": 22.0,
         "fat_g": 2.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -1271,6 +1462,13 @@
         "carbs_g": 21.0,
         "fat_g": 0.5
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -1310,6 +1508,14 @@
         "carbs_g": 9.9,
         "fat_g": 9.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Calcium",
+      "Folate"
     ]
   },
   {
@@ -1350,6 +1556,11 @@
         "carbs_g": 21.0,
         "fat_g": 0.6
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "Iron"
     ]
   },
   {
@@ -1386,6 +1597,11 @@
         "carbs_g": 21.0,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "Iron"
     ]
   },
   {
@@ -1430,6 +1646,13 @@
         "carbs_g": 20.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Folate"
     ]
   },
   {
@@ -1470,6 +1693,12 @@
         "carbs_g": 21.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Iron"
     ]
   },
   {
@@ -1501,6 +1730,12 @@
         "carbs_g": 5.9,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "Vitamin C",
+      "Iron"
     ]
   },
   {
@@ -1540,6 +1775,11 @@
         "carbs_g": 26.0,
         "fat_g": 1.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Magnesium",
+      "B Vitamins"
     ]
   },
   {
@@ -1571,6 +1811,12 @@
         "carbs_g": 67.0,
         "fat_g": 5.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high fiber",
+      "Iron",
+      "Magnesium"
     ]
   },
   {
@@ -1602,6 +1848,12 @@
         "carbs_g": 72.0,
         "fat_g": 3.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high fiber",
+      "Iron",
+      "Magnesium"
     ]
   },
   {
@@ -1634,6 +1886,12 @@
         "carbs_g": 72.0,
         "fat_g": 1.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high fiber",
+      "Calcium",
+      "Iron"
     ]
   },
   {
@@ -1666,6 +1924,10 @@
         "carbs_g": 76.0,
         "fat_g": 3.9
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high fiber"
     ]
   },
   {
@@ -1704,6 +1966,14 @@
         "carbs_g": 21.3,
         "fat_g": 1.9
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Magnesium",
+      "Iron",
+      "Complete Protein"
     ]
   },
   {
@@ -1736,6 +2006,9 @@
         "carbs_g": 73.0,
         "fat_g": 1.1
       }
+    ],
+    "tags": [
+      "high protein"
     ]
   },
   {
@@ -1768,7 +2041,8 @@
         "carbs_g": 76.0,
         "fat_g": 0.9
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "sabudana",
@@ -1800,6 +2074,9 @@
         "carbs_g": 87.0,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free"
     ]
   },
   {
@@ -1826,6 +2103,9 @@
         "carbs_g": 26.0,
         "fat_g": 0.3
       }
+    ],
+    "tags": [
+      "gluten-free"
     ]
   },
   {
@@ -1853,6 +2133,9 @@
         "carbs_g": 30.0,
         "fat_g": 4.0
       }
+    ],
+    "tags": [
+      "gluten-free"
     ]
   },
   {
@@ -1880,6 +2163,10 @@
         "carbs_g": 41.0,
         "fat_g": 3.4
       }
+    ],
+    "tags": [
+      "high protein",
+      "high fiber"
     ]
   },
   {
@@ -1920,6 +2207,12 @@
         "carbs_g": 26.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "high protein",
+      "high fiber",
+      "Iron",
+      "Magnesium"
     ]
   },
   {
@@ -1952,6 +2245,10 @@
         "carbs_g": 3.4,
         "fat_g": 0.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   },
   {
@@ -1983,6 +2280,10 @@
         "carbs_g": 3.7,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   },
   {
@@ -2015,6 +2316,10 @@
         "carbs_g": 4.0,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   },
   {
@@ -2043,6 +2348,10 @@
         "carbs_g": 6.5,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin A"
     ]
   },
   {
@@ -2070,6 +2379,11 @@
         "carbs_g": 5.8,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Vitamin K"
     ]
   },
   {
@@ -2098,6 +2412,11 @@
         "carbs_g": 7.0,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Folate"
     ]
   },
   {
@@ -2129,6 +2448,11 @@
         "carbs_g": 10.0,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Folate",
+      "Manganese"
     ]
   },
   {
@@ -2161,6 +2485,10 @@
         "carbs_g": 3.4,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   },
   {
@@ -2192,6 +2520,10 @@
         "carbs_g": 3.6,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Hydrating"
     ]
   },
   {
@@ -2219,6 +2551,11 @@
         "carbs_g": 3.3,
         "fat_g": 0.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin D",
+      "B Vitamins"
     ]
   },
   {
@@ -2250,6 +2587,11 @@
         "carbs_g": 20.0,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin A",
+      "Potassium"
     ]
   },
   {
@@ -2282,6 +2624,10 @@
         "carbs_g": 26.0,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Potassium"
     ]
   },
   {
@@ -2313,6 +2659,11 @@
         "carbs_g": 6.0,
         "fat_g": 0.9
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Iron",
+      "Vitamin K"
     ]
   },
   {
@@ -2345,6 +2696,11 @@
         "carbs_g": 3.7,
         "fat_g": 0.5
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin K",
+      "Vitamin C"
     ]
   },
   {
@@ -2376,6 +2732,12 @@
         "carbs_g": 15.0,
         "fat_g": 0.9
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high fiber",
+      "Vitamin A",
+      "Iron"
     ]
   },
   {
@@ -2402,6 +2764,12 @@
         "carbs_g": 7.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Vitamin K",
+      "Folate"
     ]
   },
   {
@@ -2429,6 +2797,10 @@
         "carbs_g": 6.3,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   },
   {
@@ -2460,6 +2832,10 @@
         "carbs_g": 32.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Potassium"
     ]
   },
   {
@@ -2492,6 +2868,11 @@
         "carbs_g": 8.5,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Iron"
     ]
   },
   {
@@ -2521,6 +2902,9 @@
         "carbs_g": 19.0,
         "fat_g": 1.2
       }
+    ],
+    "tags": [
+      "gluten-free"
     ]
   },
   {
@@ -2552,6 +2936,10 @@
         "carbs_g": 0.1,
         "fat_g": 81.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin A"
     ]
   },
   {
@@ -2584,6 +2972,11 @@
         "carbs_g": 4.5,
         "fat_g": 0.9
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Calcium",
+      "Probiotics"
     ]
   },
   {
@@ -2615,6 +3008,11 @@
         "carbs_g": 1.9,
         "fat_g": 4.8
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Calcium",
+      "Iron"
     ]
   },
   {
@@ -2646,6 +3044,11 @@
         "carbs_g": 25.0,
         "fat_g": 26.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "Calcium"
     ]
   },
   {
@@ -2677,6 +3080,10 @@
         "carbs_g": 2.8,
         "fat_g": 30.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin A"
     ]
   },
   {
@@ -2708,6 +3115,12 @@
         "carbs_g": 2.0,
         "fat_g": 27.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "Calcium",
+      "Vitamin B12"
     ]
   },
   {
@@ -2742,6 +3155,14 @@
         "carbs_g": 21.7,
         "fat_g": 49.9
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Vitamin E",
+      "Magnesium",
+      "Calcium"
     ]
   },
   {
@@ -2776,6 +3197,13 @@
         "carbs_g": 14.0,
         "fat_g": 65.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Omega-3",
+      "Magnesium"
     ]
   },
   {
@@ -2806,6 +3234,13 @@
         "carbs_g": 28.0,
         "fat_g": 45.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Vitamin B6",
+      "Potassium"
     ]
   },
   {
@@ -2837,6 +3272,11 @@
         "carbs_g": 79.0,
         "fat_g": 0.5
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Iron",
+      "Potassium"
     ]
   },
   {
@@ -2868,6 +3308,12 @@
         "carbs_g": 75.0,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high fiber",
+      "Potassium",
+      "Iron"
     ]
   },
   {
@@ -2899,6 +3345,14 @@
         "carbs_g": 23.4,
         "fat_g": 49.7
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Calcium",
+      "Iron",
+      "Magnesium"
     ]
   },
   {
@@ -2930,6 +3384,13 @@
         "carbs_g": 28.9,
         "fat_g": 42.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Omega-3",
+      "Magnesium"
     ]
   },
   {
@@ -2960,6 +3421,13 @@
         "carbs_g": 20.0,
         "fat_g": 51.5
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Vitamin E",
+      "Magnesium"
     ]
   },
   {
@@ -2990,6 +3458,14 @@
         "carbs_g": 42.1,
         "fat_g": 30.7
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high protein",
+      "high fiber",
+      "Omega-3",
+      "Calcium",
+      "Magnesium"
     ]
   },
   {
@@ -3022,6 +3498,12 @@
         "carbs_g": 77.0,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "high fiber",
+      "Magnesium",
+      "Potassium"
     ]
   },
   {
@@ -3053,7 +3535,8 @@
         "carbs_g": 0.0,
         "fat_g": 100.0
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "groundnut-oil",
@@ -3085,7 +3568,8 @@
         "carbs_g": 0.0,
         "fat_g": 100.0
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "coconut-oil",
@@ -3115,7 +3599,8 @@
         "carbs_g": 0.0,
         "fat_g": 100.0
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "olive-oil",
@@ -3145,7 +3630,8 @@
         "carbs_g": 0.0,
         "fat_g": 100.0
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "jaggery",
@@ -3176,6 +3662,9 @@
         "carbs_g": 98.0,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "Iron"
     ]
   },
   {
@@ -3207,6 +3696,9 @@
         "carbs_g": 82.0,
         "fat_g": 0.0
       }
+    ],
+    "tags": [
+      "Antioxidants"
     ]
   },
   {
@@ -3238,6 +3730,9 @@
         "carbs_g": 44.2,
         "fat_g": 22.3
       }
+    ],
+    "tags": [
+      "Iron"
     ]
   },
   {
@@ -3269,6 +3764,10 @@
         "carbs_g": 67.1,
         "fat_g": 3.2
       }
+    ],
+    "tags": [
+      "Curcumin",
+      "Antioxidants"
     ]
   },
   {
@@ -3300,7 +3799,8 @@
         "carbs_g": 55.0,
         "fat_g": 17.8
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "red-chili-powder",
@@ -3331,7 +3831,8 @@
         "carbs_g": 49.7,
         "fat_g": 14.3
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "garam-masala",
@@ -3361,7 +3862,8 @@
         "carbs_g": 45.0,
         "fat_g": 15.1
       }
-    ]
+    ],
+    "tags": []
   },
   {
     "slug": "rai",
@@ -3392,6 +3894,9 @@
         "carbs_g": 28.1,
         "fat_g": 36.2
       }
+    ],
+    "tags": [
+      "Selenium"
     ]
   },
   {
@@ -3423,6 +3928,9 @@
         "carbs_g": 64.0,
         "fat_g": 3.3
       }
+    ],
+    "tags": [
+      "Antioxidants"
     ]
   },
   {
@@ -3453,6 +3961,11 @@
         "carbs_g": 22.8,
         "fat_g": 0.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Potassium",
+      "Vitamin B6"
     ]
   },
   {
@@ -3483,6 +3996,11 @@
         "carbs_g": 13.8,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Antioxidants"
     ]
   },
   {
@@ -3513,6 +4031,11 @@
         "carbs_g": 15.0,
         "fat_g": 0.4
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin A",
+      "Vitamin C"
     ]
   },
   {
@@ -3543,6 +4066,12 @@
         "carbs_g": 11.0,
         "fat_g": 0.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin A",
+      "Vitamin C",
+      "Folate"
     ]
   },
   {
@@ -3573,6 +4102,10 @@
         "carbs_g": 14.0,
         "fat_g": 1.0
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   },
   {
@@ -3603,6 +4136,11 @@
         "carbs_g": 12.0,
         "fat_g": 0.1
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Folate"
     ]
   },
   {
@@ -3633,6 +4171,11 @@
         "carbs_g": 19.0,
         "fat_g": 1.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C",
+      "Antioxidants"
     ]
   },
   {
@@ -3659,6 +4202,11 @@
         "carbs_g": 18.0,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin K",
+      "Antioxidants"
     ]
   },
   {
@@ -3685,6 +4233,11 @@
         "carbs_g": 7.6,
         "fat_g": 0.2
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin A",
+      "Vitamin C"
     ]
   },
   {
@@ -3716,6 +4269,10 @@
         "carbs_g": 9.3,
         "fat_g": 0.3
       }
+    ],
+    "tags": [
+      "gluten-free",
+      "Vitamin C"
     ]
   }
 ]

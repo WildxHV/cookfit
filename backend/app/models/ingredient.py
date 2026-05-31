@@ -24,6 +24,9 @@ class Ingredient(Base):
     # Sensible defaults for the UI.
     default_unit: Mapped[str] = mapped_column(String(40), default="100g")
     default_form: Mapped[str] = mapped_column(String(20), default="raw")
+    # Descriptive labels shown on the lookup screen, e.g. "gluten-free",
+    # "high protein", "Vitamin C", "Potassium". JSON for portability.
+    tags: Mapped[list[str]] = mapped_column(JSON, default=list)
     # Provenance: "seed" (curated) or "ai" (Gemini lookup, validated).
     source: Mapped[str] = mapped_column(String(20), default="seed", index=True)
 

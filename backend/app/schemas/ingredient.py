@@ -49,4 +49,5 @@ class IngredientDetail(BaseModel):
     units: list[UnitOut]
     facts_per_100g: dict[str, MacrosOut]  # keyed by form: "raw" / "cooked"
     selected: SelectedNutrition
+    tags: list[str] = []
     source: str = "seed"  # "seed" (curated) or "ai" (Gemini, validated)

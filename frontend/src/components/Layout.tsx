@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 
 function NavLink({ to, label }: { to: string; label: string }) {
   const { pathname } = useLocation();
-  const active = pathname === to;
+  const active = pathname === to || pathname.startsWith(to + "/");
   return (
     <Link
       to={to}

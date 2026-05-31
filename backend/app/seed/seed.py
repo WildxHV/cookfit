@@ -112,6 +112,7 @@ def _load_ingredients(db: Session, data: list[dict]) -> dict[str, int]:
             category=row["category"],
             default_unit=row.get("default_unit", "100g"),
             default_form=row.get("default_form", "raw"),
+            tags=row.get("tags", []),
         )
         for f in row.get("facts", []):
             ing.facts.append(NutritionFacts(**f))

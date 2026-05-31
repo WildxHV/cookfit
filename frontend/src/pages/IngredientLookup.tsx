@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   aiLookupIngredient,
   getIngredient,
+  getRecipesForIngredient,
   searchIngredients,
 } from "../api/client";
 import type { IngredientSummary } from "../api/types";
@@ -18,8 +20,21 @@ import {
   unitOptions,
 } from "../lib/nutrition";
 
+function Chip({ label }: { label: string }) {
+  return (
+    <span className="rounded-full bg-accent-50 px-2.5 py-0.5 text-xs font-medium text-accent-700">
+      {label}
+    </span>
+  );
+}
+
+const TOP_N = 5;
+
 export function IngredientLookup() {
-  const [slug, setSlug] = useState<string | null>(null);
+  const { slug: routeSlug } = useParams();
+  const navigate = useNavigate();
+  const slug = routeSlug ?? null;
+
   const [quantity, setQuantity] = useState(1);
   const [unit, setUnit] = useState<string>("");
   const [form, setForm] = useState<string>("");
@@ -27,6 +42,12 @@ export function IngredientLookup() {
   const { data: detail, isLoading, isError } = useQuery({
     queryKey: ["ingredient", slug],
     queryFn: () => getIngredient(slug!),
+    enabled: !!slug,
+  });
+
+  const { data: usedIn } = useQuery({
+    queryKey: ["ingredient-recipes", slug],
+    queryFn: () => getRecipesForIngredient(slug!),
     enabled: !!slug,
   });
 
@@ -68,9 +89,9 @@ export function IngredientLookup() {
             <span className="text-xs text-muted capitalize">{i.category}</span>
           </div>
         )}
-        onSelect={(i) => setSlug(i.slug)}
+        onSelect={(i) => navigate(`/ingredient/${i.slug}`)}
         aiSearch={aiLookupIngredient}
-        onAiResult={(s) => setSlug(s)}
+        onAiResult={(s) => navigate(`/ingredient/${s}`)}
         aiNoun="ingredient"
       />
 
@@ -100,6 +121,14 @@ export function IngredientLookup() {
             )}
           </div>
 
+          {detail.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {detail.tags.map((t) => (
+                <Chip key={t} label={t} />
+              ))}
+            </div>
+          )}
+
           <div className="flex flex-wrap items-center gap-4">
             <QuantityControl
               quantity={quantity}
@@ -116,6 +145,37 @@ export function IngredientLookup() {
           </div>
 
           <NutritionCards macros={macros} />
+
+          {usedIn && usedIn.length > 0 && (
+            <div className="border-t border-gray-100 pt-4">
+              <h3 className="mb-2 text-sm font-semibold text-muted">
+                Used in recipes
+              </h3>
+              <ul className="divide-y divide-gray-100 overflow-hidden rounded-2xl border border-gray-100">
+                {usedIn.slice(0, TOP_N).map((r) => (
+                  <li key={r.id}>
+                    <Link
+                      to={`/recipe/${r.slug}`}
+                      className="flex items-center justify-between gap-3 px-4 py-3 text-sm hover:bg-accent-50"
+                    >
+                      <span className="font-medium">{r.name}</span>
+                      <span className="text-xs text-muted capitalize">
+                        {r.meal_type}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              {usedIn.length > TOP_N && (
+                <Link
+                  to={`/ingredient/${detail.slug}/recipes`}
+                  className="mt-2 inline-block text-sm font-medium text-accent-700 hover:underline"
+                >
+                  View all {usedIn.length} recipes →
+                </Link>
+              )}
+            </div>
+          )}
         </section>
       )}
     </div>

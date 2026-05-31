@@ -41,6 +41,7 @@ export interface IngredientDetail {
   units: Unit[];
   facts_per_100g: Record<string, Macros>;
   selected: SelectedNutrition;
+  tags: string[];
   source: string;
 }
 

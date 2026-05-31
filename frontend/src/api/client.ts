@@ -39,6 +39,15 @@ export async function aiLookupIngredient(
   return data;
 }
 
+export async function getRecipesForIngredient(
+  idOrSlug: string,
+): Promise<RecipeSummary[]> {
+  const { data } = await api.get<RecipeSummary[]>(
+    `/ingredients/${idOrSlug}/recipes`,
+  );
+  return data;
+}
+
 export async function searchRecipes(q: string): Promise<RecipeSummary[]> {
   const { data } = await api.get<RecipeSummary[]>("/recipes/search", {
     params: { q },

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate, useParams } from "react-router-dom";
 import { aiLookupRecipe, getRecipe, searchRecipes } from "../api/client";
 import type { RecipeSummary } from "../api/types";
 import { SearchBox } from "../components/SearchBox";
@@ -34,7 +35,9 @@ function parseSteps(text: string): string[] {
 }
 
 export function RecipeView() {
-  const [slug, setSlug] = useState<string | null>(null);
+  const { slug: routeSlug } = useParams();
+  const navigate = useNavigate();
+  const slug = routeSlug ?? null;
   const [servings, setServings] = useState(1);
   const [view, setView] = useState<"per person" | "total">("per person");
 
@@ -70,13 +73,13 @@ export function RecipeView() {
           </div>
         )}
         onSelect={(r) => {
-          setSlug(r.slug);
           setServings(1);
+          navigate(`/recipe/${r.slug}`);
         }}
         aiSearch={aiLookupRecipe}
         onAiResult={(s) => {
-          setSlug(s);
           setServings(1);
+          navigate(`/recipe/${s}`);
         }}
         aiNoun="dish"
       />

@@ -138,6 +138,25 @@ def _clean_units(units: list[dict], default_unit: str, where: str) -> tuple[list
     return cleaned, (du or "g")
 
 
+def _clean_tags(tags: list) -> list[str]:
+    """Keep up to 8 short, deduped label tags. Drops blanks and anything that
+    looks like a sentence rather than a label."""
+    cleaned: list[str] = []
+    seen: set[str] = set()
+    for t in tags or []:
+        label = str(t).strip().strip(".")
+        if not label or len(label) > 30 or len(label.split()) > 4:
+            continue
+        key = label.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        cleaned.append(label)
+        if len(cleaned) >= 8:
+            break
+    return cleaned
+
+
 def validate_ingredient(payload: dict, *, where: str = "ingredient") -> dict:
     """Validate one AI ingredient payload; return a normalized, insertable dict.
 
@@ -180,6 +199,7 @@ def validate_ingredient(payload: dict, *, where: str = "ingredient") -> dict:
     units, default_unit = _clean_units(payload.get("units", []), default_unit, where)
 
     aliases = [str(a).strip() for a in payload.get("aliases", []) if str(a).strip()]
+    tags = _clean_tags(payload.get("tags", []))
 
     return {
         "slug": slugify(name),
@@ -190,6 +210,7 @@ def validate_ingredient(payload: dict, *, where: str = "ingredient") -> dict:
         "default_form": default_form,
         "units": units,
         "facts": clean_facts,
+        "tags": tags,
     }
 
 

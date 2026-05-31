@@ -4,7 +4,8 @@ from sqlalchemy.orm import Session, selectinload
 
 from app.core.config import get_settings
 from app.db.session import get_db
-from app.models import Ingredient
+from app.models import Ingredient, Recipe
+from app.models.recipe import RecipeIngredient
 from app.schemas.ingredient import (
     IngredientDetail,
     IngredientSummary,
@@ -12,6 +13,7 @@ from app.schemas.ingredient import (
     SelectedNutrition,
     UnitOut,
 )
+from app.schemas.recipe import RecipeSummary
 from app.services import ai_lookup, search
 from app.services.ai_lookup import GeminiError
 from app.services.ai_persist import upsert_ai_ingredient
@@ -127,6 +129,7 @@ def _detail_for(
             grams=round(grams, 1),
             nutrition=_macros_out(selected_macros),
         ),
+        tags=ing.tags or [],
         source=ing.source,
     )
 
@@ -179,3 +182,32 @@ def get_ingredient(
     db: Session = Depends(get_db),
 ) -> IngredientDetail:
     return _detail_for(_get_one(db, id_or_slug), quantity, unit, form)
+
+
+@router.get("/{id_or_slug}/recipes", response_model=list[RecipeSummary])
+def recipes_using_ingredient(
+    id_or_slug: str,
+    db: Session = Depends(get_db),
+) -> list[RecipeSummary]:
+    """All recipes in our catalog that use this ingredient, alphabetical."""
+    ing = _get_one(db, id_or_slug)
+    stmt = (
+        select(Recipe)
+        .join(RecipeIngredient, RecipeIngredient.recipe_id == Recipe.id)
+        .where(RecipeIngredient.ingredient_id == ing.id)
+        .order_by(Recipe.name)
+        .distinct()
+    )
+    recipes = db.scalars(stmt).all()
+    return [
+        RecipeSummary(
+            id=r.id,
+            slug=r.slug,
+            name=r.name,
+            meal_type=r.meal_type,
+            prep_time_min=r.prep_time_min,
+            tags=r.tags,
+            aliases=r.aliases,
+        )
+        for r in recipes
+    ]

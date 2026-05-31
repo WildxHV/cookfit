@@ -263,3 +263,21 @@ User asks: (1) the AI tag must NOT persist — once data is in our DB, a later s
 - Removed the `<AiBadge>` from both pages, deleted `frontend/src/components/AiBadge.tsx`, and removed the now-unused `aiSlug` state (kept `onAiResult → setSlug` so the lookup still loads the result). The lookup flow is unchanged otherwise; it just shows the result with no badge.
 - `source` column still recorded in the DB for provenance; nothing in the UI reflects it.
 - Verified: looked up "lychee" → renders as a normal ingredient (name + category), no badge; `npx tsc --noEmit` clean.
+
+### 2026-05-31 — Ingredient tags + "Used in recipes" cross-linking
+
+Two features requested: (1) show health/nutrition tags on ingredients (gluten-free, vitamins, minerals); (2) on an ingredient, list recipes that use it (top 5 + "view more" to a full page).
+
+**Backend**
+- `models/ingredient.py`: added `tags: Mapped[list[str]]` (JSON, default list). Migration `5f1a2b3c4d5e_add_tags_to_ingredients.py` (down_revision `4e8f033ff937`) adds the column with `server_default='[]'`; applied via `alembic upgrade head`.
+- `schemas/ingredient.py`: `IngredientDetail.tags`. `api/v1/ingredients.py` `_detail_for` now returns `tags`.
+- **Seed tags** (`seed/ingredients.json`, via one-off script): each ingredient gets objective structural tags derived from its own data — "gluten-free" (all real-food categories except wheat/atta/rava/vermicelli/bread/daliya), "high protein" (protein ≥12g/100g or category dal/legume), "high fiber" (fiber ≥6g) — plus a curated micronutrient map of widely-established vitamins/minerals (e.g. paneer → Calcium, Vitamin B12; banana → Potassium, Vitamin B6; spinach → Iron, Vitamin K, Vitamin A, Folate; almonds → Vitamin E, Magnesium). 104/116 tagged (oils/sugar/sabudana get none). `seed/seed.py` `_load_ingredients` now passes `tags`. Reseeded.
+- **AI tags**: `ai_lookup.py` schema + prompt ask Gemini for 2-6 true health labels; `ai_validation.py` `_clean_tags` keeps ≤8 short deduped labels (drops sentences/blanks); `ai_persist.py` stores them. Verified live: kiwi → ['fruit','Vitamin C','fiber','Potassium'].
+- **New endpoint** `GET /ingredients/{id_or_slug}/recipes` → `RecipeSummary[]` of recipes using that ingredient (alphabetical, distinct). Verified: paneer → Matar Paneer, Palak Paneer, Paneer Bhurji; onion → 30.
+
+**Frontend**
+- `api/types.ts` `IngredientDetail.tags`; `api/client.ts` `getRecipesForIngredient(slug)`.
+- **URL-driven selection** (enables deep links, cross-navigation, back button): routes `/ingredient/:slug`, `/ingredient/:slug/recipes`, `/recipe/:slug` added in `App.tsx`. `IngredientLookup` and `RecipeView` now read the slug from `useParams` and `navigate(...)` on select / lookup instead of local state. `Layout` nav active-state uses `startsWith` so the tab stays highlighted on sub-routes.
+- `IngredientLookup`: renders tag chips under the name; a "Used in recipes" section listing the top 5 (each a link to `/recipe/:slug`) with a "View all N recipes →" link when >5.
+- **New page** `pages/IngredientRecipes.tsx` (`/ingredient/:slug/recipes`): header with back link + count, responsive grid of recipe cards (name, meal type, tag chips) each linking to the recipe.
+- **Verified live:** paneer shows the 4 tags + 3 recipe links; clicking "Matar Paneer" → `/recipe/matar-paneer` loads; onion shows top 5 + "View all 30 recipes →" → grid page of 30 cards + back link. `npx tsc --noEmit` clean; no console errors; `pytest` 39 passed.

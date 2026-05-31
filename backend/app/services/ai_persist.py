@@ -43,6 +43,7 @@ def upsert_ai_ingredient(db: Session, clean: dict) -> Ingredient:
         category=clean["category"],
         default_unit=clean["default_unit"],
         default_form=clean["default_form"],
+        tags=clean.get("tags", []),
         source="ai",
     )
     for f in clean["facts"]:

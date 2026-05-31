@@ -63,6 +63,7 @@ _INGREDIENT_SCHEMA = {
         "default_form": {"type": "string", "enum": ["raw", "cooked"]},
         "units": _UNITS_SCHEMA,
         "facts": _FACTS_SCHEMA,
+        "tags": {"type": "array", "items": {"type": "string"}},
     },
     "required": [
         "is_food", "is_vegetarian", "name", "category",
@@ -138,6 +139,10 @@ a well-known Hindi/Indian name that differs, e.g. "Asafoetida (hing)", \
 "Fenugreek Seeds (methi dana)", "Clarified Butter (ghee)". If the common name \
 is already the English name (e.g. Paneer, Quinoa, Oats), just use it plainly. \
 Also list the common Indian name(s) in aliases.
+- tags: 2-6 short health labels for this food. Use "gluten-free" when it has no \
+gluten, "high protein"/"high fiber" when notably so, and the key vitamins/ \
+minerals it is a good source of (e.g. "Vitamin C", "Potassium", "Iron", \
+"Calcium", "Omega-3"). Only include what is genuinely true.
 - Keep numbers plausible (calories 0-900; each macro 0-100 g per 100 g)."""
 
 
