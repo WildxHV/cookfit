@@ -70,59 +70,71 @@ def _unmatched_terms(user_terms: list[str], ingredients: list[Ingredient]) -> li
 
 
 # --- Background catalog-building -------------------------------------------
-# When a user mentions an ingredient we don't have, or we suggest a dish, we
-# fetch the full validated data from Gemini and store it — so the catalog grows
-# from real usage. These run AFTER the response is sent and never raise; the
-# same strict validators as the lookup endpoints gate every write.
+# When a user mentions ingredients we don't have, or we suggest dishes, we fetch
+# the full validated data from Gemini and store it — so the catalog grows from
+# real usage. To keep API usage low this is just TWO calls total: one batch for
+# all the unknown ingredients, one batch for all the suggested recipes. These
+# run AFTER the response is sent and never raise; the same strict validators as
+# the lookup endpoints gate every write.
 
-def _persist_ingredient_bg(term: str) -> None:
+def _not_already_stored(db: Session, names: list[str], model) -> list[str]:
+    """Drop names we already have a near-certain match for (avoids re-fetching)."""
+    existing = list(db.scalars(select(model)).all())
+    keep: list[str] = []
+    for n in names:
+        hit = search.rank(
+            n, existing, searchable=lambda x: [x.name, *x.aliases],
+            limit=1, threshold=_DEDUPE_THRESHOLD,
+        )
+        if not hit:
+            keep.append(n)
+    return keep
+
+
+def _persist_ingredients_bg(terms: list[str]) -> None:
     db = SessionLocal()
     try:
-        existing = search.rank(
-            term,
-            list(db.scalars(select(Ingredient)).all()),
-            searchable=lambda i: [i.name, *i.aliases],
-            limit=1,
-            threshold=_DEDUPE_THRESHOLD,
-        )
-        if existing:
+        todo = _not_already_stored(db, terms, Ingredient)
+        if not todo:
             return
-        clean = validate_ingredient(ai_lookup.lookup_ingredient(term))
-        upsert_ai_ingredient(db, clean)
+        for raw in ai_lookup.lookup_ingredients(todo):
+            try:
+                clean = validate_ingredient(raw)
+                upsert_ai_ingredient(db, clean)
+                logger.info("cook: stored AI ingredient %r", clean["slug"])
+            except ValidationError as exc:
+                logger.info("cook: skipped an ingredient: %s", exc)
         db.commit()
-        logger.info("cook: stored AI ingredient %r", clean["slug"])
-    except (GeminiError, ValidationError) as exc:
+    except GeminiError as exc:
         db.rollback()
-        logger.info("cook: skipped ingredient %r: %s", term, exc)
+        logger.info("cook: ingredient batch failed: %s", exc)
     except Exception:  # never let a background task crash the worker
         db.rollback()
-        logger.exception("cook: ingredient persist failed for %r", term)
+        logger.exception("cook: ingredient batch persist failed")
     finally:
         db.close()
 
 
-def _persist_recipe_bg(name: str) -> None:
+def _persist_recipes_bg(names: list[str]) -> None:
     db = SessionLocal()
     try:
-        existing = search.rank(
-            name,
-            list(db.scalars(select(Recipe)).all()),
-            searchable=lambda r: [r.name, *r.aliases],
-            limit=1,
-            threshold=_DEDUPE_THRESHOLD,
-        )
-        if existing:
+        todo = _not_already_stored(db, names, Recipe)
+        if not todo:
             return
-        validated = validate_recipe(ai_lookup.lookup_recipe(name))
-        upsert_ai_recipe(db, validated)
+        for raw in ai_lookup.lookup_recipes(todo):
+            try:
+                validated = validate_recipe(raw)
+                upsert_ai_recipe(db, validated)
+                logger.info("cook: stored AI recipe %r", validated["recipe"]["slug"])
+            except ValidationError as exc:
+                logger.info("cook: skipped a recipe: %s", exc)
         db.commit()
-        logger.info("cook: stored AI recipe %r", validated["recipe"]["slug"])
-    except (GeminiError, ValidationError) as exc:
+    except GeminiError as exc:
         db.rollback()
-        logger.info("cook: skipped recipe %r: %s", name, exc)
+        logger.info("cook: recipe batch failed: %s", exc)
     except Exception:
         db.rollback()
-        logger.exception("cook: recipe persist failed for %r", name)
+        logger.exception("cook: recipe batch persist failed")
     finally:
         db.close()
 
@@ -208,12 +220,15 @@ def suggest(
         except GeminiError:
             ai_error = "Couldn't generate ideas right now. Please try again."
 
-    # Grow the catalog in the background (no effect on this response).
+    # Grow the catalog in the background (no effect on this response). Just two
+    # batched Gemini calls: one for all unknown ingredients, one for all ideas.
     if get_settings().ai_enabled and terms:
         ingredients = list(db.scalars(select(Ingredient)).all())
-        for term in _unmatched_terms(terms, ingredients):
-            background_tasks.add_task(_persist_ingredient_bg, term)
-        for idea in ideas[:6]:
-            background_tasks.add_task(_persist_recipe_bg, idea.name)
+        unknown = _unmatched_terms(terms, ingredients)
+        if unknown:
+            background_tasks.add_task(_persist_ingredients_bg, unknown)
+        idea_names = [i.name for i in ideas[:6]]
+        if idea_names:
+            background_tasks.add_task(_persist_recipes_bg, idea_names)
 
     return SuggestResponse(ideas=ideas, from_catalog=from_catalog, ai_error=ai_error)

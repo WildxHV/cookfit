@@ -173,26 +173,36 @@ items and in the ingredients entry.
 high_protein, high_fiber, vegetarian, low_fat. Keep it healthy and authentic."""
 
 
-def _call_gemini(prompt: str, schema: dict) -> dict:
+def _call_gemini(
+    prompt: str, schema: dict, *, max_output_tokens: int | None = None
+) -> dict:
     settings = get_settings()
     if not settings.ai_enabled:
         raise GeminiError("AI lookup is disabled (no GEMINI_API_KEY configured).")
 
     url = GEMINI_URL.format(model=settings.gemini_model)
+    gen_config: dict = {
+        "responseMimeType": "application/json",
+        "responseSchema": schema,
+        "temperature": 0.2,
+    }
+    if max_output_tokens is not None:
+        gen_config["maxOutputTokens"] = max_output_tokens
+        # Batch calls produce a lot of JSON; spend the token budget on output,
+        # not on the model's internal "thinking" (so large arrays aren't cut off).
+        gen_config["thinkingConfig"] = {"thinkingBudget": 0}
     body = {
         "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "responseMimeType": "application/json",
-            "responseSchema": schema,
-            "temperature": 0.2,
-        },
+        "generationConfig": gen_config,
     }
     try:
         resp = httpx.post(
             url,
             params={"key": settings.gemini_api_key},
             json=body,
-            timeout=settings.gemini_timeout_s,
+            # Batch calls can be large/slow; give them extra headroom.
+            timeout=settings.gemini_timeout_s
+            + (60.0 if max_output_tokens else 0.0),
         )
     except httpx.HTTPError as exc:
         raise GeminiError(f"Gemini request failed: {exc}") from exc
@@ -218,3 +228,50 @@ def lookup_ingredient(query: str) -> dict:
 def lookup_recipe(query: str) -> dict:
     """Fetch structured recipe data (+ its ingredients) from Gemini. Unvalidated."""
     return _call_gemini(_RECIPE_PROMPT.format(query=query), _RECIPE_SCHEMA)
+
+
+# ---- Batch lookups (one call for many items) --------------------------------
+
+_INGREDIENTS_BATCH_SCHEMA = {
+    "type": "object",
+    "properties": {"ingredients": {"type": "array", "items": _INGREDIENT_SCHEMA}},
+    "required": ["ingredients"],
+}
+
+_RECIPES_BATCH_SCHEMA = {
+    "type": "object",
+    "properties": {"recipes": {"type": "array", "items": _RECIPE_SCHEMA}},
+    "required": ["recipes"],
+}
+
+_INGREDIENTS_BATCH_PROMPT = (
+    "You are a nutrition database for an Indian vegetarian home-cooking app. "
+    "Return one structured entry for EACH of these ingredients: {queries}.\n\n"
+    "Follow these rules for every entry:\n"
+    + _INGREDIENT_PROMPT.split("Rules:", 1)[1].strip()
+).replace('"{query}"', "the ingredient")
+
+_RECIPES_BATCH_PROMPT = (
+    "You are a recipe + nutrition database for an Indian vegetarian home-cooking "
+    "app. Return one structured recipe (scaled to ONE serving) for EACH of these "
+    "dishes: {queries}.\n\nFollow these rules for every recipe:\n"
+    + _RECIPE_PROMPT.split("Rules:", 1)[1].strip()
+).replace('"{query}"', "the dish")
+
+
+def lookup_ingredients(queries: list[str]) -> list[dict]:
+    """Fetch many ingredients in a SINGLE Gemini call. Unvalidated."""
+    if not queries:
+        return []
+    prompt = _INGREDIENTS_BATCH_PROMPT.replace("{queries}", ", ".join(queries))
+    data = _call_gemini(prompt, _INGREDIENTS_BATCH_SCHEMA, max_output_tokens=8192)
+    return list(data.get("ingredients", []))
+
+
+def lookup_recipes(queries: list[str]) -> list[dict]:
+    """Fetch many recipes (each with its ingredients) in a SINGLE Gemini call."""
+    if not queries:
+        return []
+    prompt = _RECIPES_BATCH_PROMPT.replace("{queries}", ", ".join(queries))
+    data = _call_gemini(prompt, _RECIPES_BATCH_SCHEMA, max_output_tokens=32768)
+    return list(data.get("recipes", []))
