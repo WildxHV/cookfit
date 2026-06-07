@@ -45,11 +45,16 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  /* Soft, subtly tinted canvas with a hint of green/warm light at the corners. */
+  /* Soft four-corner colour mesh (green / warm / sky) over a faint dot grid —
+     lively but light enough to keep text crisp. */
   background-color: var(--color-canvas);
   background-image:
-    radial-gradient(55rem 28rem at 108% -8%, #d1fae5 0%, transparent 55%),
-    radial-gradient(48rem 26rem at -8% 2%, #fdeee0 0%, transparent 52%);
+    radial-gradient(circle at 1px 1px, rgba(17, 24, 39, 0.045) 1px, transparent 0),
+    radial-gradient(46rem 26rem at 102% -6%, rgba(16, 185, 129, 0.20), transparent 58%),
+    radial-gradient(42rem 24rem at -6% 0%, rgba(251, 146, 60, 0.16), transparent 55%),
+    radial-gradient(48rem 30rem at 108% 108%, rgba(16, 185, 129, 0.14), transparent 60%),
+    radial-gradient(42rem 26rem at -8% 112%, rgba(56, 189, 248, 0.14), transparent 60%);
+  background-size: 22px 22px, auto, auto, auto, auto;
   background-attachment: fixed;
 }
 
