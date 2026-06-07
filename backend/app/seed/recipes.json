@@ -13,7 +13,7 @@
       "high_protein",
       "vegetarian"
     ],
-    "instructions": "Pressure-cook moong dal till soft. Prepare a tempering (tadka) of ghee, cumin, garlic, ginger, green chili, onion and tomato. Mix into the dal, simmer, finish with coriander.",
+    "instructions": "1. Pressure-cook moong dal till soft.\n2. Prepare a tempering of ghee, cumin, garlic, ginger, green chili, onion and tomato.\n3. Mix the tempering into the dal.\n4. Simmer the mixture for a few minutes.\n5. Finish with coriander and serve.",
     "items": [
       {
         "ingredient": "moong-dal",
@@ -76,7 +76,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Soak and pressure-cook rajma. Cook an onion-tomato-ginger-garlic masala in oil, add spices, then the rajma with its water and simmer till thick.",
+    "instructions": "1. Soak and pressure-cook rajma till tender.\n2. Cook an onion-tomato-ginger-garlic masala in oil.\n3. Add spices to the masala and cook for a minute.\n4. Add the cooked rajma with its water to the masala.\n5. Simmer the mixture till it thickens.\n6. Serve hot.",
     "items": [
       {
         "ingredient": "rajma",
@@ -131,7 +131,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Cook soaked chickpeas till tender. Saute onion, tomato, ginger and garlic in oil with chole masala spices, add the chickpeas and simmer.",
+    "instructions": "1. Soak and cook chickpeas till tender.\n2. Saute onion, tomato, ginger and garlic in oil with chole masala spices.\n3. Add the cooked chickpeas to the masala.\n4. Simmer the mixture for a few minutes.\n5. Season with salt and serve.",
     "items": [
       {
         "ingredient": "chole",
@@ -185,7 +185,7 @@
       "high_protein",
       "vegetarian"
     ],
-    "instructions": "Blanch and puree spinach. Saute onion, tomato, garlic in ghee, add the puree and spices, then fold in paneer cubes and simmer briefly.",
+    "instructions": "1. Blanch and puree spinach.\n2. Saute onion, tomato, and garlic in ghee.\n3. Add the pureed spinach and spices to the ghee mixture.\n4. Fold in paneer cubes and simmer briefly.\n5. Serve hot.",
     "items": [
       {
         "ingredient": "spinach",
@@ -239,7 +239,7 @@
       "vegetarian",
       "vegan"
     ],
-    "instructions": "Saute cumin in oil, add potato and cauliflower with turmeric and spices, cover and cook till tender, finish with tomato and coriander.",
+    "instructions": "1. Saute cumin in oil.\n2. Add potato and cauliflower to the oil with turmeric and spices.\n3. Cover and cook till the vegetables are tender.\n4. Finish with tomato and coriander.\n5. Serve hot.",
     "items": [
       {
         "ingredient": "potato",
@@ -288,7 +288,7 @@
       "vegetarian",
       "quick"
     ],
-    "instructions": "Rinse poha till soft. Temper mustard seeds, curry leaves, onion, green chili and peanuts in oil, add potato, then fold in poha with turmeric and lemon.",
+    "instructions": "1. Rinse poha till soft.\n2. Temper mustard seeds, curry leaves, onion, green chili and peanuts in oil.\n3. Add potato to the tempering and cook till it is tender.\n4. Fold in the poha with turmeric and lemon.\n5. Serve immediately.",
     "items": [
       {
         "ingredient": "poha",
@@ -342,7 +342,7 @@
       "vegetarian",
       "low_cal"
     ],
-    "instructions": "Crumble paneer. Saute onion, capsicum and tomato in oil with spices, add the crumbled paneer and toss for a few minutes.",
+    "instructions": "1. Crumble paneer.\n2. Saute onion, capsicum and tomato in oil with spices.\n3. Add the crumbled paneer to the oil mixture.\n4. Toss the mixture for a few minutes.\n5. Serve hot.",
     "items": [
       {
         "ingredient": "paneer",
@@ -392,7 +392,7 @@
       "quick",
       "low_cal"
     ],
-    "instructions": "Saute onion, tomato and peas in oil, add water and oats with spices, and cook to a soft savory porridge.",
+    "instructions": "1. Heat mustard oil in a pan.\n2. Saute chopped onion, tomato, and green peas.\n3. Add water, oats, and your preferred spices.\n4. Bring to a boil, then reduce heat.\n5. Cook until the oats are soft and the mixture thickens.",
     "items": [
       {
         "ingredient": "oats",
@@ -440,7 +440,7 @@
       "vegetarian",
       "quick"
     ],
-    "instructions": "Whisk besan with water, chopped onion, tomato, green chili and spices into a batter. Pour onto a hot oiled tawa and cook both sides till golden.",
+    "instructions": "1. Whisk besan with water, chopped onion, tomato, green chili, and spices to form a smooth batter.\n2. Heat mustard oil on a tawa.\n3. Pour a ladleful of batter onto the hot tawa.\n4. Spread evenly to form a thin circle.\n5. Cook until golden brown on both sides.",
     "items": [
       {
         "ingredient": "besan",
@@ -488,7 +488,7 @@
       "vegetarian",
       "light"
     ],
-    "instructions": "Pressure-cook rice and moong dal together with turmeric and salt to a soft consistency. Finish with a ghee-cumin tempering.",
+    "instructions": "1. Wash and soak basmati rice and moong dal.\n2. Combine rice, dal, turmeric, and salt in a pressure cooker with water.\n3. Cook for 3-4 whistles until soft.\n4. Heat ghee in a small pan.\n5. Temper with cumin seeds and chopped onion, then pour over the khichdi.",
     "items": [
       {
         "ingredient": "basmati-rice",
@@ -530,7 +530,7 @@
       "high_protein",
       "vegetarian"
     ],
-    "instructions": "Pressure-cook toor dal with turmeric. Temper ghee with cumin, garlic, ginger, onion and tomato; mix in, simmer, finish with coriander.",
+    "instructions": "1. Wash and pressure-cook toor dal with turmeric and salt until soft.\n2. Heat ghee in a separate pan.\n3. Temper with cumin seeds, chopped garlic, ginger, onion, and tomato.\n4. Add the cooked dal to the tempering and mix well.\n5. Simmer for a few minutes, then garnish with fresh coriander.",
     "items": [
       {
         "ingredient": "toor-dal",
@@ -592,7 +592,7 @@
       "high_protein",
       "vegetarian"
     ],
-    "instructions": "Cook masoor dal till soft. Temper oil with cumin, garlic, onion and tomato; combine and simmer.",
+    "instructions": "1. Wash and cook masoor dal with water until soft.\n2. Heat mustard oil in a separate pan.\n3. Temper with cumin seeds, chopped garlic, onion, and tomato.\n4. Add the cooked dal to the tempering and mix well.\n5. Simmer for 5-7 minutes, adjusting consistency as needed.",
     "items": [
       {
         "ingredient": "masoor-dal",
@@ -647,7 +647,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Cook moong/toor dal with chopped spinach, then temper with ghee, cumin, garlic and tomato.",
+    "instructions": "1. Wash and cook toor dal with chopped spinach, turmeric, and salt until soft.\n2. Heat ghee in a small pan.\n3. Temper with cumin seeds, chopped garlic, and tomato.\n4. Pour the tempering over the dal-palak mixture.\n5. Simmer gently for a few minutes to combine flavors.",
     "items": [
       {
         "ingredient": "toor-dal",
@@ -701,7 +701,7 @@
       "high_protein",
       "vegetarian"
     ],
-    "instructions": "Slow-cook whole urad and a little rajma with tomato, ginger and garlic; finish with butter and cream.",
+    "instructions": "1. Wash and soak urad dal and rajma overnight.\n2. Pressure-cook dal and rajma with chopped tomato, ginger, and garlic until very soft.\n3. Mash some of the dal for a creamy texture.\n4. Stir in butter and fresh cream.\n5. Simmer on low heat for at least 15-20 minutes, allowing flavors to meld.",
     "items": [
       {
         "ingredient": "urad-dal",
@@ -763,7 +763,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Combine five dals, pressure-cook, and temper with ghee, cumin, garlic, onion and tomato.",
+    "instructions": "1. Wash and soak all five dals together for 30 minutes.\n2. Pressure cook the soaked dals with chopped tomato and salt until tender.\n3. Heat ghee in a separate pan and add cumin seeds, chopped garlic, and chopped onion.\n4. Saute until the onion turns golden brown, then add chopped tomatoes and cook until soft.\n5. Pour the tempering over the cooked dal and mix well.\n6. Simmer for a few minutes to allow flavors to meld.\n7. Garnish with fresh coriander before serving.",
     "items": [
       {
         "ingredient": "toor-dal",
@@ -829,7 +829,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Pressure-cook soaked kala chana; cook an onion-tomato masala with spices and simmer the chana in it.",
+    "instructions": "1. Soak kala chana overnight or for at least 6-8 hours.\n2. Pressure cook the soaked kala chana with salt until tender.\n3. Heat mustard oil in a pan and saute chopped onion until golden.\n4. Add ginger-garlic paste and cook until fragrant.\n5. Stir in chopped tomatoes and cook until they soften and release oil.\n6. Add spices like turmeric, red chili powder, and coriander powder, then cook for a minute.\n7. Add the cooked kala chana along with some cooking liquid and simmer until the curry thickens.",
     "items": [
       {
         "ingredient": "kala-chana",
@@ -884,7 +884,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Cook soaked lobia till tender; simmer in an onion-tomato-ginger-garlic masala.",
+    "instructions": "1. Soak lobia for 4-6 hours or overnight.\n2. Pressure cook the soaked lobia with a pinch of salt until tender.\n3. Heat sunflower oil in a pan and saute chopped onion until translucent.\n4. Add ginger-garlic paste and cook until the raw smell disappears.\n5. Stir in chopped tomatoes and cook until they break down and oil separates.\n6. Add your preferred spices like turmeric, red chili powder, and garam masala.\n7. Add the cooked lobia along with some of its cooking liquid and simmer to thicken the curry.",
     "items": [
       {
         "ingredient": "lobia",
@@ -939,7 +939,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Saute onion and tomato with goda masala, add sprouted matki and water, and simmer.",
+    "instructions": "1. Sprout the matki beans.\n2. Heat groundnut oil in a pan and add mustard seeds and curry leaves.\n3. Add chopped onion and saute until translucent.\n4. Stir in ginger-garlic paste and cook for a minute.\n5. Add chopped tomatoes and cook until soft.\n6. Add goda masala, turmeric, and red chili powder, then cook briefly.\n7. Add the sprouted matki and a little water, then simmer until the matki is tender.",
     "items": [
       {
         "ingredient": "matki",
@@ -987,7 +987,7 @@
       "high_protein",
       "vegetarian"
     ],
-    "instructions": "Boil soybeans, then simmer in a spiced onion-tomato gravy.",
+    "instructions": "1. Soak soybeans in hot water for 15-20 minutes, then squeeze out excess water.\n2. Heat sunflower oil in a pan and saute chopped onion until golden.\n3. Add ginger-garlic paste and cook until fragrant.\n4. Stir in chopped tomatoes and cook until they soften and release oil.\n5. Add spices like turmeric, red chili powder, and coriander powder, then cook for a minute.\n6. Add the soaked soya chunks and mix well with the masala.\n7. Add water and simmer until the curry thickens and flavors meld.",
     "items": [
       {
         "ingredient": "soybean",
@@ -1038,7 +1038,7 @@
     "tags": [
       "vegetarian"
     ],
-    "instructions": "Temper ghee with cumin, add soaked basmati rice and water, and cook till fluffy.",
+    "instructions": "1. Wash and soak basmati rice for 20-30 minutes, then drain.\n2. Heat ghee in a pot or pressure cooker.\n3. Add cumin seeds and let them splutter.\n4. Add the drained basmati rice and saute gently for a minute.\n5. Add water and salt, then bring to a boil.\n6. Cover and cook on low heat until all the water is absorbed and the rice is fluffy.\n7. Fluff the rice gently with a fork before serving.",
     "items": [
       {
         "ingredient": "basmati-rice",
@@ -1073,7 +1073,7 @@
       "vegetarian",
       "high_fiber"
     ],
-    "instructions": "Saute whole spices and vegetables in ghee, add rice and water, and cook till done.",
+    "instructions": "1. Wash and soak basmati rice for 20-30 minutes, then drain.\n2. Heat ghee in a pot or pressure cooker.\n3. Add whole spices like bay leaf, cinnamon, and cloves, and let them sizzle.\n4. Add chopped onion and saute until translucent.\n5. Stir in chopped carrots, French beans, and green peas, and saute for a few minutes.\n6. Add the drained basmati rice and gently mix with the vegetables.\n7. Add water and salt, then cover and cook until the rice is done and vegetables are tender.",
     "items": [
       {
         "ingredient": "basmati-rice",
@@ -1127,7 +1127,7 @@
     "tags": [
       "vegetarian"
     ],
-    "instructions": "Temper oil with mustard, peanuts and curry leaves; toss cooked rice with turmeric and lemon juice.",
+    "instructions": "1. Cook basmati rice and let it cool.\n2. Heat groundnut oil, add mustard seeds and peanuts, and let them splutter.\n3. Add curry leaves and turmeric powder to the oil.\n4. Add the cooked rice to the tempered oil.\n5. Squeeze fresh lemon juice over the rice and mix gently.\n6. Garnish with fresh coriander if desired and serve hot.",
     "items": [
       {
         "ingredient": "basmati-rice",
@@ -1175,7 +1175,7 @@
       "vegetarian",
       "probiotic"
     ],
-    "instructions": "Mash cooked rice with curd; temper with mustard, curry leaves and green chili.",
+    "instructions": "1. Cook basmati rice until soft and mash it lightly.\n2. Mix the mashed rice with curd and salt to taste.\n3. Heat groundnut oil in a small pan.\n4. Add mustard seeds and let them splutter.\n5. Add chopped green chili and curry leaves to the oil.\n6. Pour the tempering over the curd rice and mix well.\n7. Serve chilled or at room temperature.",
     "items": [
       {
         "ingredient": "basmati-rice",
@@ -1221,7 +1221,7 @@
       "vegetarian",
       "high_fiber"
     ],
-    "instructions": "Layer spiced part-cooked rice with a vegetable masala and dum-cook.",
+    "instructions": "1. Marinate mixed vegetables like cauliflower, carrot, and green peas in curd and spices.\n2. Partially cook basmati rice with whole spices.\n3. Layer the marinated vegetables and partially cooked rice in a heavy-bottomed pot.\n4. Drizzle ghee over the layers.\n5. Seal the pot and cook on low heat (dum-cook) until done.\n6. Serve hot with raita.",
     "items": [
       {
         "ingredient": "basmati-rice",
@@ -1280,7 +1280,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Roast broken wheat, then pressure-cook with vegetables and mild spices.",
+    "instructions": "1. Roast daliya (broken wheat) in ghee until fragrant.\n2. Sauté chopped onion, carrot, and green peas in ghee.\n3. Add the roasted daliya and water to the vegetables.\n4. Season with salt and mild spices.\n5. Pressure cook until the daliya is soft and all water is absorbed.\n6. Serve hot.",
     "items": [
       {
         "ingredient": "daliya",
@@ -1326,7 +1326,7 @@
       "vegetarian",
       "low_fat"
     ],
-    "instructions": "Steam fermented rice-and-urad batter in idli moulds. Serve with sambar and chutney.",
+    "instructions": "1. Grease idli moulds.\n2. Pour fermented rice-and-urad batter into the moulds.\n3. Steam the idlis for 10-12 minutes until cooked through.\n4. Remove idlis from the moulds.\n5. Serve hot with sambar and coconut chutney.",
     "items": [
       {
         "ingredient": "idli",
@@ -1348,7 +1348,7 @@
     "tags": [
       "vegetarian"
     ],
-    "instructions": "Crisp a fermented batter into a dosa and fill with a spiced potato masala.",
+    "instructions": "1. Prepare a spiced potato masala with sautéed onions.\n2. Heat a dosa tawa and spread a ladleful of dosa batter thinly.\n3. Drizzle groundnut oil around the edges and cook until crisp.\n4. Place a portion of the potato masala in the center of the dosa.\n5. Fold the dosa and serve hot with sambar and chutneys.",
     "items": [
       {
         "ingredient": "dosa",
@@ -1389,7 +1389,7 @@
     "tags": [
       "vegetarian"
     ],
-    "instructions": "Roast rava; temper oil with mustard and curry leaves, add vegetables and water, then stir in rava.",
+    "instructions": "1. Roast rava (semolina) in a dry pan until aromatic.\n2. Heat groundnut oil and add mustard seeds, letting them splutter.\n3. Add chopped onion, carrot, and green peas and sauté until tender.\n4. Pour in water and bring it to a boil, seasoning with salt.\n5. Gradually add the roasted rava, stirring continuously to avoid lumps.\n6. Cook until the water is absorbed and the upma is fluffy.\n7. Serve hot, garnished with fresh coriander.",
     "items": [
       {
         "ingredient": "rava",
@@ -1441,7 +1441,7 @@
     "tags": [
       "vegetarian"
     ],
-    "instructions": "Roast vermicelli; cook with tempered vegetables and water till fluffy.",
+    "instructions": "1. Roast vermicelli in a pan until lightly browned.\n2. Heat Groundnut Oil in the same pan and add Mustard Seeds.\n3. Add diced Onion and Carrot to the pan and sauté until the vegetables are tender.\n4. Add the roasted vermicelli to the pan and stir well.\n5. Add water to the pan and cook until the vermicelli is fluffy and the water is absorbed.\n6. Serve hot.",
     "items": [
       {
         "ingredient": "vermicelli",
@@ -1487,7 +1487,7 @@
     "tags": [
       "vegetarian"
     ],
-    "instructions": "Soak sabudana, then toss with roasted peanuts, potato and cumin in ghee.",
+    "instructions": "1. Soak Sabudana in water for a few hours until it becomes soft.\n2. Roast Peanuts in a pan until fragrant.\n3. Heat Ghee in the same pan and add Cumin Seeds.\n4. Add diced Potato to the pan and sauté until it is tender.\n5. Add the soaked Sabudana and roasted Peanuts to the pan and stir well.\n6. Cook until the Sabudana is well coated with the spices and the mixture is dry.",
     "items": [
       {
         "ingredient": "sabudana",
@@ -1536,7 +1536,7 @@
       "high_protein",
       "vegetarian"
     ],
-    "instructions": "Grind soaked moong dal to a batter and cook thin savoury pancakes with onion and chili.",
+    "instructions": "1. Soak Moong Dal in water for a few hours until it becomes soft.\n2. Grind the soaked Moong Dal into a smooth batter.\n3. Heat Groundnut Oil in a pan and add the batter to make a thin pancake.\n4. Add diced Onion and Green Chili on top of the pancake and fold it in half.\n5. Cook until the pancake is golden brown and crispy.\n6. Serve hot with chutney or sauce.",
     "items": [
       {
         "ingredient": "moong-dal",
@@ -1576,7 +1576,7 @@
     "tags": [
       "vegetarian"
     ],
-    "instructions": "Stuff whole-wheat dough with spiced mashed potato and roast on a tawa with ghee.",
+    "instructions": "1. Boil and mash Potato in a bowl.\n2. Add diced Green Chili and spices to the mashed Potato and mix well.\n3. Knead Wheat Flour into a soft dough.\n4. Divide the dough into small balls and roll out each ball into a thin circle.\n5. Place a spoonful of the mashed Potato mixture in the center of each circle and fold the dough over to seal.\n6. Heat a pan with Ghee and roast the paratha until it is golden brown and crispy.",
     "items": [
       {
         "ingredient": "wheat-flour",
@@ -1618,7 +1618,7 @@
       "vegetarian",
       "high_fiber"
     ],
-    "instructions": "Knead wheat and besan with chopped methi and spices; roll and roast thin theplas.",
+    "instructions": "1. Chop Methi Leaves and add them to Wheat Flour and Besan in a bowl.\n2. Knead the mixture into a soft dough.\n3. Divide the dough into small balls and roll out each ball into a thin circle.\n4. Heat Groundnut Oil in a pan and roast the thepla until it is golden brown and crispy.\n5. Serve hot with chutney or sauce.\n6. Store any leftover theplas in an airtight container for later use.",
     "items": [
       {
         "ingredient": "wheat-flour",
@@ -1660,7 +1660,7 @@
       "vegetarian",
       "high_fiber"
     ],
-    "instructions": "Saute sliced okra till tender, then toss with onion, tomato and spices.",
+    "instructions": "1. Slice Okra into thin rounds and sauté them in a pan with Mustard Oil until tender.\n2. Add diced Onion to the pan and sauté until it is translucent.\n3. Add diced Tomato to the pan and cook until it is soft and mushy.\n4. Add spices to the pan and stir well.\n5. Add the sautéed Okra to the pan and toss with the spices and vegetables.\n6. Serve hot with rice or roti.",
     "items": [
       {
         "ingredient": "okra",
@@ -1702,7 +1702,7 @@
       "vegetarian",
       "high_fiber"
     ],
-    "instructions": "Roast and mash brinjal; cook with onion, tomato, garlic and spices.",
+    "instructions": "1. Roast Brinjal over an open flame until the skin is charred and the flesh is soft.\n2. Peel the skin off the Brinjal and mash the flesh in a bowl.\n3. Heat Mustard Oil in a pan and add diced Onion and sauté until it is translucent.\n4. Add diced Tomato and minced Garlic to the pan and cook until the mixture is soft and fragrant.\n5. Add the mashed Brinjal to the pan and stir well with the spices and vegetables.\n6. Serve hot with rice or roti.",
     "items": [
       {
         "ingredient": "brinjal",
@@ -1750,7 +1750,7 @@
       "vegetarian",
       "low_fat"
     ],
-    "instructions": "Cook diced bottle gourd with tomato and mild spices till soft.",
+    "instructions": "1. Heat groundnut oil and temper with cumin seeds.\n2. Add diced lauki and chopped tomatoes.\n3. Cook covered until lauki is tender.\n4. Mash lightly and serve hot.",
     "items": [
       {
         "ingredient": "lauki",
@@ -1792,7 +1792,7 @@
       "vegetarian",
       "high_fiber"
     ],
-    "instructions": "Saute a medley of vegetables with onion, tomato and spices till tender.",
+    "instructions": "1. Heat groundnut oil in a pan.\n2. Add all chopped vegetables and saute well.\n3. Cook covered until vegetables are tender.\n4. Serve hot with roti or rice.",
     "items": [
       {
         "ingredient": "cauliflower",
@@ -1843,7 +1843,7 @@
     "tags": [
       "vegetarian"
     ],
-    "instructions": "Toss boiled potato cubes in cumin-tempered oil with turmeric and chili.",
+    "instructions": "1. Boil and cube potatoes.\n2. Heat groundnut oil and temper with cumin seeds and green chili.\n3. Add boiled potato cubes and toss well.\n4. Cook for a few minutes until lightly browned.\n5. Serve hot as a side dish.",
     "items": [
       {
         "ingredient": "potato",
@@ -1884,7 +1884,7 @@
       "high_protein",
       "vegetarian"
     ],
-    "instructions": "Simmer paneer cubes and green peas in an onion-tomato gravy.",
+    "instructions": "1. Heat sunflower oil and saute chopped onions until golden.\n2. Add chopped tomatoes and cook until soft.\n3. Stir in paneer cubes and green peas.\n4. Simmer until the gravy thickens.\n5. Serve hot with naan or rice.",
     "items": [
       {
         "ingredient": "paneer",
@@ -1931,7 +1931,7 @@
       "vegetarian",
       "high_fiber"
     ],
-    "instructions": "Saute cauliflower florets and peas with onion, tomato and spices.",
+    "instructions": "1. Heat groundnut oil and add cauliflower florets and green peas.\n2. Saute until lightly browned.\n3. Add chopped onions and cook until translucent.\n4. Stir in chopped tomatoes and cook until soft.\n5. Serve hot as a dry sabzi.",
     "items": [
       {
         "ingredient": "cauliflower",
@@ -1979,7 +1979,7 @@
       "low_fat",
       "high_fiber"
     ],
-    "instructions": "Stir-fry shredded cabbage with peas, mustard tempering and turmeric.",
+    "instructions": "1. Heat groundnut oil and temper with mustard seeds.\n2. Add shredded cabbage and green peas.\n3. Stir-fry until cabbage is tender-crisp.\n4. Season with salt and turmeric.\n5. Serve hot.",
     "items": [
       {
         "ingredient": "cabbage",
@@ -2022,7 +2022,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Cook toor dal with vegetables and tamarind, season with sambar powder and a mustard tempering.",
+    "instructions": "1. Cook toor dal until soft.\n2. Add diced lauki, carrot, and chopped tomato to the dal.\n3. Simmer until vegetables are tender.\n4. Heat groundnut oil and temper with mustard seeds.\n5. Pour tempering over the sambar and mix well.\n6. Serve hot with idli or dosa.",
     "items": [
       {
         "ingredient": "toor-dal",
@@ -2076,7 +2076,7 @@
       "vegetarian",
       "probiotic"
     ],
-    "instructions": "Whisk besan with curd and water, simmer into a tangy gravy, and finish with a cumin tempering.",
+    "instructions": "1. Whisk besan with curd and water until smooth.\n2. Bring the mixture to a boil, then simmer until it thickens into a gravy.\n3. Heat oil in a small pan.\n4. Add cumin seeds and let them splutter.\n5. Pour the tempering over the kadhi and mix well.",
     "items": [
       {
         "ingredient": "besan",
@@ -2118,7 +2118,7 @@
       "probiotic",
       "low_fat"
     ],
-    "instructions": "Stir grated cucumber and onion into whisked curd with roasted cumin.",
+    "instructions": "1. Whisk curd until smooth.\n2. Grate cucumber and finely chop onion.\n3. Stir the grated cucumber and chopped onion into the whisked curd.\n4. Roast cumin seeds lightly and crush them.\n5. Mix the roasted cumin into the raita and serve chilled.",
     "items": [
       {
         "ingredient": "curd",
@@ -2162,7 +2162,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Toss moong sprouts with chopped onion, tomato, cucumber and lemon.",
+    "instructions": "1. Rinse moong sprouts thoroughly.\n2. Finely chop onion, tomato, and cucumber.\n3. Combine sprouts with the chopped vegetables in a bowl.\n4. Squeeze fresh lemon juice over the salad.\n5. Toss everything together gently and serve immediately.",
     "items": [
       {
         "ingredient": "moong-sprouts",
@@ -2211,7 +2211,7 @@
       "high_fiber",
       "vegetarian"
     ],
-    "instructions": "Mix boiled kala chana with onion, tomato, lemon and chaat masala.",
+    "instructions": "1. Boil kala chana until tender.\n2. Finely chop onion and tomato.\n3. Combine the boiled chana with chopped onion and tomato.\n4. Squeeze fresh lemon juice over the mixture.\n5. Add chaat masala to taste and mix well.",
     "items": [
       {
         "ingredient": "kala-chana",
@@ -2253,7 +2253,7 @@
       "vegetarian",
       "low_fat"
     ],
-    "instructions": "Steam a fermented besan batter, then temper with mustard, curry leaves and green chili.",
+    "instructions": "1. Prepare a smooth batter with besan and water, allowing it to ferment slightly.\n2. Steam the besan batter until firm and cooked through.\n3. Heat groundnut oil in a small pan.\n4. Add mustard seeds and green chili, letting them splutter.\n5. Pour the tempering over the steamed dhokla.\n6. Cut into pieces and serve.",
     "items": [
       {
         "ingredient": "besan",
@@ -2295,7 +2295,7 @@
       "high_fiber",
       "low_fat"
     ],
-    "instructions": "Dry-roast makhana in a little ghee with salt and pepper till crisp.",
+    "instructions": "1. Heat ghee in a pan over medium heat.\n2. Add makhana to the pan.\n3. Roast the makhana, stirring constantly, until crisp.\n4. Season with black pepper and salt to taste.\n5. Serve warm as a snack.",
     "items": [
       {
         "ingredient": "makhana",
@@ -2330,7 +2330,7 @@
       "vegetarian",
       "high_fiber"
     ],
-    "instructions": "Toss chopped seasonal fruits with lemon juice and a pinch of chaat masala.",
+    "instructions": "1. Chop apple, banana, and pomegranate into bite-sized pieces.\n2. Combine all the chopped fruits in a bowl.\n3. Squeeze fresh lemon juice over the fruits.\n4. Add a pinch of chaat masala.\n5. Toss gently to combine and serve immediately.",
     "items": [
       {
         "ingredient": "apple",
