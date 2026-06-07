@@ -1,0 +1,21 @@
+# Render Blueprint — one free web service that builds + serves CookFit.
+# In the Render dashboard: New → Blueprint → pick this repo. Then set the
+# secret env vars (at least GROQ_API_KEY) under the service's Environment tab.
+services:
+  - type: web
+    name: cookfit
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      # AI providers — set the keys in the dashboard (sync:false = not in repo).
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash

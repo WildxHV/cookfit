@@ -151,6 +151,39 @@ tagged `source` (`seed` | `ai`) for provenance.
 
 ---
 
+## Deploy (free, one service on Render)
+
+The repo ships a `Dockerfile` that builds the frontend and runs the backend,
+which **also serves the built frontend** — so it's a single service, same
+origin, no CORS or separate API URL to configure. A `render.yaml` blueprint is
+included.
+
+1. Push this repo to GitHub.
+2. On [Render](https://render.com): **New → Blueprint**, pick the repo (it reads
+   `render.yaml`). Or **New → Web Service**, choose "Docker", leave defaults.
+3. Under the service's **Environment**, add your secret keys — at minimum
+   `GROQ_API_KEY` (and/or `GEMINI_API_KEY`). The non-secret model names are set
+   by the blueprint.
+4. Deploy. The container runs migrations, seeds the catalog if empty, and starts
+   serving at `https://<your-app>.onrender.com`.
+
+Notes:
+- **SQLite on the free tier is ephemeral** — the curated catalog is re-seeded on
+  each boot, and AI-added rows reset when the instance restarts. For persistence,
+  point `DATABASE_URL` at a free hosted Postgres (e.g. Neon) — the app is
+  DB-agnostic and migrations handle the rest.
+- Free Render web services **sleep after ~15 min idle**, so the first request
+  after a nap takes ~30–60s to wake.
+
+To build the image locally:
+
+```bash
+docker build -t cookfit .
+docker run -p 8000:8000 -e GROQ_API_KEY=... cookfit   # → http://localhost:8000
+```
+
+---
+
 ## Project layout
 
 ```

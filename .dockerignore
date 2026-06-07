@@ -1,0 +1,13 @@
+# Keep the build context small and clean.
+**/.git
+**/.venv
+**/node_modules
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.mypy_cache
+backend/*.db
+backend/static
+frontend/dist
+.claude
+code.md

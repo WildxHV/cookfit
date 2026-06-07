@@ -173,5 +173,20 @@ def run() -> None:
         db.close()
 
 
+def _is_empty() -> bool:
+    db = SessionLocal()
+    try:
+        return db.query(Ingredient).count() == 0
+    finally:
+        db.close()
+
+
 if __name__ == "__main__":
-    run()
+    import sys
+
+    # `--if-empty` (used on server boot) only seeds a fresh DB, so a restart
+    # doesn't wipe ingredients/recipes the app added at runtime.
+    if "--if-empty" in sys.argv and not _is_empty():
+        print("Catalog already populated — skipping seed.")
+    else:
+        run()
