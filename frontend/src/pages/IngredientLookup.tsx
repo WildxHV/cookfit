@@ -13,12 +13,14 @@ import { ErrorBanner } from "../components/ErrorBanner";
 import { NutritionCards } from "../components/NutritionCards";
 import { QuantityControl } from "../components/QuantityControl";
 import { Segmented } from "../components/Segmented";
+import { UnitSizePicker } from "../components/UnitSizePicker";
 import {
   gramsForQuantity,
   macrosForGrams,
   roundMacros,
   unitOptions,
 } from "../lib/nutrition";
+import { SIZE_FACTORS, isSizable, type SizeKey } from "../lib/units";
 import { usePreferences, isAvoided } from "../lib/usePreferences";
 
 function Chip({ label }: { label: string }) {
@@ -39,6 +41,7 @@ export function IngredientLookup() {
   const [quantity, setQuantity] = useState(1);
   const [unit, setUnit] = useState<string>("");
   const [form, setForm] = useState<string>("");
+  const [size, setSize] = useState<SizeKey>("M");
   const { avoid } = usePreferences();
 
   const { data: detail, isLoading, isError } = useQuery({
@@ -59,11 +62,22 @@ export function IngredientLookup() {
       setQuantity(1);
       setUnit(detail.default_unit);
       setForm(detail.default_form);
+      setSize("M");
     }
   }, [detail]);
 
-  const grams =
-    detail && unit ? gramsForQuantity(quantity, unit, detail.units) : null;
+  // Reset to medium when switching units.
+  useEffect(() => {
+    setSize("M");
+  }, [unit]);
+
+  const sizable = isSizable(unit);
+  // Grams of one unit at medium size (catalog value), then scaled by the
+  // picked size (only when the unit's real-world size varies).
+  const unitGrams =
+    detail && unit ? gramsForQuantity(1, unit, detail.units) : null;
+  const sizeMul = sizable ? SIZE_FACTORS[size] : 1;
+  const grams = unitGrams !== null ? quantity * unitGrams * sizeMul : null;
   const per100g = detail && form ? detail.facts_per_100g[form] : undefined;
   const macros =
     per100g && grams !== null
@@ -153,6 +167,15 @@ export function IngredientLookup() {
               </span>
             )}
           </div>
+
+          {sizable && unitGrams !== null && (
+            <UnitSizePicker
+              unit={unit}
+              baseGrams={unitGrams}
+              value={size}
+              onChange={setSize}
+            />
+          )}
 
           <NutritionCards macros={macros} />
 
