@@ -78,7 +78,20 @@ export function IngredientLookup() {
     detail && unit ? gramsForQuantity(1, unit, detail.units) : null;
   const sizeMul = sizable ? SIZE_FACTORS[size] : 1;
   const grams = unitGrams !== null ? quantity * unitGrams * sizeMul : null;
-  const per100g = detail && form ? detail.facts_per_100g[form] : undefined;
+
+  // A household serving (katori/cup/bowl) of something that absorbs water (dal,
+  // rice…) is a COOKED portion, so the raw/cooked choice only applies when
+  // measuring by weight (grams). This stops "raw + katori" from showing an
+  // unrealistic number for a portion no one actually eats raw.
+  const isMassUnit = ["g", "gram", "grams", "100g", "kg"].includes(
+    unit.trim().toLowerCase(),
+  );
+  const hasCooked = !!detail?.facts_per_100g["cooked"];
+  const servingIsCooked = hasCooked && !isMassUnit;
+  const showFormToggle = (detail?.forms.length ?? 0) > 1 && isMassUnit;
+  const effForm = servingIsCooked ? "cooked" : form;
+
+  const per100g = detail && effForm ? detail.facts_per_100g[effForm] : undefined;
   const macros =
     per100g && grams !== null
       ? roundMacros(macrosForGrams(per100g, grams))
@@ -134,9 +147,6 @@ export function IngredientLookup() {
               <h2 className="text-xl font-semibold">{detail.name}</h2>
               <p className="text-xs text-muted capitalize">{detail.category}</p>
             </div>
-            {detail.forms.length > 1 && (
-              <Segmented options={detail.forms} value={form} onChange={setForm} />
-            )}
           </div>
 
           {isAvoided(detail.name, avoid) && (
@@ -153,18 +163,44 @@ export function IngredientLookup() {
             </div>
           )}
 
-          <div className="flex flex-wrap items-center gap-4">
-            <QuantityControl
-              quantity={quantity}
-              unit={unit}
-              unitOptions={unitOptions(detail.units)}
-              onQuantityChange={setQuantity}
-              onUnitChange={setUnit}
-            />
-            {grams !== null && (
-              <span className="text-sm text-muted">
-                = <span className="font-medium text-ink">{Math.round(grams)} g</span>
-              </span>
+          <div className="flex flex-col gap-3">
+            <p className="text-xs font-medium uppercase tracking-wide text-muted">
+              How much?
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <QuantityControl
+                quantity={quantity}
+                unit={unit}
+                unitOptions={unitOptions(detail.units)}
+                onQuantityChange={setQuantity}
+                onUnitChange={setUnit}
+              />
+              {grams !== null && (
+                <span className="text-sm text-muted">
+                  ={" "}
+                  <span className="font-medium text-ink">
+                    {Math.round(grams)} g
+                  </span>
+                </span>
+              )}
+              {/* raw/cooked belongs with the act of measuring — and only makes
+                  sense by weight; a katori/cup is already a cooked serving. */}
+              {showFormToggle && (
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-muted">weighed as</span>
+                  <Segmented
+                    options={detail.forms}
+                    value={form}
+                    onChange={setForm}
+                  />
+                </div>
+              )}
+            </div>
+            {servingIsCooked && (
+              <p className="text-xs text-muted">
+                A {unit} is measured as a <span className="font-medium">cooked</span>{" "}
+                serving.
+              </p>
             )}
           </div>
 
