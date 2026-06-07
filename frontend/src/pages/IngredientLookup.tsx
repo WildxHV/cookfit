@@ -22,6 +22,7 @@ import {
 } from "../lib/nutrition";
 import { SIZE_FACTORS, isSizable, type SizeKey } from "../lib/units";
 import { usePreferences, isAvoided } from "../lib/usePreferences";
+import { useI18n } from "../lib/i18n";
 
 function Chip({ label }: { label: string }) {
   return (
@@ -43,6 +44,7 @@ export function IngredientLookup() {
   const [form, setForm] = useState<string>("");
   const [size, setSize] = useState<SizeKey>("M");
   const { avoid } = usePreferences();
+  const { t } = useI18n();
 
   const { data: detail, isLoading, isError } = useQuery({
     queryKey: ["ingredient", slug],
@@ -101,16 +103,13 @@ export function IngredientLookup() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-bold tracking-tight">
-          Ingredient lookup
+          {t("ing.title")}
         </h1>
-        <p className="mt-1 text-sm text-muted">
-          Search any ingredient, set the amount, and see the nutrition update
-          live.
-        </p>
+        <p className="mt-1 text-sm text-muted">{t("ing.subtitle")}</p>
       </div>
 
       <SearchBox<IngredientSummary>
-        placeholder="Try “paneer”, “moong dal”, “chana”…"
+        placeholder={t("ing.searchPlaceholder")}
         queryKey="ing-search"
         search={searchIngredients}
         getKey={(i) => i.id}
@@ -128,13 +127,13 @@ export function IngredientLookup() {
 
       {!slug && (
         <div className="rounded-3xl border border-dashed border-gray-200 p-10 text-center text-sm text-muted">
-          Pick an ingredient to see its calories, protein, fiber, carbs and fat.
+          {t("ing.empty")}
         </div>
       )}
 
       {slug && isLoading && (
         <div className="rounded-3xl border border-gray-100 bg-surface p-6 text-sm text-muted">
-          Loading…
+          {t("common.loading")}
         </div>
       )}
 
@@ -151,7 +150,7 @@ export function IngredientLookup() {
 
           {isAvoided(detail.name, avoid) && (
             <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm text-red-700">
-              ⚠ You've marked this as something you avoid.
+              {t("ing.avoidWarning")}
             </div>
           )}
 
@@ -165,7 +164,7 @@ export function IngredientLookup() {
 
           <div className="flex flex-col gap-3">
             <p className="text-xs font-medium uppercase tracking-wide text-muted">
-              How much?
+              {t("ing.howMuch")}
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <QuantityControl
@@ -187,7 +186,7 @@ export function IngredientLookup() {
                   sense by weight; a katori/cup is already a cooked serving. */}
               {showFormToggle && (
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-muted">weighed as</span>
+                  <span className="text-xs text-muted">{t("ing.weighedAs")}</span>
                   <Segmented
                     options={detail.forms}
                     value={form}
@@ -198,8 +197,9 @@ export function IngredientLookup() {
             </div>
             {servingIsCooked && (
               <p className="text-xs text-muted">
-                A {unit} is measured as a <span className="font-medium">cooked</span>{" "}
-                serving.
+                {t("ing.cookedServing1")} {unit} {t("ing.cookedServing2")}{" "}
+                <span className="font-medium">{t("ing.cooked")}</span>{" "}
+                {t("ing.cookedServing3")}
               </p>
             )}
           </div>
@@ -218,7 +218,7 @@ export function IngredientLookup() {
           {usedIn && usedIn.length > 0 && (
             <div className="border-t border-gray-100 pt-4">
               <h3 className="mb-2 text-sm font-semibold text-muted">
-                Used in recipes
+                {t("ing.usedIn")}
               </h3>
               <ul className="divide-y divide-gray-100 overflow-hidden rounded-2xl border border-gray-100">
                 {usedIn.slice(0, TOP_N).map((r) => (
@@ -240,7 +240,7 @@ export function IngredientLookup() {
                   to={`/ingredient/${detail.slug}/recipes`}
                   className="mt-2 inline-block text-sm font-medium text-accent-700 hover:underline"
                 >
-                  View all {usedIn.length} recipes →
+                  {t("ing.viewAll", { n: usedIn.length })}
                 </Link>
               )}
             </div>

@@ -1,9 +1,5 @@
-import {
-  SIZE_FACTORS,
-  SIZE_LABELS,
-  unitIcon,
-  type SizeKey,
-} from "../lib/units";
+import { SIZE_FACTORS, unitIcon, type SizeKey } from "../lib/units";
+import { useI18n } from "../lib/i18n";
 
 interface Props {
   unit: string;
@@ -21,13 +17,14 @@ const ICON_SCALE: Record<SizeKey, string> = {
 };
 
 export function UnitSizePicker({ unit, baseGrams, value, onChange }: Props) {
+  const { t } = useI18n();
   const icon = unitIcon(unit);
   const sizes: SizeKey[] = ["S", "M", "L"];
 
   return (
     <div className="flex flex-col gap-2">
       <p className="text-xs font-medium text-muted">
-        Which size {unit} do you have?
+        {t("ing.whichSize", { unit })}
       </p>
       <div className="flex gap-2">
         {sizes.map((s) => {
@@ -49,7 +46,7 @@ export function UnitSizePicker({ unit, baseGrams, value, onChange }: Props) {
                 {icon || "•"}
               </span>
               <span className="text-xs font-semibold text-ink">
-                {SIZE_LABELS[s]}
+                {t(`size.${s}` as "size.S" | "size.M" | "size.L")}
               </span>
               <span className="text-[11px] tabular-nums text-muted">
                 {grams} g

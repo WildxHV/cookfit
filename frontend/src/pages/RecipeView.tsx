@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router-dom";
 import { aiLookupRecipe, getRecipe, searchRecipes } from "../api/client";
 import { usePreferences, isAvoided } from "../lib/usePreferences";
+import { useI18n } from "../lib/i18n";
 import type { RecipeSummary } from "../api/types";
 import { SearchBox } from "../components/SearchBox";
 import { ErrorBanner } from "../components/ErrorBanner";
@@ -50,6 +51,7 @@ export function RecipeView() {
   });
 
   const { avoid } = usePreferences();
+  const { t } = useI18n();
   const flagged = recipe
     ? recipe.items
         .map((it) => it.name)
@@ -63,16 +65,13 @@ export function RecipeView() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-bold tracking-tight">
-          Recipe &amp; servings
+          {t("recipe.title")}
         </h1>
-        <p className="mt-1 text-sm text-muted">
-          Search a dish, set the number of people, and get scaled quantities with
-          per-person and total nutrition.
-        </p>
+        <p className="mt-1 text-sm text-muted">{t("recipe.subtitle")}</p>
       </div>
 
       <SearchBox<RecipeSummary>
-        placeholder="Try “dal tadka”, “rajma”, “palak paneer”…"
+        placeholder={t("recipe.searchPlaceholder")}
         queryKey="recipe-search"
         search={searchRecipes}
         getKey={(r) => r.id}
@@ -96,13 +95,13 @@ export function RecipeView() {
 
       {!slug && (
         <div className="rounded-3xl border border-dashed border-gray-200 p-10 text-center text-sm text-muted">
-          Pick a dish to see its scaled ingredients and nutrition.
+          {t("recipe.empty")}
         </div>
       )}
 
       {slug && isLoading && (
         <div className="rounded-3xl border border-gray-100 bg-surface p-6 text-sm text-muted">
-          Loading…
+          {t("common.loading")}
         </div>
       )}
 
@@ -112,9 +111,7 @@ export function RecipeView() {
         <section className="flex flex-col gap-5 rounded-3xl border border-gray-100 bg-surface p-6 shadow-sm">
           {flagged.length > 0 && (
             <div className="rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-              ⚠ Heads up — this recipe contains{" "}
-              <span className="font-semibold">{flagged.join(", ")}</span>, which
-              you've chosen to avoid.
+              {t("recipe.avoidWarning", { items: flagged.join(", ") })}
             </div>
           )}
           <div className="flex flex-col gap-2">
@@ -132,9 +129,11 @@ export function RecipeView() {
           <div className="sticky top-16 z-10 -mx-6 flex items-center justify-between border-y border-gray-100 bg-surface/95 px-6 py-3 backdrop-blur">
             <ServingScaler servings={servings} onChange={setServings} />
             <Segmented
-              options={["per person", "total"]}
-              value={view}
-              onChange={(v) => setView(v as "per person" | "total")}
+              options={[t("recipe.perPerson"), t("recipe.total")]}
+              value={view === "per person" ? t("recipe.perPerson") : t("recipe.total")}
+              onChange={(v) =>
+                setView(v === t("recipe.total") ? "total" : "per person")
+              }
             />
           </div>
 
@@ -142,7 +141,8 @@ export function RecipeView() {
 
           <div>
             <h3 className="mb-2 text-sm font-semibold text-muted">
-              Ingredients for {servings} {servings === 1 ? "person" : "people"}
+              {t("recipe.ingredientsFor")} {servings}{" "}
+              {servings === 1 ? t("recipe.person") : t("recipe.people_plural")}
             </h3>
             <ul className="divide-y divide-gray-100 overflow-hidden rounded-2xl border border-gray-100">
               {recipe.items.map((it) => (
@@ -175,7 +175,7 @@ export function RecipeView() {
               return (
                 <div>
                   <h3 className="mb-3 text-sm font-semibold text-muted">
-                    Method
+                    {t("recipe.method")}
                   </h3>
                   {steps.length > 1 ? (
                     <ol className="flex flex-col gap-3">

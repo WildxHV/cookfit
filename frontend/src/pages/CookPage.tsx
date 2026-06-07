@@ -5,6 +5,7 @@ import { suggestDishes } from "../api/client";
 import type { DishSuggestion } from "../api/types";
 import { ErrorBanner } from "../components/ErrorBanner";
 import { usePreferences } from "../lib/usePreferences";
+import { useI18n } from "../lib/i18n";
 
 function Chip({
   label,
@@ -31,6 +32,7 @@ function Chip({
 }
 
 function KindBadge({ kind }: { kind: string }) {
+  const { t } = useI18n();
   const fusion = kind === "fusion";
   return (
     <span
@@ -40,7 +42,7 @@ function KindBadge({ kind }: { kind: string }) {
           : "bg-emerald-50 text-emerald-700 ring-1 ring-inset ring-emerald-200"
       }`}
     >
-      {fusion ? "fusion" : "classic"}
+      {fusion ? t("cook.kindFusion") : t("cook.kindClassic")}
     </span>
   );
 }
@@ -84,6 +86,7 @@ export function CookPage() {
   const [items, setItems] = useState<string[]>([]);
   const [text, setText] = useState("");
   const { avoid } = usePreferences();
+  const { t } = useI18n();
   const [searchParams] = useSearchParams();
 
   const mutation = useMutation({
@@ -127,17 +130,14 @@ export function CookPage() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-bold tracking-tight">
-          What can I make?
+          {t("cook.title")}
         </h1>
-        <p className="mt-1 text-sm text-muted">
-          List the ingredients you have and we'll suggest dishes — classic and
-          fusion — you can cook right now.
-        </p>
+        <p className="mt-1 text-sm text-muted">{t("cook.subtitle")}</p>
       </div>
 
       <div className="flex flex-col gap-3 rounded-3xl border border-gray-100 bg-surface p-5 shadow-sm">
         <label className="text-sm font-medium text-ink">
-          Your ingredients
+          {t("cook.yourIngredients")}
         </label>
         <input
           value={text}
@@ -154,7 +154,7 @@ export function CookPage() {
               removeItem(items[items.length - 1]);
             }
           }}
-          placeholder="Type an ingredient and press Enter (e.g. palak, paneer, pasta)…"
+          placeholder={t("cook.placeholder")}
           className="w-full rounded-2xl border border-gray-200 bg-surface px-4 py-3 text-base outline-none transition focus:border-accent-400 focus:ring-4 focus:ring-accent-100"
         />
         {items.length > 0 && (
@@ -164,15 +164,12 @@ export function CookPage() {
             ))}
           </div>
         )}
-        <p className="text-xs text-muted">
-          We'll assume you also have everyday staples — salt, oil, cumin, chili,
-          turmeric, ginger, garlic and onion.
-        </p>
+        <p className="text-xs text-muted">{t("cook.staples")}</p>
         {avoid.length > 0 && (
           <p className="text-xs text-red-600">
-            Avoiding: {avoid.join(", ")}.{" "}
+            {t("cook.avoiding")} {avoid.join(", ")}.{" "}
             <Link to="/preferences" className="underline">
-              Edit
+              {t("cook.edit")}
             </Link>
           </p>
         )}
@@ -183,7 +180,7 @@ export function CookPage() {
             onClick={() => mutation.mutate(items)}
             className="rounded-2xl bg-gradient-to-br from-accent-500 to-accent-700 px-6 py-2.5 text-sm font-semibold text-white shadow-sm shadow-accent-700/30 transition hover:brightness-105 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none"
           >
-            {mutation.isPending ? "Cooking up ideas…" : "Suggest dishes"}
+            {mutation.isPending ? t("cook.suggesting") : t("cook.suggest")}
           </button>
         </div>
       </div>
@@ -194,7 +191,9 @@ export function CookPage() {
         <>
           {result.from_catalog.length > 0 && (
             <section className="flex flex-col gap-3">
-              <h2 className="text-lg font-semibold">From our recipes</h2>
+              <h2 className="text-lg font-semibold">
+                {t("cook.fromOurRecipes")}
+              </h2>
               <ul className="grid gap-3 sm:grid-cols-2">
                 {result.from_catalog.map((m) => (
                   <li key={m.slug}>
@@ -210,11 +209,11 @@ export function CookPage() {
                       </div>
                       {m.missing.length > 0 ? (
                         <span className="text-xs text-amber-600">
-                          Just need: {m.missing.join(", ")}
+                          {t("cook.justNeed")} {m.missing.join(", ")}
                         </span>
                       ) : (
                         <span className="text-xs text-emerald-600">
-                          You have everything!
+                          {t("cook.haveEverything")}
                         </span>
                       )}
                     </Link>
@@ -225,7 +224,7 @@ export function CookPage() {
           )}
 
           <section className="flex flex-col gap-3">
-            <h2 className="text-lg font-semibold">Ideas to try</h2>
+            <h2 className="text-lg font-semibold">{t("cook.ideasToTry")}</h2>
             {result.ideas.length > 0 ? (
               <div className="grid gap-4">
                 {result.ideas.map((idea) => (
@@ -234,7 +233,7 @@ export function CookPage() {
               </div>
             ) : (
               <p className="rounded-2xl border border-dashed border-gray-200 p-6 text-center text-sm text-muted">
-                {result.ai_error ?? "No ideas just now — try different ingredients."}
+                {result.ai_error ?? t("cook.noIdeas")}
               </p>
             )}
           </section>

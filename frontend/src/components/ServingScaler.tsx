@@ -1,13 +1,16 @@
+import { useI18n } from "../lib/i18n";
+
 interface ServingScalerProps {
   servings: number;
   onChange: (n: number) => void;
 }
 
 export function ServingScaler({ servings, onChange }: ServingScalerProps) {
+  const { t } = useI18n();
   const set = (n: number) => onChange(Math.min(100, Math.max(1, n)));
   return (
     <div className="flex items-center gap-3">
-      <span className="text-sm font-medium text-muted">Number of people</span>
+      <span className="text-sm font-medium text-muted">{t("recipe.people")}</span>
       <div className="flex items-stretch rounded-xl border border-accent-200 bg-accent-50">
         <button
           type="button"

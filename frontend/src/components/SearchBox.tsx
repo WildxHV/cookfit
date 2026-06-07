@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useDebounce } from "../lib/useDebounce";
+import { useI18n } from "../lib/i18n";
 
 interface SearchBoxProps<T> {
   placeholder: string;
@@ -26,6 +27,7 @@ export function SearchBox<T>({
   onAiResult,
   aiNoun = "item",
 }: SearchBoxProps<T>) {
+  const { t } = useI18n();
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
   const [aiBusy, setAiBusy] = useState(false);
@@ -68,7 +70,9 @@ export function SearchBox<T>({
       {open && debounced.length > 0 && (
         <ul className="absolute z-10 mt-2 max-h-72 w-full overflow-auto rounded-2xl border border-gray-100 bg-surface p-1 shadow-lg">
           {isLoading && (
-            <li className="px-4 py-3 text-sm text-muted">Searching…</li>
+            <li className="px-4 py-3 text-sm text-muted">
+              {t("search.searching")}
+            </li>
           )}
 
           {/* Fallback "find exactly this" action, pinned to the TOP so it's
@@ -79,7 +83,7 @@ export function SearchBox<T>({
               {aiBusy ? (
                 <div className="flex items-center gap-2 px-4 py-3 text-sm text-muted">
                   <span className="h-3.5 w-3.5 animate-spin rounded-full border-2 border-accent-300 border-t-transparent" />
-                  Looking up “{debounced}”…
+                  {t("search.lookingUp")} “{debounced}”…
                 </div>
               ) : (
                 <button
@@ -92,7 +96,7 @@ export function SearchBox<T>({
                 >
                   <span aria-hidden>🔍</span>
                   <span>
-                    Look up{" "}
+                    {t("search.lookUp")}{" "}
                     <span className="font-medium">“{debounced}”</span>
                   </span>
                 </button>
@@ -104,7 +108,9 @@ export function SearchBox<T>({
           )}
 
           {settled && data.length === 0 && !aiSearch && (
-            <li className="px-4 py-3 text-sm text-muted">No matches.</li>
+            <li className="px-4 py-3 text-sm text-muted">
+              {t("search.noMatches")}
+            </li>
           )}
           {data?.map((item) => (
             <li key={getKey(item)}>

@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { usePreferences } from "../lib/usePreferences";
+import { useI18n } from "../lib/i18n";
 
 export function Preferences() {
   const { avoid, addAvoid, removeAvoid } = usePreferences();
+  const { t } = useI18n();
   const [text, setText] = useState("");
 
   function commit(raw: string) {
@@ -18,18 +20,14 @@ export function Preferences() {
     <div className="flex flex-col gap-6">
       <div>
         <h1 className="font-display text-2xl font-bold tracking-tight">
-          Your preferences
+          {t("prefs.title")}
         </h1>
-        <p className="mt-1 text-sm text-muted">
-          List anything you're allergic to or simply don't eat. We'll remember it
-          on this device and keep it out of your suggestions — and flag any recipe
-          that contains it.
-        </p>
+        <p className="mt-1 text-sm text-muted">{t("prefs.subtitle")}</p>
       </div>
 
       <div className="flex flex-col gap-3 rounded-3xl border border-gray-100 bg-surface p-5 shadow-sm">
         <label className="text-sm font-medium text-ink">
-          Allergens &amp; things you avoid
+          {t("prefs.label")}
         </label>
         <input
           value={text}
@@ -46,7 +44,7 @@ export function Preferences() {
               removeAvoid(avoid[avoid.length - 1]);
             }
           }}
-          placeholder="e.g. peanuts, mushroom, gluten — press Enter to add"
+          placeholder={t("prefs.placeholder")}
           className="w-full rounded-2xl border border-gray-200 bg-surface px-4 py-3 text-base outline-none transition focus:border-red-300 focus:ring-4 focus:ring-red-100"
         />
         {avoid.length > 0 ? (
@@ -69,9 +67,7 @@ export function Preferences() {
             ))}
           </div>
         ) : (
-          <p className="text-xs text-muted">
-            Nothing added yet — suggestions will include everything.
-          </p>
+          <p className="text-xs text-muted">{t("prefs.empty")}</p>
         )}
       </div>
     </div>
