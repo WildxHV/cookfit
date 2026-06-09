@@ -1,6 +1,7 @@
 import { SIZE_FACTORS, unitIcon, type SizeKey } from "../lib/units";
 import { useI18n } from "../lib/i18n";
 import { KatoriIcon } from "./KatoriIcon";
+import { GlassIcon } from "./GlassIcon";
 
 interface Props {
   unit: string;
@@ -16,17 +17,16 @@ const ICON_SCALE: Record<SizeKey, string> = {
   M: "text-xl",
   L: "text-2xl",
 };
-// Matching widths for the SVG katori.
-const KATORI_SCALE: Record<SizeKey, string> = {
-  S: "w-7",
-  M: "w-9",
-  L: "w-12",
-};
+// Matching sizes for the SVG icons.
+const KATORI_SCALE: Record<SizeKey, string> = { S: "w-7", M: "w-9", L: "w-12" };
+const GLASS_SCALE: Record<SizeKey, string> = { S: "h-7", M: "h-9", L: "h-11" };
 
 export function UnitSizePicker({ unit, baseGrams, value, onChange }: Props) {
   const { t } = useI18n();
   const icon = unitIcon(unit);
-  const isKatori = ["katori", "bowl"].includes(unit.trim().toLowerCase());
+  const u = unit.trim().toLowerCase();
+  const isKatori = u === "katori" || u === "bowl";
+  const isGlass = u === "glass" || u === "mug";
   const sizes: SizeKey[] = ["S", "M", "L"];
 
   return (
@@ -52,6 +52,8 @@ export function UnitSizePicker({ unit, baseGrams, value, onChange }: Props) {
             >
               {isKatori ? (
                 <KatoriIcon className={`h-auto ${KATORI_SCALE[s]} drop-shadow-sm`} />
+              ) : isGlass ? (
+                <GlassIcon className={`w-auto ${GLASS_SCALE[s]} drop-shadow-sm`} />
               ) : (
                 <span className={`leading-none ${ICON_SCALE[s]}`} aria-hidden>
                   {icon || "•"}
